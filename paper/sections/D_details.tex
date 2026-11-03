@@ -1,0 +1,227 @@
+\section{Detailed proofs}
+\label{app:details}
+
+This appendix writes the new lemmas out line by line.
+Each step has an independent check in \code{verification/ck\_details.py} (exact rational arithmetic, Fourier sums, random states, and $60$-digit decimal constants); it runs in the default of \code{run\_all.py}.
+
+\subsection{Conventions}
+\label{app:details:conv}
+Functions are $2\pi$-periodic in $t$ and depend on $w$.
+For such a function $u(t,w)$ and a positive measure $m$ on the $w$-axis we write
+\begin{equation}
+\langle u\rangle_t=\frac1{2\pi}\int_0^{2\pi}u\,dt,\qquad
+\langle u\rangle=\int\langle u\rangle_t\,dm(w),
+\end{equation}
+\begin{equation}
+\|y\|_t^2=\langle y^2\rangle_t,\qquad \|u\|^2=\langle u^2\rangle .
+\end{equation}
+So $\langle\cdot\rangle_t$ is the normalised period average, and $\|\cdot\|$ is the $L^2$ norm of $dt/2\pi\otimes m$.
+Fourier coefficients are $\hat u_n=\langle u\,e^{-int}\rangle_t$, so $u=\sum_n\hat u_ne^{int}$ and $\langle KU\rangle_t=\sum_n\hat K_n\hat U_{-n}$.
+For $R=\sum_{n\ge1}q0_n\cos(nt-\varphi_n)$, Parseval gives $\|R\|_t^2=S_0/2$ and $\|R'\|_t^2=S_2/2$.
+
+\subsection{Lemma S}
+\label{app:details:S}
+\emph{Data.} $Y=\phi(w)y(t)$ with $y=R$ or $y=R'$, $h=1+r$ with $r=\psi(w)R(t)$, $0\le\psi\le1$, $\eta=\sup|R|<1$.
+The split $R=R_{\rm lo}+R_{\rm hi}$ puts the frequencies $\le M$ in $R_{\rm lo}$ and those $\ge m$ in $R_{\rm hi}$, $M<m$.
+Then $y=y_{\rm lo}+y_{\rm hi}$, $Y=Y_{\rm lo}+Y_{\rm hi}$, $r=r_{\rm lo}+r_{\rm hi}$, with $|r_{\rm lo}|\le\eta_{\rm lo}$ and $|r_{\rm hi}|\le\eta_{\rm hi}$.
+
+\emph{Step 1 (orthogonality).} $y_{\rm lo}$ and $y_{\rm hi}$ have disjoint frequencies, so $\langle y_{\rm lo}y_{\rm hi}\rangle_t=0$.
+Hence $\|Y\|^2=\|Y_{\rm lo}\|^2+\|Y_{\rm hi}\|^2$ and $f_{\rm lo}+f_{\rm hi}=1$.
+
+\emph{Step 2 (algebra).} For $|r|<1$,
+\begin{equation}
+\frac1{1+r}=1-r+\frac{r^2}{1+r},\qquad 0\le\frac{r^2}{1+r}\le\frac{r^2}{1-\eta}.
+\end{equation}
+Hence
+\begin{equation}
+\Bigl\langle\frac{Y^2}{h}\Bigr\rangle=\|Y\|^2-\langle Y^2r\rangle+\Bigl\langle\frac{Y^2r^2}{1+r}\Bigr\rangle,
+\end{equation}
+with the last term in $[0,\|Yr\|^2/(1-\eta)]$.
+
+\emph{Step 3 (six products).} Expanding,
+\begin{multline}
+\langle Y^2r\rangle=\langle Y_{\rm lo}^2r_{\rm lo}\rangle+\langle Y_{\rm lo}^2r_{\rm hi}\rangle
++2\langle Y_{\rm lo}Y_{\rm hi}r_{\rm lo}\rangle\\
++2\langle Y_{\rm lo}Y_{\rm hi}r_{\rm hi}\rangle+\langle Y_{\rm hi}^2r_{\rm lo}\rangle+\langle Y_{\rm hi}^2r_{\rm hi}\rangle .
+\end{multline}
+(a) $|\langle Y_{\rm lo}^2r_{\rm lo}\rangle|\le\eta_{\rm lo}\|Y_{\rm lo}\|^2$.
+(b) With the gap $2M<m$: $y_{\rm lo}^2$ has frequencies $\le2M$ and $R_{\rm hi}$ frequencies $\ge m$, so $\langle y_{\rm lo}^2R_{\rm hi}\rangle_t=0$ and $\langle Y_{\rm lo}^2r_{\rm hi}\rangle=0$.
+(c) With the gap: $y_{\rm lo}R_{\rm lo}$ has frequencies $\le2M$, $y_{\rm hi}$ frequencies $\ge m$, so $\langle Y_{\rm lo}Y_{\rm hi}r_{\rm lo}\rangle=0$.
+(d) By Cauchy--Schwarz in $\langle\cdot\rangle$, $|\langle Y_{\rm lo}Y_{\rm hi}r_{\rm hi}\rangle|\le\eta_{\rm hi}\|Y_{\rm lo}\|\|Y_{\rm hi}\|$.
+(e) Two bounds hold.
+First, $|\langle Y_{\rm hi}^2r_{\rm lo}\rangle|\le\eta_{\rm lo}\|Y_{\rm hi}\|^2$.
+Second, with $0\le\psi\le1$ and Cauchy--Schwarz in $t$,
+\begin{multline}
+|\langle Y_{\rm hi}^2r_{\rm lo}\rangle|\le\int\phi^2\,dm\,\langle y_{\rm hi}^2|R_{\rm lo}|\rangle_t\\
+\le\int\phi^2\,dm\,\sup|y_{\rm hi}|\,\|y_{\rm hi}\|_t\|R_{\rm lo}\|_t .
+\end{multline}
+Since $\|Y_{\rm hi}\|^2=\int\phi^2dm\,\|y_{\rm hi}\|_t^2$, the right side is $\|Y_{\rm hi}\|^2\sup|y_{\rm hi}|\,\|R_{\rm lo}\|_t/\|y_{\rm hi}\|_t$.
+Together: $|\langle Y_{\rm hi}^2r_{\rm lo}\rangle|\le\kappa\|Y_{\rm hi}\|^2$.
+(f) $|\langle Y_{\rm hi}^2r_{\rm hi}\rangle|\le\eta_{\rm hi}\|Y_{\rm hi}\|^2$.
+Dividing by $\|Y\|^2$ gives $|\langle Y^2r\rangle|\le E\|Y\|^2$.
+
+\emph{Step 4 (the square).} Write $Yr=Y_{\rm lo}r_{\rm lo}+Y_{\rm hi}r_{\rm lo}+Yr_{\rm hi}$.
+By Minkowski,
+\begin{equation}
+\|Yr\|\le\|Y_{\rm lo}r_{\rm lo}\|+\|Y_{\rm hi}r_{\rm lo}\|+\|Yr_{\rm hi}\|.
+\end{equation}
+Here $\|Y_{\rm lo}r_{\rm lo}\|\le\eta_{\rm lo}\sqrt{f_{\rm lo}}\|Y\|$ and $\|Yr_{\rm hi}\|\le\eta_{\rm hi}\|Y\|$.
+The middle term uses the same two bounds as (e): $\|y_{\rm hi}R_{\rm lo}\|_t\le\eta_{\rm lo}\|y_{\rm hi}\|_t$ and $\|y_{\rm hi}R_{\rm lo}\|_t\le\sup|y_{\rm hi}|\,\|R_{\rm lo}\|_t$, so $\|Y_{\rm hi}r_{\rm lo}\|\le\kappa\sqrt{f_{\rm hi}}\|Y\|$.
+Hence $\|Yr\|^2\le B\|Y\|^2$; the same $\kappa$ enters $E$ and $B$.
+
+\emph{Step 5 (Lemma S).} Steps 2--4 give $\|Y\|^2(1-E)\le\langle Y^2/h\rangle\le\|Y\|^2(1+E+B/(1-\eta))$.
+The $\eta$ sandwich $1-\eta\le h\le1+\eta$ gives the other two bounds; take the better of each pair.
+
+\emph{Lemma S$'$.} Without the gap, (b) and (c) are bounded instead of vanishing:
+$|\langle Y_{\rm lo}^2r_{\rm hi}\rangle|\le\eta_{\rm hi}\|Y_{\rm lo}\|^2$ and $2|\langle Y_{\rm lo}Y_{\rm hi}r_{\rm lo}\rangle|\le2\eta_{\rm lo}\|Y_{\rm lo}\|\|Y_{\rm hi}\|$.
+These add $\eta_{\rm hi}f_{\rm lo}+2\eta_{\rm lo}\sqrt{f_{\rm lo}f_{\rm hi}}$ to $E$.
+Step 1 needs only $M<m$, and Step 4 uses no gap, so $B$ is unchanged.
+
+\emph{Where Lemma S is used.}
+Lemma S is a statement about period averages.
+In the windows of this paper the $v$-average is Gaussian, i.e.\ the period average weighted by $\theta_\tau$ (Lemma~19 of~\cite{F}).
+Lemma~R first converts every Gaussian average into a period average, with the explicit $\nu$ factors of Lemmas~21 and~22 of~\cite{F}:
+$\Jww=J_{\rm per}(1+\epsilon_1)$, $|\epsilon_1|\le\nu_0(1+2\Qb)/(1-z)$, and the two-sided bound of $W$ by $W_{\rm per}$ with $(1\pm\nu_0)$ and $\pm\frac12b\tau\Qb\nu_2$.
+Only then is a sandwich applied, to three period averages, each of the form of Lemma S with $\psi=E=e^{-w^2/2s^2}$:
+\begin{itemize}
+\item $J_{{\rm per},R}=\int\Gamma\langle h_w^2/h\rangle$: $y=R$, $\phi=-(w/s^2)E$, $dm=\Gamma\,dw$;
+\item $W_{\rm per}=x\int\Gamma\langle h_t^2/h\rangle$: $y=R'$, $\phi=E$, $dm=x\,\Gamma\,dw$;
+\item the $F$ term of (R4): $y=R'$, $\phi=E$, $dm=x\,\Gamma(1-\cos\frac w{\sqrt2})\,dw$, a positive measure.
+\end{itemize}
+Lemma S replaces (R1) in each of them, and nothing else changes.
+The $\nu$ factors are those of certificate (ii), taken at $\tau=20$.
+Lemma H (App.~\ref{app:tau}) is not used in this chain.
+
+\subsection{Lemma A4*}
+\label{app:details:A4}
+\emph{Kernels.} With $e_n=e^{-n^2\tau/2}$, $\theta_\tau=\sum_ne_{|n|}e^{int}$ and $\Theta=\sum_ne_{|n|}e^{n\beta}e^{int}$ (Lemma~19 of~\cite{F}).
+So $(\theta_\tau-\Theta)\hat{}_n=e_{|n|}(1-e^{n\beta})$, and for any (complex) $g$,
+\begin{multline}
+\langle(\theta_\tau-\Theta)g\rangle_t=\sum_{n\ge1}e_n\bigl[(1-e^{n\beta})\hat g_{-n}\\
++(1-e^{-n\beta})\hat g_n\bigr].
+\end{multline}
+With $e^{\pm n\beta}=\cosh n\beta\pm\sinh n\beta$ this is
+\begin{multline}
+\sum_{n\ge1}e_n\bigl[(\hat g_n+\hat g_{-n})(1-\cosh n\beta)\\
++(\hat g_n-\hat g_{-n})\sinh n\beta\bigr].
+\end{multline}
+This identity does not need $g$ to be real.
+Here $g=Fe^{i\psi}$ is complex, and $|\hat g_{\pm n}|\le\langle|g|\rangle_t=\langle F\rangle_t$ because $F\ge0$.
+
+\emph{First sum.} $\cosh u-1\le\frac{u^2}2e^u$ gives at most $\sum_ne_n\,2\langle F\rangle_t\,\frac{n^2\beta^2}2e^{n\beta}=\frac{\beta^2\nu_2}2\langle F\rangle_t$, with $\nu_k=2\sum n^ke_ne^{n\beta}$.
+
+\emph{Second sum.} Write $\psi=w/\sqrt2+\chi$ and $g=g^0+g^1$, $g^0=e^{iw/\sqrt2}F$, $g^1=e^{iw/\sqrt2}F(e^{i\chi}-1)$.
+$F$ is real, so $\hat F_{-n}=\overline{\hat F_n}$ and $\hat g^0_n-\hat g^0_{-n}=2i\,e^{iw/\sqrt2}\,\mathrm{Im}\hat F_n$.
+Its real part is $-2\sin(w/\sqrt2)\,\mathrm{Im}\hat F_n(w)$.
+
+\emph{Parity.} In every state $h=1+e^{-w^2/2s^2}R(t)$, so $h$, $h_t$ and $F=k'^2h_t^2/h$ are even in $w$, and so is $\mathrm{Im}\hat F_n(w)$.
+$\Gamma$ is centred, $e$ and $\beta$ do not depend on $w$, so
+\begin{equation}
+\int\Gamma(w)\,\sin\frac w{\sqrt2}\,\mathrm{Im}\hat F_n(w)\,dw=0
+\end{equation}
+for every $n$ and every allowed state; the $g^0$ part of the second sum vanishes after integration in $w$.
+
+\emph{The rest.} $|g^1|\le F|\chi|\le F\bar\chi(w)$, so $|\hat g^1_n-\hat g^1_{-n}|\le2\bar\chi\langle F\rangle_t$, and $\sinh u\le ue^u$ gives at most $\beta\nu_1\bar\chi(w)\langle F\rangle_t$.
+
+\emph{The pieces of $\bar\chi$.} $\chi=\sigma^2(\tilde s+s_w)/\sqrt2$ with $\sigma^2|\tilde s|=\sigma^2k'|h_t|/h\le\xi=\sigma\sqrt xN_1/(1-\Qb)$ and $\sigma^2|s_w|\le\sigma^2|w|/L^2+\zeta$, $\zeta=\sigma^2\eta e^{-1/2}/(s(1-\eta))$ (from $\sup_w|w|e^{-w^2/2s^2}/s^2=e^{-1/2}/s$).
+So $\bar\chi=(\xi+\zeta+\sigma^2|w|/L^2)/\sqrt2$.
+
+\emph{Integration in $w$.} $e\sigma^2\int\Gamma\langle F\rangle_t=eW_{\rm per}$.
+The weight $\langle F\rangle_t\propto e^{-w^2/s^2}$ turns $\Gamma$ into a centred Gaussian of variance $s_{e2}$, whose mean of $|w|$ is $\sqrt{2s_{e2}/\pi}$; so the $|w|$ part gives $\sigma^2\sqrt{s_{e2}/\pi}/L^2$.
+The $\eta$ sandwich bounds $W_{\rm per}$ by $W_{\rm per,up}$.
+This is $a_4^*$.
+Every piece is $W_{\rm per}$ times $\beta^2\nu_2$ or $\beta\nu_1\sigma$: second order in $\beta$, or first order in $\beta$ and in $\sigma$.
+
+\subsection{Lemma Z3\texorpdfstring{$'$}{'}}
+\label{app:details:Z3}
+\emph{Setting.} (P2) and $K\ge x$ give $q0_n\le q0_1d_n$, $d_n=e^{-(n^2-1)x/2}$; (P3) gives $\sum q0_n\le\Qb$.
+Put $y=q0_1$, $v_n=q0_n/y\in[0,d_n]$ ($n\ge2$), $s=\sum v_n^2$, $t=\sum v_n$.
+Then $S_0=y^2(1+s)$, $P=\mu S_0=\mu y^2(1+s)$ and $y(1+t)\le\Qb$, so
+\begin{equation}
+P\le\Qb^2\mu\,\frac{1+s}{(1+t)^2}.
+\end{equation}
+
+\emph{(i) Mean identity.} $\mu(1+s)=x(1+\sum n^2v_n^2)$, i.e.\ $\sum_{n\ge2}v_n^2(n^2x-\mu)=\mu-x$.
+On $H=\{n^2x>\mu\}$, $v_n^2(n^2x-\mu)\le v_nc_n$ with $c_n=d_n(n^2x-\mu)=e^{(x-\mu)/2}ze^{-z/2}\le\frac2ee^{(x-\mu)/2}$, $z=n^2x-\mu$.
+
+\emph{(ii)} $s\le a\,t$ with $a=c_s(x)e^{-\mu/2}$, $c_s(x)=e^{x/2}(1+\sqrt e+2/e)$.
+On $H$, $v_n^2\le d_nv_n\le e^{(x-\mu)/2}v_n$.
+On $\{0\le\mu-n^2x\le1\}$, $v_n\le d_n\le e^{(x-\mu+1)/2}$.
+On $\{\mu-n^2x>1\}$, $\sum v_n^2\le\sum v_n^2(\mu-n^2x)\le\sum_Hv_nc_n\le\frac2ee^{(x-\mu)/2}t$ by (i).
+
+\emph{(iii)} By (i), $\mu-x\le\sum_Hv_nc_n\le\frac2ee^{(x-\mu)/2}t$, so $t\ge t_0(x)=\frac e2(\mu-x)e^{(\mu-x)/2}$.
+
+\emph{(iv) Monotonicity.} $\frac{d}{dt}\frac{1+at}{(1+t)^2}=\frac{a-2-at}{(1+t)^3}$.
+If $a\le2$ this is negative for every $t\ge0$; so $\frac{1+s}{(1+t)^2}\le\frac{1+at}{(1+t)^2}\le\frac{1+at_0}{(1+t_0)^2}$.
+
+\emph{Removing $x$.} For $x\le0.003<\mu$, $t_0(x)$ decreases in $x$ (it is increasing in $\mu-x$), so $t_0(x)\ge t_0(0.003)$.
+$c_s(x)$ increases in $x$, so $a\le c_s(0.003)e^{-\mu/2}$; and the bound of (iv) increases in $a$.
+This gives $\Pi^*(\mu)$, with $c_s=c_s(0.003)=3.3896$.
+Finally $s\le t$ (as $v_n\le1$), so $(1+s)/(1+t)^2\le1$ and $P\le\mu\Qb^2$.
+
+\emph{Range.} (iv) needs $a\le2$, i.e.\ $\mu\ge2\ln(c_s/2)=1.055$.
+The certificates use $\Pi^*(\mu)$ only for $\mu\ge2$ and the bound $\mu\Qb^2$ for $\mu<2$ (\code{cc\_cells.py}, \code{ce\_link.py}).
+For $\mu\in(0.003,0.226)$ the formula $\Pi^*$ is not a valid bound by this argument, because $t_0<(a-2)/a$ there; the statement in Sec.~\ref{sec:envelope} is restricted accordingly.
+The envelope values of Sec.~\ref{sec:envelope} are attained at $\mu>5$.
+
+\subsection{Lemma BE}
+\label{app:details:BE}
+\emph{Where the cross term enters.} In the exact identity of Lemma~23 of~\cite{F}, the cross term is $\sigma^2\mathrm{Re}A[h\,2\alpha\psi'e^{i\psi}]$ with $2\alpha\psi'=(1-b)\sigma^2G$.
+After the $\theta_\tau$ steps (remainders $a_5$, $a_6$) it is $e(1-b)\,\sigma^2\int\Gamma\langle h\,\sigma^2G\cos\psi\rangle$, divided by $Z\ge1-z$.
+The factor $\sigma^2$ in front is the one that produces $-\sigma^2\gamma_P\Phi$ in Lemma~23 of~\cite{F}.
+
+\emph{(BE-1) applied.} With (BE-1) and $e(1-b)\le e$, this term is at least
+\begin{multline}
+-e(1-b)\sigma^4\int\Gamma\langle F\rangle\\
+-e\sigma^2\Bigl[\frac{M_G}{4c}+2c\,\Phi\Bigr].
+\end{multline}
+The first part is the $-\sigma^2W$ of Lemma~23 of~\cite{F}; the bracket replaces $\gamma_P\Phi$.
+
+\emph{The choice of $c$.} With $c=(b+\sigma^2\Jww)/(16\sigma^2)$:
+\begin{equation}
+e\sigma^2\cdot2c\,\Phi=\frac{e(b+\sigma^2\Jww)\Phi}{8}\le\frac{b\Psi}2+\frac{\sigma^2\Jww}4,
+\end{equation}
+by $\Phi\le4\Psi$ (Lemma~23 of~\cite{F}) and $\Phi\le2$; and
+\begin{equation}
+e\sigma^2\frac{M_G}{4c}=\frac{4e\sigma^4M_G}{b+\sigma^2\Jww}.
+\end{equation}
+
+\emph{The $M_G$ part.} By (BE-2) with $x^2S_4\le\Lambda xS_2+T_\Lambda$,
+\begin{equation}
+M_G\le\frac{3g_s}2\Bigl[xS_2K_1+\frac{T_\Lambda}{1-\Qb}\Bigr].
+\end{equation}
+\emph{Ripple piece.} Use $xS_2g_s\le2(1+\Qb)W_{\rm per}$ and $b+\sigma^2\Jww\ge b$:
+\begin{equation}
+\frac{4e\sigma^4}{b}\cdot\frac32\cdot2(1+\Qb)K_1W_{\rm per}=\frac{12(1+\Qb)e\sigma^4K_1}{b}W_{\rm per}.
+\end{equation}
+With $1-e\ge y/(2+y)$, $y=(1-b)^2\sigma^2/(2b)$, i.e.\ $\sigma^2/(by)=2/(1-b)^2$,
+\begin{multline}
+\frac{12(1+\Qb)e\sigma^4K_1}{b(1-e)}\le12(1+\Qb)K_1\sigma^2\frac{2}{(1-b)^2}\\
+\times e^{-y/2}(2+y)\le\frac{48(1+\Qb)K_1\sigma^2}{(1-b)^2}=\rho_W,
+\end{multline}
+since $e^{-y/2}(2+y)\le2$.
+With $\Lambda=10^{-3}/\sigma^2$, $\sigma^2K_1=10^{-3}/(1-\Qb)+\sigma^2(U_1^2+\frac12)/(1-\Qb)^3$.
+The second term is below $10^{-40}$ for $\sigma\le10^{-24}$ and $U_1\le29.4$, so $\rho_W=0.08+O(10^{-40})\le0.0801$.
+
+\emph{Tail piece.} Use $b+\sigma^2\Jww\ge\sigma^2\Jww$:
+\begin{equation}
+\frac{4e\sigma^4}{\sigma^2\Jww}\cdot\frac{3g_s}{2}\cdot\frac{T_\Lambda}{1-\Qb}\le\frac{6\sigma^2g_sT_\Lambda}{(1-\Qb)\Jww}.
+\end{equation}
+The factor $\sigma^2$ stays: it is the $\sigma^2$ of the cross term times $\sigma^4/(\sigma^2\Jww)$.
+We compare it with $\sigma^2\Jww$, where $\Jww\ge0.6/L^2\ge0.6\sigma$: the ratio is $8g_sT_\Lambda/\Jww^2\le22.3\,T_\Lambda/\sigma^2$.
+With $T_\Lambda\le4e^{-\Lambda}(\Lambda^2+\Lambda^{3/2}x^{-1/2}/1.25)$ and $x^{-1/2}\le1/(7\times10^5\sigma)$ the ratio is below $10^{-4\times10^{44}}$.
+
+\emph{Collecting.} Lemma~23 of~\cite{F}, with this replacement and $\Psi\ge\min(\Phi,\frac12)$, gives
+\begin{multline}
+2N_\phi\ge(1-e)W\Bigl(1-\frac{\sigma^2}{(1-e)(1-\nu_0)}\\
+-\rho_W\frac{1+z}{(1-z)(1-\nu_0)}\Bigr)\\
++b\Psi\Bigl(\frac1{1+z}-\frac1{2(1-z)}\Bigr)-\frac{\sigma^2\Jww}{4(1-z)}-\mathrm{rem}.
+\end{multline}
+Here $W_{\rm per}\le((1+z)W+\frac12b\tau\Qb\nu_2)/(1-\nu_0)$ was used, and $\sigma^2/(1-e)\le\sigma^2+4b/(1-b)^2\le4.01\times10^4\sigma^2$.
+With $2A_w\ge\sigma^2\Jww$, $(a)+(a')=(2A_w+N_\phi)/(\sigma\,\mathrm{den})$, and $\nu_0,z\le10^{-10^7}$, this is the inequality of (BE-3).
+
+\emph{Remainders.} rem collects $a_1,a_2,a_3,a_5,\dots,a_{10}$, $a_4^*$, $\frac12b\Qb(\nu_0+\tau\nu_2)\Phi$, the $\nu$ part of the $W$ sandwich and the tail piece.
+Each is a product of a power of $1/\sigma$ (at most $\sigma^{-2}$ against $0.6\sigma^3$), a power of $\tau\le$ any, and $\nu_k\le2.0000001e^{-0.499999\tau}$ with $\tau\ge5\times10^7$.
+$\tau^je^{-\tau/2}$ decreases there, so the worst end is $\tau=5\times10^7$, $\sigma=10^{-3000}$, and each ratio is below $10^{-1.08\times10^7}$.
+
+\emph{Rounding.} Every printed constant is rounded in the safe direction: $\kappa$ and $1.14\times10^{-5}$ down (value $1.1500\times10^{-5}$), $1-e$ and $y$ down, $\Psi$ down ($0.22120$ to $0.2211$), $\rho_W$ up.

@@ -1,0 +1,9 @@
+\section{Verification}
+\label{app:verification}
+
+\code{verification/run\_all.py} recomputes a sample of every certificate in less than thirty minutes; \code{--recompute} recomputes all of them.
+It also re-derives every number of the manuscript from \code{results/} and checks that it appears in the text.
+Lemma~BE is checked by \code{ch\_bedge.py}; the local quantities of Sec.~\ref{sec:open:tau} by \code{ci\_rtheta.py}, \code{ci\_local.py} and \code{ci\_envloc.py}; the single columns with Lemma~A* by \code{ci\_link.py}.
+The acceptance rules of App.~\ref{app:cells} are implemented in \code{cl\_cells.py} and \code{cl\_link.py}; the bounds are checked against long double by \code{ck\_rounding.py}, and the $\tau$ cells and Lemma~BE by \code{cl\_tau\_be.py}.
+Each step of App.~\ref{app:details} is checked independently, in exact fractions and $60$-digit decimal, by \code{ck\_details.py}.
+The stage scripts are listed with their outputs in the repository README.

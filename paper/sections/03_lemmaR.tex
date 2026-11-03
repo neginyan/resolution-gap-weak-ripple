@@ -1,0 +1,79 @@
+\section{The lower bound for every state}
+\label{sec:lemmaR}
+
+\begin{lemma}[Lemma R] \proofst
+\label{lem:R}
+For every state, $(a)+(a')\ge\mathrm{Num}_{\rm lo}/(\sigma\,\mathrm{den}_{\rm up})$.
+The bounds are built from Lemmas~19, 21, 22 and~23 of~\cite{F} (called BL0, BL1, BL2 and BL3 in its App.~D) and four steps:
+\begin{itemize}
+\item (R1) the $\eta$ sandwich for $J_{\rm per}$ and $W_{\rm per}$;
+\item (R2) the upper bound of $\mathrm{den}$, from Lemmas~21 and~22 of~\cite{F} with (R1);
+\item (R3) a bound on the correction of $A_w$, using $\phi\le(v'^2+R^2)/2$ and $R^2\le2w^2+4\chi^2$;
+\item (R4) the term $e\sigma^2\langle\theta_\tau F(1-\cos\psi)\rangle$ that Lemma~23 of~\cite{F} drops, kept as the main part of $(a')$.
+\end{itemize}
+\end{lemma}
+The explicit form is in \code{ca\_reduction.py}.
+At the hardest band points it agrees with the reduced formula of the earlier stage (\code{by\_eval.py}, built from the lemmas of App.~D of~\cite{F}) to $4.9\times10^{-12}$ \numst.
+
+\emph{The remainder $a_4$.}
+In Lemma~23 of~\cite{F} the $F$-term of the exact identity is split as
+\begin{multline}
+\sigma^2\bigl(G[F]-\mathrm{Re}\,A[Fe^{i\psi}]\bigr)
+=(1-e)\sigma^2\langle\theta_\tau F\rangle\\
++e\sigma^2\langle\theta_\tau F(1-\cos\psi)\rangle
++e\sigma^2\,\mathrm{Re}\langle(\theta_\tau-\Theta)Fe^{i\psi}\rangle .
+\end{multline}
+Paper~F bounds the last term by $\sup F$ times the norm of $\theta_\tau-\Theta$.
+This gives
+\begin{equation}
+a_4=\frac{\sigma\tau\sqrt x\,N_1^2\nu_1}{\sqrt2(1-\Qb)},
+\end{equation}
+an absolute term of size $e^{-\tau/2}/k'$.
+It is harmless for the windows of~\cite{F}, where the number of harmonics or their damping keeps $N_1$ bounded and the remainders are certified directly.
+For windows with many harmonics and $\sigma\le10^{-48}$ it makes the background part of the bound negative at $\tau=20$.
+
+\begin{lemma}[Lemma A4*] \proofst
+\label{lem:A4}
+With $\beta^2=\tau y$ and $\bar\chi(w)$ the bound of $\sup_t|\chi|$ of Lemma~23 of~\cite{F},
+\begin{multline}
+e\sigma^2\Bigl|\int\Gamma\,\mathrm{Re}\langle(\theta_\tau-\Theta)Fe^{i\psi}\rangle\Bigr|
+\le a_4^*\\
+=e\,W_{\rm per,up}\Bigl[\frac{\beta^2\nu_2}{2}
++\beta\nu_1\Bigl(\frac{\xi+\zeta}{\sqrt2}+\sigma^2\sqrt{\frac{s_{e2}}{\pi}}\,\frac{1}{L^2}\Bigr)\Bigr].
+\end{multline}
+\end{lemma}
+\begin{proof}
+Fix $w$, put $g=Fe^{i\psi}$, and let $\hat g_n$ be its Fourier coefficients.
+Pairing $n$ and $-n$ gives
+\begin{multline}
+\mathrm{Re}\langle(\theta_\tau-\Theta)g\rangle
+=\sum_{n\ge1}e_n\,\mathrm{Re}\bigl[(\hat g_n+\hat g_{-n})(1-\cosh n\beta)\\
++(\hat g_n-\hat g_{-n})\sinh n\beta\bigr].
+\end{multline}
+Since $F\ge0$, $|\hat g_n|\le\langle F\rangle$.
+With $\cosh u-1\le(u^2/2)e^u$, the first sum is at most $(\beta^2\nu_2/2)\langle F\rangle$.
+In the second sum write $e^{i\chi}=1+(e^{i\chi}-1)$.
+The part with $1$ is $-2\sin(w/\sqrt2)\,\mathrm{Im}\hat F_n\sinh n\beta$.
+$F$ is even in $w$, so its integral against the centred $\Gamma$ vanishes exactly; this is the parity argument used in the proof of Lemma~23 of~\cite{F} for $a_{10}$.
+The details are in App.~\ref{app:details:A4}.
+The rest is at most $\beta\nu_1\sup_t|\chi|\,\langle F\rangle$, because $\sinh u\le ue^u$.
+Finally integrate against $\Gamma$; note $\sigma^2\int\Gamma\langle F\rangle=W_{\rm per}$.
+\end{proof}
+$a_4^*$ is proportional to the ripple and moves to the ripple part of the bound.
+Relative to the coefficient $1-e$ of $W$ it is of order $\tau\nu_2$ and $2\nu_1U\sqrt x$; both are $\tau$ factors.
+On the band windows forced to $\tau=20$, the background part changes as follows \numst:
+
+\begin{center}
+\small
+\begin{tabular}{lcc}
+$\sigma$ & $T_A\sqrt\ell$ with $a_4$ & $T_A\sqrt\ell$ with $a_4^*$\\ \hline
+$10^{-48}$ & $-2.6\times10^{26}$ & $2.7\times10^{23}$\\
+$10^{-300}$ & $-8.8\times10^{213}$ & $1.2\times10^{149}$\\
+\end{tabular}
+\end{center}
+
+\noindent The ripple part stays at $T_B\sqrt\ell\ge1.054$.
+We call Lemma~R with $a_4$ replaced by $a_4^*$ \emph{Lemma R*}.
+
+\emph{Picture.} The old bound counted the ripple's worst point at full weight even where the observer's focus averages it away.
+The new bound lets the average act first.

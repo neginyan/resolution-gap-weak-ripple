@@ -1,0 +1,39 @@
+\section{The x-free reduced inequality}
+\label{sec:envelope}
+
+\emph{The main reduced function.}
+Put $A=\sigma^2/s^2$, $r=s^2/L^2\in(0,1/4]$, $g_s=\sqrt{r/(2+r)}$ and $G=P\,g_s$.
+The leading terms of Lemma~R are
+\begin{multline}
+N=2Ar+\frac{GA}{\mu(2+r)}+\frac{3\sigma^2}{8}+\frac{b\sigma^2}{8rA}\\
++\frac{G\sigma^2}{16b}+\frac{G\sigma^2}{16A(2+r)},
+\end{multline}
+\begin{equation}
+D=b+\frac{G}{2}+Ar+\frac{GA}{2\mu(2+r)} .
+\end{equation}
+Here $g\ge\gamma$ holds if $N-\gamma\sigma D\ge0$.
+$N$ is of the form $\alpha A+\beta_1/A+\cdots$, so $A$ can be eliminated exactly by the inequality of arithmetic and geometric means.
+The result is a function $\phi(\mu,r,b,G)$; $\phi\ge0$ implies $g\ge\gamma$.
+For fixed $(\mu,r,b)$ it is concave in $G$, so the two end points $G=0$ and $G=G_{\max}$ suffice.
+
+\begin{lemma}[Lemma Z3$'$, $x$-free form] \proofst
+\label{lem:Z3}
+For $x\le0.003$ and $\mu\ge2$, $P\le\Pi^*(\mu)$, where
+\begin{equation}
+\Pi^*(\mu)=\Qb^2\mu\,\frac{1+at_0}{(1+t_0)^2},
+\end{equation}
+with
+\begin{equation}
+t_0=\frac{e}{2}(\mu-0.003)\,e^{(\mu-0.003)/2},\qquad a=c_s e^{-\mu/2},
+\end{equation}
+and $c_s=e^{0.0015}(1+\sqrt e+2/e)=3.3896$ (the value at $x=0.003$).
+For every $\mu>0$, $P\le\mu\Qb^2$.
+\end{lemma}
+The proof is the fractional knapsack argument of the earlier stages, with $x$ removed at its largest value; it is written out in App.~\ref{app:details:Z3}.
+The monotonicity step needs $a\le2$, i.e.\ $\mu\ge1.055$; the cells use $\Pi^*$ only for $\mu\ge2$ and $\mu\Qb^2$ below.
+Nothing is lost: the $x$-free envelope reproduces the envelope minimised over $x$.
+For example $g\sqrt\ell=1.7116$ at $\sigma=10^{-24}$, $1.3109$ at $10^{-48}$, $1.1508$ at $10^{-96}$, $1.0509$ at $10^{-300}$ and $1.0063$ at $10^{-3000}$ \numst.
+The envelope approaches one from above, roughly like $1+40/\ell$.
+
+\emph{Picture.} Of all ripples with the same energy frequency, the hardest one is the one that hides as much energy as the knapsack allows just below the blur.
+The envelope is the brightness that even this ripple must leave.

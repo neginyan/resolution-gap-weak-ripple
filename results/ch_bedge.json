@@ -1,0 +1,49 @@
+{
+ "claim": "Lemma BE: every state with 0 < b <= 1e4 sigma^2 has (a)+(a') >= 1.1e-5/sigma (regime of paper H, ell <= 6907.8)",
+ "BE_a_formula_and_envelope": {
+  "max_rel_diff_formula_vs_finite_difference": 5.378616629066258e-06,
+  "max_ratio_to_envelope_bound": 0.7672702492264281,
+  "envelope_sup_le_gamma_P_v15": true
+ },
+ "BE_2_mean_square": {
+  "max_MG_over_bound": 0.24422365884061722,
+  "max_x2S4_over_Lambda_split": 0.8301528823782289,
+  "trials": 40
+ },
+ "BE_3_constants": {
+  "y_min": 5e-05,
+  "one_minus_e_min": 2.499937501562461e-05,
+  "rho_W": 0.08,
+  "coef_W_in_Num": 1.149971250718732e-05,
+  "coef_J_in_Num": 0.875,
+  "Phi_min_L2_ge_1": 0.22119921692859512,
+  "coef_b_in_Num_L2_ge_1": 0.05529980423214878,
+  "kappa_case_L2_ge_1": 1.149971250718732e-05,
+  "kappa_case_L2_lt_1": 1.149971250718732e-05,
+  "kappa": 1.149971250718732e-05,
+  "kappa_claimed": 1.1e-05,
+  "kappa_ok": true,
+  "g_sqrt_ell_lower_at_1e-24_without_epsbar": 8.177077717620153e+19,
+  "U1": 29.388157628138487,
+  "gamma_P_bar": 9259.94650973727,
+  "c_chi_bar": 28.414570958289058
+ },
+ "BE_3_remainders_log10": {
+  "a1": -10854340.838007158,
+  "a2": -10857334.208374795,
+  "a3": -10854333.616158407,
+  "a5": -10854335.746459942,
+  "a6": -10851337.116222555,
+  "a7": -10851341.68549605,
+  "a8": -10854325.917188402,
+  "a9": -10854343.235947166,
+  "a10": -10851334.426052786,
+  "Phi_prop": -10854328.713068413,
+  "rhoW_bnu": -10854330.110465901,
+  "a4star_vs_W": -10857332.110991057,
+  "tail_T_Lambda": -4.342944819032518e+44,
+  "all_below_log10": -10851334.426052786,
+  "ok": true
+ },
+ "all_ok": true
+}

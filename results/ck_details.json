@@ -1,0 +1,44 @@
+{
+ "S": {
+  "step2_identity_exact": true,
+  "step3_expansion_exact": true,
+  "step3_gap_products_max": 1.0285951984336688e-13,
+  "step3_control_without_gap_max": 2.9430334564418024,
+  "lemma_S_Sprime_random": {
+   "tests": 600,
+   "violations": 0
+  },
+  "ok": true
+ },
+ "A4": {
+  "pairing_identity_complex_g_max_rel": 1.8244302449292707e-16,
+  "parity_even_envelope_rel": 1.8061152630986634e-17,
+  "parity_shifted_control_rel": 0.06992689826340236,
+  "abs_coeff_over_mean_max": 0.8140039064576661,
+  "cosh_sinh_inequalities_decimal": true,
+  "ok": true
+ },
+ "Z3": {
+  "iv_derivative_formula": true,
+  "c_s_0.003": 3.3895606827172338,
+  "mu_threshold_a_le_2": 1.0551062806316387,
+  "invalid_range_upper_end": 0.22619999999999998,
+  "random_windows": {
+   "trials": 400,
+   "tested_mu_ge_2": 181,
+   "violations": 0
+  },
+  "Pistar_decreasing_on_[2,3e4]": true,
+  "ok": true
+ },
+ "BE": {
+  "choice_of_c_exact": true,
+  "sigma2_over_by_exact": true,
+  "max_e_y2_times_2py": 2.0,
+  "rho_W_60_digits": "0.0800000000000000000000000000000000000000001245032972481869162",
+  "rho_W_minus_0.08": 1.2450329724818692e-43,
+  "tail_constant": 22.22222222222222,
+  "ok": true
+ },
+ "all_ok": true
+}

@@ -1,0 +1,45 @@
+{
+ "cc_cells": [
+  {
+   "ell": 55.26,
+   "max_abs_log_compared": 197.58643683678594,
+   "ulp_of_largest_log": 2.842170943040401e-14,
+   "margin_used": 1e-12,
+   "max_double_minus_longdouble_in_margin": 2.842170943040401e-14
+  },
+  {
+   "ell": 960.8,
+   "max_abs_log_compared": 2915.715354258644,
+   "ulp_of_largest_log": 4.547473508864641e-13,
+   "margin_used": 1e-12,
+   "max_double_minus_longdouble_in_margin": 6.821210263296962e-13
+  },
+  {
+   "ell": 6897.8,
+   "max_abs_log_compared": 20727.2916417799,
+   "ulp_of_largest_log": 3.637978807091713e-12,
+   "margin_used": 1e-12,
+   "max_double_minus_longdouble_in_margin": 2.7284841053187847e-12
+  }
+ ],
+ "ce_link": [
+  {
+   "ell": 55.26,
+   "max_abs_log": 895.78,
+   "per_term_relative_error_est": 9.943158000000001e-13,
+   "threshold_used": 1e-10
+  },
+  {
+   "ell": 960.8,
+   "max_abs_log": 3612.3999999999996,
+   "per_term_relative_error_est": 4.0097639999999996e-12,
+   "threshold_used": 1e-10
+  },
+  {
+   "ell": 6897.8,
+   "max_abs_log": 21423.4,
+   "per_term_relative_error_est": 2.3779974000000002e-11,
+   "threshold_used": 1e-10
+  }
+ ]
+}

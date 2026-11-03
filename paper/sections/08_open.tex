@@ -1,0 +1,93 @@
+\section{The road to an unconditional theorem}
+\label{sec:open}
+
+Theorem~\ref{thm:H1} has five restrictions.
+We list them from the nearest to the farthest, each with what is known and its status.
+The small-$b$ edge is no longer among them: Lemma~\ref{lem:BE} closes it.
+
+\subsection{States with a narrow focus ($\tau<20$)}
+\label{sec:open:tau}
+
+\emph{What changes.}
+When $\tau$ is small the observer sees the ripple only near the focus position $t_0$, through the wrapped normal $\theta_\tau$ (Lemma~19 of~\cite{F}).
+Lemma~R replaces these local averages by period averages and pays with factors $\nu_k\sim e^{-\tau/2}$.
+This route has a ceiling: the $\tau$ factor of the ripple part, $\sqrt{(1-\epsilon_1)(1-\nu_0)/(1+z)}\,(1-z)/(1+\nu_0)$, falls below $T_{10}/\mathrm{env}$ at $\tau\approx5.4$ ($\ell=55.26$), $10.1$ ($\ell=690.8$) and $14.1$ ($\ell=6907.8$) \derivst.
+Below the ceiling, neighbouring high harmonics beat: their difference frequency is not averaged out by a narrow focus.
+For two neighbours $m=50,51$ the focused slope energy $\langle\theta_\tau R'^2\rangle/\langle R'^2\rangle$ ranges over $[0.005,1.995]$ at $\tau=0.01$, although $m^2\tau=25$ \numst.
+
+\emph{Local averages \derivst.}
+Write $S_{0,\theta}=2\langle\theta_\tau R^2\rangle$, $S_{2,\theta}=2\langle\theta_\tau R'^2\rangle$, $\mu_\theta=xS_{2,\theta}/S_{0,\theta}$ and $P_\theta=xS_{2,\theta}$.
+Lemma~R can be rewritten with these local quantities and with $W_\theta=x\int\Gamma\langle\theta_\tau h_t^2/h\rangle$, $J_\theta=\int\Gamma\langle\theta_\tau h_w^2/h\rangle$, without ever replacing $\theta_\tau$ by one.
+Its ripple part keeps the algebraic form of Lemma~R, and the factors $\nu_k$ of the ripple part disappear.
+Three local corrections appear, each proved \proofst:
+\begin{itemize}
+\item (L1) the focus term of the $w$-information of the background is at most $2\Qb\sqrt{r/(1+r)}/L^2$, $r=s^2/L^2$;
+\item (L2) the curvature term of $W$ is at most $(2/e)\Qb\,b=0.184\,b$ for every $\tau$, because $xn^2e^{-n^2\tau/2}=b\,u\,e^{-u/2}\le2b/e$ with $u=n^2\tau$;
+\item (L3) the normalisation obeys $|Z-1|\le\Qb\sqrt{r/(1+r)}$.
+\end{itemize}
+The remaining remainder is $\Theta-\theta_\tau$.
+By Lemma~A* below it is at most $\beta\nu_1\langle|g|\rangle$, with $\beta\nu_1\le2\times10^{-6}$.
+Its right side is a period average; comparing it with the local quantities at a node of the focused ripple and at very small $\tau$ is still to be done.
+A direction we have not followed: bound $\Theta-\theta_\tau$ in real space, through the Gaussian integral in $v$ itself, with $|e^{-\alpha^2V/2}-e^{i\alpha v}|\le\alpha^2V/2+\alpha|v|$; the right side is then a local average, although with a Gaussian weight of a different width.
+Harmonics with $n^2\tau<20$ carry the energy $xn^2q0_n^2<20b\,q0_n^2$, at most $1.25\,b$ in total \proofst; they are of the size of the background.
+A second direction: combine the local quantities with Lemma~S, measuring the low part of the focused ripple by its energy rather than its sup, as Lemma~S does for period averages \conjst.
+
+\emph{The core: a local Z3$'$ \conjst.}
+With the local form of Lemma~R, everything else would follow from
+\begin{equation}
+P_\theta\le C\,\Pi^*(\mu_\theta)
+\end{equation}
+for a universal constant $C$.
+In words: even inside a narrow focus, a finer ripple must be darker.
+The reason to expect it is non-negativity: the raw profile is $f\ge0$, so a coherent wave packet in it has height at most one, and the blur damps frequency $n$ by $e^{-n^2x/2}$.
+On windows satisfying (P2) (beats, wave packets, packets placed at a zero of the fundamental, combs, random bands; focus positions on a grid of $512$, $\tau$ from $20$ down to $2/n^2$), the largest ratio $P_\theta/\Pi^*(\mu_\theta)$ we found was $2.13$ \numst.
+It occurs at the crest of the fundamental, where $\sin^2$ is twice its mean.
+The coefficient tolerates much more.
+With the main terms of the local form, (L1)--(L3) at their worst and the brightness raised to $C=10$, the envelope stays above $T_{10}$ at every $\ell$ we computed, for example $1.4664$ at $\ell=55.26$ and $1.0103$ at $\ell=3453.88$ \numst.
+
+\emph{Lemma A* \proofst.}
+In Lemma~23 of~\cite{F}, every remainder of the form $\nu\sup_t|g|$ may use $\nu\langle|g|\rangle$ instead.
+The kernels $\Theta-1$, $\theta_\tau-\Theta$ and $\partial_t\Theta$ have absolutely summable Fourier series with the same sums, and $|\hat g_n|\le\langle|g|\rangle$.
+With $\langle h|\sigma^2G|\rangle\le\langle h(\sigma^2G)^2\rangle^{1/2}$ and (BE-2), the remainders $a_5$ and $a_6$ become proportional to the ripple.
+In the cells of certificate (ii) this lowers the reachable $\tau$.
+Single columns close for $\tau\ge8$ at $\ell\in[55.26,65.26]$, for $\tau\ge10$ at $\ell\in[215.26,225.26]$, and for $\tau\ge12$ at $\ell\in[455.26,465.26]$, $[695.26,705.26]$ and $[855.26,865.26]$ \caproofst{\code{ci\_link.py}, single columns}.
+A full sweep for $\tau\ge12$ is in progress and is not used in Theorem~\ref{thm:H1}.
+
+\subsection{The range of \texorpdfstring{$\sigma$}{sigma}}
+\label{sec:open:sigma}
+The full bound is certified for $\ell\le960.8$ (certificate (ii)); a column near $\ell=950$ needs $8.2\times10^{7}$ boxes.
+The main reduced inequality alone is certified up to $\ell=6907.8$ (certificate (i)).
+A relative bound of the remainders by the main numerator would carry the full bound to that range; the available margin is $(T_{10}-T_0)/T_{10}\ge1.4\times10^{-3}$.
+Point searches indicate that beyond $\ell\approx3500$ the old remainder $a_6$ needs $\tau\ge30$ \numst; Lemma~A* removes the window-generic $\gamma_P$ from $a_6$.
+The limit $\sigma\to0$ cannot be reached by finitely many cells; it needs an analytic lemma for large $\ell$, as in Corollary~13 of~\cite{F}.
+
+\subsection{Which windows have coefficient one}
+\label{sec:open:windows}
+For a general window the theorem keeps the factor $\lambda/\Upsilon$.
+Coefficient one is proved for the windows (i)--(iii) of Theorem~\ref{thm:H1}.
+A possible direction \conjst: if $\lambda/\Upsilon$ could be bounded through the concentration of the spectrum, for example through the cumulative share $F_N=\sum_{n\le N}n^2q0_n^2/S_2$, the seventeen window-by-window certificates might be replaced by one sufficient condition.
+
+\emph{Conjecture C is false.}
+In earlier work we used the working hypothesis $\eta e^{\mu/2}\le C$, with $C\approx1$.
+Explicit windows refute it (App.~\ref{app:windows}).
+Each is a Rudin--Shapiro band plus a wide coherent block of about $10^8$ to $10^{70}$ harmonics with a tiny raw amplitude.
+They reach $\log_{10}(\eta e^{\mu/2})=32.0$ at $\sigma=10^{-300}$.
+The reason is that $\eta$ adds up coefficients (an $\ell^1$ quantity) while $\mu$ is set by energies (an $\ell^2$ quantity).
+The weak form $\mu\le2\ln(1/\eta)+O(\ln\ln)$ is false as well.
+The coefficient one is not affected: the upper value of $g\sqrt\ell$ on these windows is $1.12$ to $2.14$, above the band alone, and Theorem~\ref{thm:H1}(ii) covers them.
+
+\subsection{Hypotheses on the window class}
+\label{sec:open:class}
+\begin{itemize}
+\item The constant $\bar\varepsilon$ of (P6) is not closed for band windows; the third-order terms are open \conjst.
+\item (P2) is used through Lemma Z3$'$. Without (P2) the bound fails already for period averages: windows without a dominant fundamental (beats, combs) exceed $\Pi^*(\mu)$ by factors $3.48$ to $318$ \numst. Whether a weaker hypothesis suffices is open.
+\item $x\ge5\times10^{11}\sigma^2$ makes $\beta\le10^{-6}\tau$ and gives $\tau\ge5\times10^7$ on the small-$b$ edge; it is a technical condition.
+\end{itemize}
+
+\subsection{The upper side}
+\label{sec:open:upper}
+This paper proves only the lower side.
+The upper side ($g\sqrt\ell\le1+\dots$) for general windows has not been attempted; for the windows of~\cite{F} it is proved there (Theorem~12 and Corollary~13 of~\cite{F}).
+
+\emph{Picture.} The nearest restriction is the narrow focus.
+There the observer sees the ripple's brightness locally, and the one missing inequality says that local brightness, too, must pay for fineness.

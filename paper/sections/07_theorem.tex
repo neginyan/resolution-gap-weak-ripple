@@ -1,0 +1,46 @@
+\section{Main theorem}
+\label{sec:theorem}
+
+\begin{theorem}[Theorem H1] \caproofst{Secs.~\ref{sec:cert} and~\ref{sec:bedge}}
+\label{thm:H1}
+Let a periodic window satisfy (P0), (P2)--(P4), (P6), $x\le0.003$ and $x\ge5\times10^{11}\sigma^2$, with $\ell\in[55.26,960.8]$.
+Then every state with $\tau=x/b\ge20$ satisfies
+\begin{equation}
+g\sqrt\ell\ \ge\ (1-\bar\varepsilon)\,\frac{\lambda}{\Upsilon}\Bigl(1+\frac{12.1}{\ell}+2.5\times10^{-4}\Bigr).
+\end{equation}
+Every state with $b<10^4\sigma^2$ satisfies the much stronger bound $g\sqrt\ell\ge(1-\bar\varepsilon)\,8\times10^{19}$ (Lemma~\ref{lem:BE}).
+Here $\lambda/\Upsilon$ is the sandwich ratio of Sec.~\ref{sec:sandwich}: $(1-\eta)/(1+\eta)$ for the $\eta$ sandwich, or the Lemma S/S$'$ factors.
+In particular, over the states with $\tau\ge20$, $g_{\min}\sqrt\ell\ge1-\bar\varepsilon$ holds for:
+\begin{itemize}
+\item[(i)] every window with $\eta\le1/\ell$;
+\item[(ii)] every window with $(\lambda/\Upsilon)T_{10}\ge1$, which includes the nine windows that refute conjecture~C;
+\item[(iii)] the seventeen thin-block windows of Sec.~\ref{sec:cert}.
+\end{itemize}
+\end{theorem}
+In the observer's words, the condition $\tau\ge20$ excludes only the states whose $v$-focus is narrower than about $0.7$ ripple periods (precisely, $k'\sqrt V<\sqrt{20}$).
+These states are the subject of Sec.~\ref{sec:open}.
+\begin{proof}
+Split the states with $\tau\ge20$ at $b=10^4\sigma^2$.
+
+\emph{States with $b\ge10^4\sigma^2$.}
+Lemma~\ref{lem:R} with Lemma~\ref{lem:A4} gives $g\ge(1-\bar\varepsilon)\,\mathrm{Num}/(\sigma\,\mathrm{den})$.
+Certificate (ii) of Sec.~\ref{sec:cert} gives $\mathrm{Num}-\gamma\sigma\,\mathrm{den}\ge0$ with the factors set to one, for $b\in[10^4\sigma^2,0.003/20]$.
+Every state with $\tau\ge20$ has $b=x/\tau\le0.003/20$.
+The scaling argument of Sec.~\ref{sec:sandwich} restores the factors.
+
+\emph{States with $b<10^4\sigma^2$.}
+Lemma~\ref{lem:BE} gives $(a)+(a')\ge1.1\times10^{-5}/\sigma$, which is above $\gamma$ by many orders of magnitude.
+The sandwich ratio is at most one, so the bound of the theorem follows.
+
+For (i), $(1-1/\ell)(1+12.1/\ell+2.5\times10^{-4})/(1+1/\ell)\ge1$ on the whole range.
+For (ii) see Corollary~\ref{cor:S}.
+For (iii) see certificate (iii).
+\end{proof}
+
+\emph{Relation to~\cite{F}.}
+Theorem~\ref{thm:H1} does not need a bound on the number of harmonics.
+Paper~F covers windows with at most twenty harmonics or with damping exponent $K\ge0.003$ (Theorem~12 and Corollary~13 of~\cite{F}, with Theorems~45 and~48 for the two classes), for $10^{-100000}\le\sigma\le10^{-24}$ and in the limit, with both sides of the law.
+Theorem~\ref{thm:H1} covers the lower side for windows with a weak or energy-poor ripple, for $\sigma$ from $10^{-24}$ down to about $10^{-417}$ and for every state with $\tau\ge20$.
+The main reduced inequality alone (certificate (i)) holds up to $\ell=6907.8$.
+
+\emph{Picture.} However the ripple is built, many harmonics or few, the observer keeps at least the fraction $1/\sqrt\ell$, as long as the ripple's sup or its low-frequency energy is small and her focus spans at least about $0.7$ ripple periods.

@@ -1,0 +1,107 @@
+[
+ {
+  "drop": "none",
+  "gap_windows": true,
+  "windows": 150,
+  "min_margin": 0.007083511798751885,
+  "violation_found": false
+ },
+ {
+  "drop": "none",
+  "gap_windows": false,
+  "windows": 150,
+  "min_margin": 0.007627814506151798,
+  "violation_found": false
+ },
+ {
+  "drop": "T6",
+  "gap_windows": true,
+  "windows": 42,
+  "min_margin": -0.18235842050687312,
+  "violation_found": true
+ },
+ {
+  "drop": "T6",
+  "gap_windows": false,
+  "windows": 42,
+  "min_margin": -0.16869503735410507,
+  "violation_found": true
+ },
+ {
+  "drop": "T3",
+  "gap_windows": true,
+  "windows": 150,
+  "min_margin": 0.006087287829923627,
+  "violation_found": false
+ },
+ {
+  "drop": "T3",
+  "gap_windows": false,
+  "windows": 150,
+  "min_margin": 0.007627814506151798,
+  "violation_found": false
+ },
+ {
+  "drop": "T2",
+  "gap_windows": true,
+  "windows": 150,
+  "min_margin": 0.0012573345743394082,
+  "violation_found": false
+ },
+ {
+  "drop": "T2",
+  "gap_windows": false,
+  "windows": 150,
+  "min_margin": 0.0071485681543498325,
+  "violation_found": false
+ },
+ {
+  "drop": "T1",
+  "gap_windows": true,
+  "windows": 42,
+  "min_margin": -2.3177801195095604e-05,
+  "violation_found": true
+ },
+ {
+  "drop": "T1",
+  "gap_windows": false,
+  "windows": 42,
+  "min_margin": -0.00028744737640573614,
+  "violation_found": true
+ },
+ {
+  "drop": "B",
+  "gap_windows": true,
+  "windows": 42,
+  "min_margin": -2.263793321135311,
+  "violation_found": true
+ },
+ {
+  "drop": "B",
+  "gap_windows": false,
+  "windows": 42,
+  "min_margin": -2.263793321135311,
+  "violation_found": true
+ },
+ {
+  "drop": "oldsandwich",
+  "gap_windows": true,
+  "windows": 150,
+  "min_margin": 0.007083511798751885,
+  "violation_found": false
+ },
+ {
+  "drop": "oldsandwich",
+  "gap_windows": false,
+  "windows": 150,
+  "min_margin": 0.007829371870890611,
+  "violation_found": false
+ },
+ {
+  "drop": "T4",
+  "gap_windows": false,
+  "windows": 150,
+  "min_margin": 0.007627814506151798,
+  "violation_found": false
+ }
+]

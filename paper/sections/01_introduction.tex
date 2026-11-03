@@ -1,0 +1,62 @@
+\section{Introduction}
+\label{sec:intro}
+
+\emph{The picture.}
+An observer looks at a periodic pattern through a lens of finite resolution $\sigma$.
+The finer the pattern, the less of it survives the blur.
+Paper~F~\cite{F} measured how much ``information about the direction of time'' a window keeps, through the quantity $g$.
+It showed that the smallest gap $g_{\min}$ falls like $1/\sqrt{\ell}$, $\ell=\ln(1/\sigma)$, with the coefficient one, for windows with at most twenty harmonics or with decay exponent $K\ge0.003$ (which includes every window with $x\ge0.003$).
+Precisely, $g_{\min}\sqrt\ell$ obeys explicit two-sided bounds for $10^{-100000}\le\sigma\le10^{-24}$, its limit lies between $1-\bar\varepsilon$ and $1$ on every class with remainder bound $\bar\varepsilon$, and it tends to one along an explicit comb.
+In the language of this paper, the coefficient one is \emph{the exchange rate between fineness and blur}.
+Every factor $e$ gained in fineness costs the same amount of brightness under the blur, and what remains is a fixed fraction $1/\sqrt{\ell}$.
+
+\emph{What is new.}
+Paper~F needed either a bound on the number of harmonics ($N\le20$) or a lower bound on their damping ($K\ge0.003$).
+A window with many harmonics can hide its ripple in two ways.
+It can spread its energy thinly over a wide band, so that the sup $\eta$ of the ripple stays small.
+Or it can put a coherent block at low frequency, so that $\eta$ is large but the energy is tiny.
+The second way is the reason why a conjecture we used as a working hypothesis is false (Sec.~\ref{sec:open}).
+That conjecture was $\eta e^{\mu/2}\le C$, where $\mu$ measures the frequency of the ripple energy.
+We built explicit windows with $\log_{10}(\eta e^{\mu/2})$ up to $32.0$ (App.~\ref{app:windows}).
+The coefficient one survives on all of them; only the old tool (the $\eta$ sandwich) failed.
+
+\emph{How we prove it.}
+\begin{itemize}
+\item Lemma~R and Lemma~A4* (Sec.~\ref{sec:lemmaR}) give a lower bound of $g$ for every state.
+  All remainders are explicit, and the remainder $a_4$ of the curvature step (Lemma~23 of~\cite{F}) becomes relative to the ripple.
+\item Lemma~S (Sec.~\ref{sec:sandwich}) replaces the sup of a low-frequency block by its energy.
+\item Cell-based computer-assisted proofs (Sec.~\ref{sec:cert}) show that this lower bound exceeds the target.
+\item Lemma~BE (Sec.~\ref{sec:bedge}) closes the small-$b$ edge by measuring the curvature cross term in mean square instead of in sup.
+\end{itemize}
+Table~\ref{tab:status} lists every result with its status.
+Throughout we keep the distinction of~\cite{F}: proof, computer-assisted proof, derivation, numerical, conjecture.
+
+\begin{table}
+\caption{Results of this paper and their status.}
+\label{tab:status}
+\begin{ruledtabular}
+\small
+\begin{tabular}{p{0.50\columnwidth}p{0.40\columnwidth}}
+result & status\\ \hline
+Lemma R (lower bound for every state) & proof (Sec.~\ref{sec:lemmaR})\\
+Lemma A4* ($a_4$ relative) & proof\\
+Lemma H (high part and $\theta_\tau$ kernels) & proof (App.~\ref{app:tau})\\
+$\tau$ cells, factor $0.99977$ on $[20,80]$ & computer-assisted (App.~\ref{app:tau})\\
+Lemma S, Lemma S$'$, Corollary S & proof (Sec.~\ref{sec:sandwich})\\
+$x$-free envelope (Lemma Z3$'$) & proof (Sec.~\ref{sec:envelope})\\
+main reduced inequality, $\ell\le6907.8$ & computer-assisted (Sec.~\ref{sec:cert})\\
+full Lemma R* bound, $\tau\ge20$, $b\ge10^4\sigma^2$, $\ell\le960.8$ & computer-assisted (Sec.~\ref{sec:cert})\\
+Lemma BE (every state with $b<10^4\sigma^2$) & proof (Sec.~\ref{sec:bedge})\\
+seventeen thin-block windows & computer-assisted (Sec.~\ref{sec:cert})\\
+Theorem H1 (every state with $\tau\ge20$) & computer-assisted, modulo (P6) (Sec.~\ref{sec:theorem})\\
+envelope values ($1.7116$ at $10^{-24}$, $1.0063$ at $10^{-3000}$) & numerical\\
+conjecture C ($\eta e^{\mu/2}\le C$) & false (App.~\ref{app:windows})\\
+local corrections (L1)--(L3), Lemma A* & proof (Sec.~\ref{sec:open:tau})\\
+local Z3$'$ (states with $\tau<20$) & conjecture; ratio $\le2.13$ on the windows tried (Sec.~\ref{sec:open:tau})\\
+full bound for $\ell>960.8$, limit $\sigma\to0$ & open (Sec.~\ref{sec:open:sigma})\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\emph{Picture.} The lens sees a fine ripple only through its blurred brightness.
+This paper shows that the brightness that survives does not depend on how many harmonics make up the ripple, only on how much energy they carry at each frequency.

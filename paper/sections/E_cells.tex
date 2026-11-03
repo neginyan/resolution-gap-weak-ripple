@@ -1,0 +1,82 @@
+\section{Specification of the cell proofs}
+\label{app:cells}
+
+This appendix states what a reader needs to check that the cell proofs of Sec.~\ref{sec:cert} are sound: the floating-point model, the rounding bounds, the acceptance rule, the monotonicity of every term and the treatment of underflow.
+The cells are evaluated in double precision, not in interval arithmetic; soundness comes from an acceptance margin that is larger than a derived bound of the rounding error.
+
+\emph{Floating-point model.}
+IEEE~754 binary64 with round to nearest, unit roundoff $u=2^{-53}$.
+We assume that $\log$, $\exp$, $\log1p$, $\mathrm{expm1}$ and $\sqrt{\ }$ return a value within two ulp of the exact value at the floating argument (relative error $\le4u$).
+Cell ends and $\ell$ are floating numbers and are exact; a cell is the set of real points between its ends, and a bisection reuses the same floating midpoint on both sides, so the cells of a column cover its domain exactly.
+
+\emph{Certificate (i): the main reduced inequality.}
+The test compares two logarithms, $\ell_{\rm pos}$ and $\ell_{\rm neg}$, obtained from the cell ends by a chain of at most $25$ operations.
+Each operation has error at most $u$ (or $2u$ for an elementary function) times the size of its operands.
+The operands are the cell ends (each used at most twice), $\ell$, constants below $100$, and $\log G_{\rm cell}$, which enters only inside a log-add-exp and is either dominant or dropped exactly.
+Hence, with $B=2(|\log r_a|+|\log r_b|+|\log b_a|+|\log b_b|+|\log\mu_a|+|\log\mu_b|)+\ell_b+100$,
+\begin{equation}
+|\hat\ell_{\rm pos}-\ell_{\rm pos}|+|\hat\ell_{\rm neg}-\ell_{\rm neg}|\le\delta=60u\,(|\hat\ell_{\rm pos}|+|\hat\ell_{\rm neg}|+B).
+\end{equation}
+A cell is accepted if $\hat\ell_{\rm pos}\ge\hat\ell_{\rm neg}+\max(10^{-12},S\delta)$ with the safety factor $S=10$ (\code{cl\_cells.py}).
+
+\emph{Certificates (ii) and (iii): the full Lemma R* bound.}
+Every term is $e^{l_t}$, where $l_t$ is a sum of at most $16$ operands: cell ends times coefficients $|c|\le2$, powers $p\ell$ with $p\le3$, constants, $\log G$ and logarithms of monotone factors.
+By Higham's bound, $|\hat l_t-l_t|\le\gamma_{k+4}\sum|x_i|$, and $\sum|x_i|\le|l_t|+2B$ with $B=2(\max|\log\mu|+\max|\log r|+\max|\log b|)+3\ell_b+600$.
+The factor $e^{-y/2}$ adds $4u\,y_{\max}B$ (if $y_{\max}\ge1500$ it underflows to zero and the positive term is dropped), and the later steps (netting at equal powers of $\sigma$, the shift by $p\log\sigma$, normalisation) add $4u(|l_t|+B+3\ell_b)$.
+So
+\begin{equation}
+|\hat l_t-l_t|\le\eta_t=25u\,(|l_t|+3B+y_cB).
+\end{equation}
+The remaining operations (sums of at most $60$ terms, netting, the closed-form minimum in $a'$, square roots) act on quantities normalised by the largest part.
+Their error is at most $1000u$ times the \emph{unnetted} magnitude, i.e.\ the sum of the absolute values of all terms.
+This is the point that a rule of the form ``value/magnitude $>10^{-10}$'' after netting does not cover: when equal powers of $\sigma$ nearly cancel, the netted magnitude can be smaller than the unnetted one by the ratio $R$ ($R\le7\times10^4$ was observed).
+
+\emph{The rule.}
+Before any other step, every positive term is lowered to $l_t-S\eta_t-1000Su$ and every negative term is raised to $l_t+S\eta_t+1000Su$, with $S=10$ (\code{cl\_link.py}).
+These perturbed terms bound the exact ones in the safe direction, and the margin $1000Su$ covers the rounding of all later steps relative to the unnetted magnitude.
+A cell is accepted if the resulting normalised minimum exceeds $10^{-10}$.
+Acceptance therefore implies that the exact lower bound of the cell is positive.
+
+\emph{A check of the bounds.}
+Recomputing $\ell_{\rm pos}-\ell_{\rm neg}$ in long double (64-bit mantissa) on random cells gives differences of $6.8\times10^{-13}$ at $\ell=961$ and $2.7\times10^{-12}$ at $\ell=6898$, below $\delta$ (\code{ck\_rounding.py}) \numst.
+
+\emph{Recomputation.}
+All certificates were recomputed with these rules on exactly the stored columns.
+All $92$ columns of (ii), all $17$ windows of (iii) and all $987$ columns of (i) close.
+The cell counts are those of the earlier rule in all but $127$ columns, where at most 176 more boxes are needed.
+In (i) the smallest ratio of the accepted margin to $S\delta$ is $1.00$.
+In (ii), at $\ell=55.26$ the column still closes with $S=10^{7}$.
+
+\emph{The $\tau$ cells and Lemma BE.}
+The factor of App.~\ref{app:tau} is built from at most $80$ exponentials, one sum, a few field operations and one square root, so its relative rounding error is at most $20u$.
+Its margin $8.6\times10^{-6}$ above $0.99977$ is more than $3\times10^{9}$ times this bound, and a $50$-digit decimal evaluation agrees to within $3.5\times10^{-16}$.
+The constants of Lemma~BE are computed in $60$-digit decimal; there is no double-precision acceptance rule there (\code{cl\_tau\_be.py}).
+
+\emph{Monotonicity.}
+On a cell, every term is bounded by its value at one corner.
+The direction is fixed by the following table, where ``$+$'' means that the term is evaluated at the end that makes it smallest if it is positive and largest if it is negative.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.42\columnwidth}p{0.48\columnwidth}}
+factor & monotone in, and why\\ \hline
+$\sigma^p$, $p\ge0$ & decreasing in $\ell$; positive parts at $\sigma_{\rm lo}$, negative at $\sigma_{\rm hi}$, after netting at equal $\sigma$\\
+$\gamma=T_D/\sqrt\ell$ & decreasing in $\ell$; taken at $\ell_a$\\
+$y=(1-b)^2\sigma^2/(2b)$ & decreasing in $b$, increasing in $\sigma$\\
+$e^{-y/2}$, $1/(1+w_0)$ & decreasing in $y$; positive terms at $y_{\max}$\\
+$(1-b)^2$ & decreasing in $b$\\
+$r$, $\sqrt{r/(2+r)}$, $1/(2+r)$ & monotone in $r$ (powers and ratios of linear functions)\\
+$\mu^{\pm1}$, $G/\mu$ & monotone in $\mu$\\
+$G_{\rm cell}=\Pi^*(\mu)g_s(r)$ & $\Pi^*$ decreasing for $\mu\ge2$ (left end), $\mu\Qb^2$ for $\mu<2$ (right end); $g_s$ increasing in $r$\\
+$b$, $\sqrt b$, $1/b$ & monotone in $b$\\
+$\tau^j\nu_k$ & decreasing in $\tau\ge20$ (checked on $[20,400]$); taken at $\tau_{\min}$\\
+$U_1$, $U_2$, $\gamma_P$, $c_\chi$ & increasing in $\ell$; taken at $\ell_b$\\
+\end{tabular}
+\end{center}
+The main reduced function is concave in $G$, and the Lemma R* bound is affine in $G$ for each $A$, so $G\in\{0,G_{\rm cell}\}$ suffices (Sec.~\ref{sec:envelope}).
+
+\emph{Underflow and clipping.}
+All terms are carried as logarithms and normalised by the largest part before exponentiation.
+Exponents are clipped at $700$ for positive parts (clipping lowers them) and at $709$ for negative parts, and a negative part is never rounded down to zero (a floor of $10^{-300}$ is added).
+Underflow of a positive part only drops a non-negative quantity.
+Underflow of $e^{-y/2}$ drops the positive term that carries it.

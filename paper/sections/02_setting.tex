@@ -1,0 +1,39 @@
+\section{Setting}
+\label{sec:setting}
+
+We use the notation of~\cite{F} and recall only what is needed.
+
+\emph{Windows and states.}
+A periodic window is $p=\mathcal N_V\,\Gamma\,h/Z$.
+Here $\mathcal N_V$ is a Gaussian of variance $V=\sigma^2/b$ in $v$ and $\Gamma=N(0,L^2)$ in $w$, and
+\begin{equation}
+h-1=e^{-w^2/2s^2}R(t),\qquad t=k'v,
+\end{equation}
+\begin{equation}
+R(t)=\sum_{n\ge1}q0_n\cos(nt-\varphi_n).
+\end{equation}
+The blurred coefficients are $q0_n=|a_n|e^{-n^2K/2}$ with $K\ge x$, $x=(k'\sigma)^2$.
+We write
+\begin{equation}
+\eta=\sup|R|,\quad S_0=\sum q0_n^2,\quad S_2=\sum n^2q0_n^2,
+\end{equation}
+together with $\mu=xS_2/S_0$, $P=xS_2$, $\tau=x/b$, and $\Qb=1/4$ for the bound of (P3).
+A state is a choice of $(b,L^2,s^2)$ subject to (P0) $L^2\le1/\sigma$ and (P4) $\sigma^2\le s^2\le L^2/4$.
+The conditions (P0)--(P7) are those of Table~5 of~\cite{F}.
+
+\emph{The quantity $g$.}
+As in Eq.~(3) of~\cite{F}, $g\ge(1-|\varepsilon|)\,((a)+(a'))$, with
+\begin{equation}
+(a)=\frac{2A_w}{\sigma\,\mathrm{den}},\qquad (a')=\frac{N_\phi}{\sigma\,\mathrm{den}},
+\end{equation}
+where $\mathrm{den}=\sigma^2(\Jvv+\Jww)$ and $|\varepsilon|\le\bar\varepsilon$ is the window-class constant of (P6).
+The statement ``$g\sqrt\ell\ge1$'' always means ``up to the factor $1-\bar\varepsilon$''.
+
+\emph{Regime.}
+This paper works in $x\le0.003$ (the case $x\ge0.003$ is Theorem~48 and Corollary~49 of~\cite{F}) and $x\ge5\times10^{11}\sigma^2$, so that $\beta\le10^{-6}\tau$.
+The states have $\tau\ge20$, i.e.\ the $v$-focus spans at least about $0.7$ ripple periods (for $\tau\ge80$ the remainders of Lemma~23 of~\cite{F} are already below $10^{-14}$).
+The states with $b<10^4\sigma^2$ (the small-$b$ edge) are treated separately in Sec.~\ref{sec:bedge}; there $\tau\ge5\times10^7$ automatically.
+The states with $\tau<20$ are not covered (Sec.~\ref{sec:open:tau}).
+
+\emph{Picture.} $b$ is how sharply the observer focuses along $v$, $L$ how wide she looks along $w$, and $s$ how wide the ripple is in $w$.
+$\tau$ counts how many ripple periods fit into the focus.

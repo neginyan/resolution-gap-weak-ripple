@@ -1,0 +1,18 @@
+\section{The $\tau$ factors and Lemma H}
+\label{app:tau}
+
+\begin{lemma}[Lemma H] \proofst
+Split $h-1=e^{-w^2/2s^2}(R_{\rm lo}+R_{\rm hi})$ at frequency $m$.
+For the kernels $K=2\sum\kappa_n\cos nt$ of App.~D of~\cite{F},
+\begin{equation}
+|\langle K(h-1)\rangle|\le\eta_{\rm lo}\|K\|_2+\eta_{\rm hi}\|K_{\ge m}\|_2 .
+\end{equation}
+Since $\kappa_n\propto n^ke^{-n^2\tau/2+n\beta}$, the high part carries $e^{-m^2\tau/2}$, and $m^2\tau=u^2/b\ge u^2$.
+\end{lemma}
+
+\emph{$\tau$ cells.} \caproofst{\code{cb\_tau.py}}
+The $\tau$-dependent factors of the bound decrease in $\tau$ and increase in $\beta$.
+On $400$ cells of $[20,80]$, with $\beta\le10^{-6}\tau$ and an audit of $20000$ points, their product is at least $0.99977$.
+On $[40,80]$ it is at least $1-1.1\times10^{-8}$.
+In certificate (ii) of Sec.~\ref{sec:cert} the $\nu$'s are used directly at $\tau=20$.
+There $\tau^j\nu_k(\tau,10^{-6}\tau)$ decreases on $[20,400]$ (checked).

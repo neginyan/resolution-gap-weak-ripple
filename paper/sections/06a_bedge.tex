@@ -1,0 +1,86 @@
+\section{The small-\texorpdfstring{$b$}{b} edge}
+\label{sec:bedge}
+
+The certificates of Sec.~\ref{sec:cert} cover $b\ge10^4\sigma^2$.
+Below this edge the cells cannot work with the generic bound $\gamma_P$ of the ripple derivative: the term $-\sigma^2\gamma_P\Phi$ of the curvature step is not tied to the size of the ripple.
+We close the edge by measuring the cross term of Lemma~23 of~\cite{F} (BL3) in mean square instead of in sup.
+The coefficient need not be one here; the bound is of order $1/\sigma$.
+
+\begin{lemma}[Lemma BE] \proofst
+\label{lem:BE}
+Let $\sigma\in[10^{-3000},10^{-24}]$, $x\in[5\times10^{11}\sigma^2,0.003]$, (P0), (P3), (P4), and $q0_n\le2e^{-n^2x/2}$.
+Then every state with $0<b\le10^4\sigma^2$ satisfies
+\begin{equation}
+(a)+(a')\ \ge\ \frac{\kappa}{\sigma},\qquad \kappa=1.1\times10^{-5}.
+\end{equation}
+Hence $g\sqrt\ell\ge(1-\bar\varepsilon)\,\kappa\sqrt\ell/\sigma\ge(1-\bar\varepsilon)\,8\times10^{19}$.
+Condition (P2) is not used, and there is no restriction on $x$ inside the regime.
+The bound on $q0_n$ holds for every window of~\cite{F}: a positive profile has $|a_n|\le2$, and $q0_n=|a_n|e^{-n^2K/2}$ with $K\ge x$ (Sec.~\ref{sec:setting}).
+\end{lemma}
+
+The proof has four steps.
+Write $E=e^{-w^2/2s^2}$, so that $h=1+ER$.
+
+\emph{(BE-a) The ripple derivative.}
+Let $G=\partial_v(\tilde s+s_w)$ as in App.~A of~\cite{F}.
+A direct computation, using $h-ER=1$, gives
+\begin{multline}
+\sigma^2G=E\Bigl[\frac{xR''}{h}-\frac{xER'^2}{h^2}\\
+-\sigma\sqrt x\,\frac{w}{s^2}\,\frac{R'}{h^2}\Bigr].
+\end{multline}
+Hence $|\sigma^2G|\le E\,[xN_2(1-\Qb)+xEN_1^2+\sigma\sqrt x\,(|w|/s^2)N_1]/(1-\Qb)^2$.
+Its supremum over $w$ is below the $\gamma_P$ of~\cite{F} (Table~2 there).
+The envelope $E$ shows that $\sigma^2G$ lives where the ripple lives.
+
+\emph{(BE-1) The cross term in mean square.}
+By the parity identity $\langle hG\rangle=-\langle F\rangle$ (proof of Lemma~23 of~\cite{F}), for every $c>0$ and every $w$,
+\begin{multline}
+\langle h\sigma^2G\cos\psi\rangle\ge-\sigma^2\langle F\rangle\\
+-\frac{\langle h(\sigma^2G)^2\rangle}{4c}-2c\,\langle h(1-\cos\psi)\rangle .
+\end{multline}
+Here we used $(1-\cos\psi)^2\le2(1-\cos\psi)$.
+In Lemma~23 of~\cite{F} this replaces only the step $\ge-\sigma^2\langle F\rangle-\gamma_P\langle h(1-\cos\psi)\rangle$.
+The remainders $a_5$, $a_6$ keep $\gamma_P$; they carry $\nu$ factors.
+
+\emph{(BE-2) The mean square.}
+Put $M_G=\int\Gamma\langle h(\sigma^2G)^2\rangle$.
+From (BE-a), $\langle R''^2\rangle=S_4/2$, $\langle R'^2\rangle=S_2/2$, $\langle R'^4\rangle\le N_1^2S_2/2$, $\int\Gamma E^2=g_s$ and $\int\Gamma E^2w^2/s^4\le g_s/(2s^2)$,
+\begin{equation}
+M_G\le\frac{3g_s}{2}\Bigl[\frac{x^2S_4}{1-\Qb}+\frac{xS_2\,(U_1^2+\frac12)}{(1-\Qb)^3}\Bigr],
+\end{equation}
+with $U_1\ge\sqrt xN_1$ the window constant of Sec.~\ref{sec:cert}.
+For any $\Lambda>0$, $x^2S_4\le\Lambda\,xS_2+T_\Lambda$, where $T_\Lambda\le4\sum_{xn^2>\Lambda}(xn^2)^2e^{-xn^2}$.
+
+\emph{(BE-3) Choice and comparison.}
+Take $c=(b+\sigma^2\Jww)/(16\sigma^2)$ and $\Lambda=10^{-3}/\sigma^2$.
+With $\Phi\le4\Psi$ and $\Phi\le2$, the $\Phi$ part costs at most $b\Psi/2+\sigma^2\Jww/4$.
+The cross term enters Lemma~23 of~\cite{F} with a factor $e(1-b)\sigma^2$, so the $M_G$ part is $e\sigma^2M_G/(4c)=4e\sigma^4M_G/(b+\sigma^2\Jww)$.
+With $xS_2g_s\le2(1+\Qb)W_{\rm per}$ it is at most
+\begin{equation}
+\rho_W(1-e)W_{\rm per}+\frac{6\sigma^2g_sT_\Lambda}{(1-\Qb)\Jww},
+\end{equation}
+where
+\begin{equation}
+\rho_W=\frac{48(1+\Qb)K_1\sigma^2}{(1-b)^2}\le0.0801,
+\end{equation}
+and $K_1=\Lambda/(1-\Qb)+(U_1^2+\frac12)/(1-\Qb)^3$.
+Here $y=(1-b)^2\sigma^2/(2b)\ge4.99\times10^{-5}$, so $1-e\ge y/(2+y)\ge2.49\times10^{-5}$.
+With $2A_w\ge\sigma^2\Jww$ ($\phi\le2$) and $\sigma^2\Jvv=b+W$ (Lemma~22 of~\cite{F}), this gives
+\begin{multline}
+2A_w+N_\phi\ge\frac78\sigma^2\Jww+0.45(1-e)W\\
++\frac14b\Psi-\mathrm{rem}.
+\end{multline}
+Every remainder (the $a_i$ of Lemma~23 of~\cite{F} with $a_4^*$, the $\Phi$-proportional terms, the $\nu$ terms of the $W$ sandwich, and $T_\Lambda$) is below $10^{-10^7}$ times its comparison quantity.
+The reason is $\tau=x/b\ge5\times10^7$.
+For $L^2\ge1$, $\Psi\ge\min(\Phi,\frac12)\ge0.2211$.
+For $L^2<1$, $\sigma^2\Jww>0.6\sigma^2\ge6\times10^{-5}b$.
+In both cases $2A_w+N_\phi\ge1.14\times10^{-5}\,\mathrm{den}$.
+Each step is written out in App.~\ref{app:details:BE}.
+\qed
+
+The constants, the formula of (BE-a) against finite differences, the bound of (BE-2) on random windows and every remainder are checked in \code{ch\_bedge.py} \numst.
+
+\emph{Picture.} When $b$ is tiny the observer's $v$-focus is wide.
+Then the slope information $W$ of the ripple enters almost undiminished.
+The cross term that blocked the edge was measured at the ripple's worst point.
+Measured in mean square, it is a few per cent of $W$.

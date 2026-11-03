@@ -1,0 +1,28 @@
+{
+ "tau_cells": {
+  "cells": 400,
+  "min_F_double": 0.9997786920101032,
+  "min_F_decimal50": 0.999778692010103,
+  "claimed": 0.99977,
+  "margin": 8.692010103104796e-06,
+  "max_rel_err_double_vs_decimal": 3.431376719948691e-16,
+  "derived_bound_20u": 2.220446049250313e-15,
+  "margin_over_bound": 3914533346.1443343,
+  "ok": true
+ },
+ "lemma_BE": {
+  "arithmetic": "60-digit decimal (ported from mpmath)",
+  "kappa": 1.149971250718732e-05,
+  "kappa_claimed": 1.1e-05,
+  "kappa_rel_margin": 0.045428409744301845,
+  "remainders_max_log10": -10851334.426052786,
+  "double_checks": {
+   "envelope_ratio": 0.7672702492264281,
+   "mean_square_ratio": 0.24422365884061722,
+   "x2S4_ratio": 0.8301528823782289
+  },
+  "rule_of_cell_type": false,
+  "ok": true
+ },
+ "all_ok": true
+}

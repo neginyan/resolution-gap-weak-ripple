@@ -1,0 +1,50 @@
+\section{Computer-assisted proofs}
+\label{sec:cert}
+
+All cell proofs share one design.
+The parameters are cut into boxes in $(\log\mu,\log r,\log b)$.
+On each box every term is bounded by its worst corner; each term is monotone in each variable.
+Terms with the same power of $\sigma$ are combined at equal $\sigma$ before the worst end of the $\ell$ cell is taken.
+Everything is computed in logarithms, and underflow may only drop non-negative parts.
+A box is accepted only when its margin exceeds a derived bound of the rounding error times the safety factor $S=10$; otherwise it is bisected.
+The floating-point model, the bounds and the rule are stated in App.~\ref{app:cells}.
+Tails in $\mu$ and $b$ are separate boxes.
+
+\emph{(i) The main reduced inequality.}
+With $\gamma=T_D(\ell)/\sqrt\ell$ and $T_D=1+(2.1+D)/\ell+2.5\times10^{-4}$:
+\begin{itemize}
+\item for $D=0$, the $301$ columns $\ell\in[55.26,3062.6]$ close, with $465900$ audit points and no violation;
+\item for $D=10$, all $686$ columns $\ell\in[55.26,6907.8]$ close ($\sigma=10^{-24}$ to $10^{-3000}$), with $1111902$ audit points and no violation.
+\end{itemize}
+A column needs up to $7.8\times10^{7}$ boxes.
+Every accepted box has $\hat\ell_{\rm pos}-\hat\ell_{\rm neg}\ge S\delta$ (App.~\ref{app:cells}); the smallest ratio $(\hat\ell_{\rm pos}-\hat\ell_{\rm neg})/(S\delta)$ over all accepted boxes is $1.00$, as it must be, since a box is bisected until the rule holds.
+\caproofst{\code{cd\_cells.py} with the rule of \code{cl\_cells.py}}
+The certificate is not vacuous: at $\ell=55.26$ the target $1.70$ (below the envelope $1.711$) closes, and $1.73$ does not.
+
+\emph{(ii) The full Lemma R* bound.}
+Here all remainders of Lemma~R* are kept:
+\begin{itemize}
+\item the corrections of $A_w$;
+\item the saturation of $\Psi$ and $\Phi$;
+\item both forms of the $F$ remainder;
+\item $a_4^*$;
+\item $a_1$--$a_{10}$ without $a_4$;
+\item the $\nu$ factors at $\tau=20$.
+\end{itemize}
+The window enters only through generic bounds: $\sqrt xN_1\le\Qb\sqrt{2\ell+3.1}+10^{-6}$, $xN_2\le\Qb(2\ell+3.1)+10^{-4}$, and $\bar\eta=1/2$ in the remainders.
+For $\tau\ge20$ and $b\ge10^4\sigma^2$, the $92$ columns $\ell\in[55.26,960.8]$ close with target $T_{10}$ ($\sigma$ down to about $10^{-417}$).
+Every term is moved by $S\eta_t+1000Su$ in the safe direction before the terms are netted (App.~\ref{app:cells}), so that the cancellation between equal powers of $\sigma$ is covered.
+The states with $b<10^4\sigma^2$ are covered by Lemma~\ref{lem:BE} (Sec.~\ref{sec:bedge}).
+\caproofst{\code{cl\_link.py}}
+Pointwise, the bound agrees with the main reduced function to about $2\times10^{-4}$ near the envelope.
+Its soundness against a decimal evaluation of Lemma~R* was checked at random states \numst.
+
+\emph{(iii) Seventeen thin-block windows.}
+For the intermediate windows not covered by Corollary~\ref{cor:S}, the Lemma~S factors are put inside the boxes.
+For each window, $\mu$, $x$ and $P$ are fixed at the window's values, and $G\le Pg_s(r)$ is used exactly.
+All $17$ windows close for the target $g\sqrt\ell\ge1$, with the rule of (ii).
+\caproofst{\code{cf\_windows.py} with \code{cl\_link.py}}
+For one of them we checked that raising the target to $1.2$ times the window's upper value makes the proof fail, as it must.
+
+\emph{Picture.} The computer does not search for the best state.
+It checks that no state, in any box, can do worse than the target, and every box keeps a cushion ten times larger than the largest possible rounding error.

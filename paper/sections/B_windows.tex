@@ -1,0 +1,27 @@
+\section{Windows}
+\label{app:windows}
+
+\emph{Rudin--Shapiro bands.}
+$f=1+c\cos t+c\sum_{k<W}\epsilon_k\cos((m+k)t)$ with the Rudin--Shapiro signs $\epsilon_k$, $W=2^j$.
+Non-negativity follows from $|P_j|^2+|Q_j|^2=2W$.
+The blurred sup is bounded by Abel summation with the partial sums $(2+\sqrt2)\sqrt n$.
+
+\emph{Counterexamples to conjecture C.}
+Add a coherent block (all phases zero) of $N_c$ harmonics at $u_c=0.3$ with raw amplitude $A$.
+Non-negativity follows from $1-c(1+\sqrt{2W})-A(1+N_c)\ge0$; (P2) and (P3) hold by construction.
+
+\begin{center}
+\small
+\begin{tabular}{lcccc}
+$\sigma$ & $\eta$ & $\mu$ & $\log_{10}\eta e^{\mu/2}$ & upper $g\sqrt\ell$\\ \hline
+$10^{-48}$ & $0.027$ & $15.15$ & $1.7$ & $1.492$\\
+$10^{-96}$ & $0.071$ & $38.08$ & $7.1$ & $1.423$\\
+$10^{-300}$ & $0.027$ & $154.8$ & $32.0$ & $1.120$\\
+$10^{-300}$ & $0.071$ & $149.6$ & $31.3$ & $1.248$\\
+$10^{-300}$ & $0.111$ & $134.7$ & $28.3$ & $1.427$\\
+\end{tabular}
+\end{center}
+
+\emph{Search for counterexamples to Lemma S.}
+The search draws gapped and gap-free windows with $1$ to $300$ harmonics on each side, coherent or random, and hill-climbs on the worst margin.
+We used $300$ windows of each kind; the smallest margins were $6.7\times10^{-3}$ and $1.3\times10^{-2}$.

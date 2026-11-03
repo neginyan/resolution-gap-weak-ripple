@@ -1,0 +1,30 @@
+{"ell_a": 55.26, "ell_b": 65.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 182392, "seconds": 0.9}
+{"ell_a": 55.26, "ell_b": 65.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 10.0, "closed": true, "cells_evaluated": 614162, "seconds": 3.1}
+{"ell_a": 55.26, "ell_b": 65.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 8.0, "closed": true, "cells_evaluated": 4020408, "seconds": 23.3}
+{"ell_a": 215.26, "ell_b": 225.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 16.0, "closed": true, "cells_evaluated": 1716190, "seconds": 10.0}
+{"ell_a": 215.26, "ell_b": 225.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 3860602, "seconds": 30.2}
+{"ell_a": 215.26, "ell_b": 225.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 10.0, "closed": true, "cells_evaluated": 8329254, "seconds": 79.5}
+{"ell_a": 455.26, "ell_b": 465.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 16.0, "closed": true, "cells_evaluated": 7699180, "seconds": 85.9}
+{"ell_a": 455.26, "ell_b": 465.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 16988072, "seconds": 184.6}
+{"ell_a": 695.26, "ell_b": 705.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 16.0, "closed": true, "cells_evaluated": 15739114, "seconds": 154.3}
+{"ell_a": 455.26, "ell_b": 465.26, "D": 10.0, "closed": false, "cells": 40097996, "reason": "cell budget", "last_bad_log_b_over_sigma2": [9.210340371976145, 846.5834011951472], "last_bad_log_r": [-1308.63039339757, -1.3862943611198906], "last_bad_log_mu": [-28.70064627324851, 67.5288907502318], "lbmin_rel": 9.210340371976184, "tau_min": 10.0, "seconds": 442.9}
+{"ell_a": 855.26, "ell_b": 865.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 16.0, "closed": true, "cells_evaluated": 34594002, "seconds": 387.2}
+{"ell_a": 215.26, "ell_b": 225.26, "D": 10.0, "closed": false, "cells": 40696402, "reason": "cell budget", "last_bad_log_b_over_sigma2": [208.121709171024, 222.38058221836667], "last_bad_log_r": [-114.2105848028508, -105.0040772587603], "last_bad_log_mu": [3.6992936486946855, 3.800945272292763], "lbmin_rel": 9.210340371976184, "tau_min": 8.0, "seconds": 314.4}
+{"ell_a": 695.26, "ell_b": 705.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 46371294, "seconds": 352.2}
+{"ell_a": 855.26, "ell_b": 865.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 92409350, "seconds": 695.7}
+{"ell_a": 65.25999999999999, "ell_b": 75.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 207074, "seconds": 1.0}
+{"ell_a": 75.25999999999999, "ell_b": 85.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 485346, "seconds": 2.7}
+{"ell_a": 85.25999999999999, "ell_b": 95.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 588268, "seconds": 3.0}
+{"ell_a": 95.25999999999999, "ell_b": 105.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 479786, "seconds": 2.3}
+{"ell_a": 105.25999999999999, "ell_b": 115.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 505666, "seconds": 2.5}
+{"ell_a": 115.25999999999999, "ell_b": 125.25999999999999, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 906102, "seconds": 5.0}
+{"ell_a": 125.25999999999999, "ell_b": 135.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 943510, "seconds": 5.1}
+{"ell_a": 135.26, "ell_b": 145.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 884006, "seconds": 4.8}
+{"ell_a": 145.26, "ell_b": 155.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 2487768, "seconds": 17.1}
+{"ell_a": 155.26, "ell_b": 165.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 2549838, "seconds": 16.4}
+{"ell_a": 165.26, "ell_b": 175.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 2605048, "seconds": 17.2}
+{"ell_a": 175.26, "ell_b": 185.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 2599038, "seconds": 16.0}
+{"ell_a": 185.26, "ell_b": 195.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 2132736, "seconds": 12.4}
+{"ell_a": 195.26, "ell_b": 205.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 2190496, "seconds": 13.3}
+{"ell_a": 205.26, "ell_b": 215.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 2249884, "seconds": 13.2}
+{"ell_a": 225.26, "ell_b": 235.26, "D": 10.0, "lbmin_rel": 9.210340371976184, "tau_min": 12.0, "closed": true, "cells_evaluated": 3937696, "seconds": 28.0}

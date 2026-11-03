@@ -1,0 +1,85 @@
+\section{Split sandwiches}
+\label{sec:sandwich}
+
+The $\eta$ sandwich of~\cite{F} (Table~2 and App.~A there) reads
+\begin{equation}
+\frac{\langle Y^2\rangle}{1+\eta}\le\Bigl\langle\frac{Y^2}{h}\Bigr\rangle\le\frac{\langle Y^2\rangle}{1-\eta}
+\end{equation}
+for $Y=h_w$ and $Y=h_t$.
+It costs a factor $(1-\eta)/(1+\eta)$ in the bound.
+A coherent low-frequency block can make $\eta$ large while carrying almost no energy, and then this factor is far too pessimistic.
+
+Split $R=R_{\rm lo}+R_{\rm hi}$, where $R_{\rm lo}$ has frequencies in $[1,M]$ and $R_{\rm hi}$ frequencies $\ge m$.
+Let $Y=\phi(w)y(t)$ with $y=R$ or $y=R'$, and $h=1+\psi(w)R$ with $0\le\psi\le1$.
+Let $\langle\cdot\rangle$ be the period average integrated against a positive measure in $w$.
+Put
+\begin{equation}
+f_{\rm lo}=\frac{\|Y_{\rm lo}\|^2}{\|Y\|^2},\quad
+\eta_{\rm lo}=\sup|R_{\rm lo}|,\quad
+\eta_{\rm hi}=\sup|R_{\rm hi}|,
+\end{equation}
+\begin{equation}
+\kappa=\min\Bigl(\eta_{\rm lo},\ \frac{\sup|y_{\rm hi}|\,\|R_{\rm lo}\|_t}{\|y_{\rm hi}\|_t}\Bigr),
+\end{equation}
+\begin{multline}
+E=\eta_{\rm lo}f_{\rm lo}+2\eta_{\rm hi}\sqrt{f_{\rm lo}f_{\rm hi}}\\
++(\eta_{\rm hi}+\kappa)f_{\rm hi},
+\end{multline}
+\begin{equation}
+B=\bigl(\eta_{\rm lo}\sqrt{f_{\rm lo}}+\kappa\sqrt{f_{\rm hi}}+\eta_{\rm hi}\bigr)^2 .
+\end{equation}
+
+\begin{lemma}[Lemma S] \proofst
+\label{lem:S}
+If $2M<m$ (a spectral gap), then
+\begin{multline}
+\|Y\|^2\max\Bigl(\frac{1}{1+\eta},\,1-E\Bigr)\le\Bigl\langle\frac{Y^2}{h}\Bigr\rangle\\
+\le\|Y\|^2\min\Bigl(\frac{1}{1-\eta},\,1+E+\frac{B}{1-\eta}\Bigr).
+\end{multline}
+\end{lemma}
+\begin{proof}
+Use $1/(1+r)=1-r+r^2/(1+r)$ with $0\le r^2/(1+r)\le r^2/(1-\eta)$, and expand $Y^2r$.
+Two of the six products vanish because of the gap:
+$\langle Y_{\rm lo}^2r_{\rm hi}\rangle$ and $\langle Y_{\rm lo}Y_{\rm hi}r_{\rm lo}\rangle$.
+The others are bounded by Cauchy--Schwarz.
+For the product $\langle Y_{\rm hi}^2r_{\rm lo}\rangle$ use $\langle y_{\rm hi}^2|R_{\rm lo}|\rangle_t\le\sup|y_{\rm hi}|\,\|y_{\rm hi}\|_t\|R_{\rm lo}\|_t$.
+This is where the energy $\|R_{\rm lo}\|_t^2=S_{0,\rm lo}/2$ of the low block replaces its sup.
+For $r^2$ use Minkowski; the term $\|Y_{\rm hi}r_{\rm lo}\|$ is bounded with $\|y_{\rm hi}R_{\rm lo}\|_t\le\sup|y_{\rm hi}|\,\|R_{\rm lo}\|_t$ (or by $\eta_{\rm lo}$), so the same $\kappa$ enters $B$ as $E$.
+The line-by-line proof, with the norms and measures, is in App.~\ref{app:details:S}.
+\end{proof}
+
+\begin{lemma}[Lemma S$'$, no gap] \proofst
+\label{lem:Sp}
+Without the gap, Lemma~\ref{lem:S} holds with $E$ replaced by
+\begin{equation}
+E'=E+\eta_{\rm hi}f_{\rm lo}+2\eta_{\rm lo}\sqrt{f_{\rm lo}f_{\rm hi}} .
+\end{equation}
+\end{lemma}
+\begin{proof}
+The two products that used the gap are bounded by $\eta_{\rm hi}\|Y_{\rm lo}\|^2$ and $\eta_{\rm lo}\|Y_{\rm lo}\|\|Y_{\rm hi}\|$.
+The upper bound $B$ used Minkowski only, so it is unchanged.
+\end{proof}
+
+\emph{Scaling.}
+Let $\lambda=\min(\mathrm{low}_{S_0},\mathrm{low}_{S_2})$ and $\Upsilon=\mathrm{up}_{S_2}$ be the lower and upper factors of the two channels.
+The part of $\mathrm{den}$ that carries $S_0$ enters the target only through $\gamma\sigma$.
+In the cells of Sec.~\ref{sec:cert} it is given its factor $1/(1-\bar\eta)=2$ directly.
+Then a certificate made with the factors set to one gives $g\ge(\lambda/\Upsilon)\gamma$.
+
+\begin{corollary}[Corollary S] \proofst
+\label{cor:S}
+If the certified target is $T_{10}=1+12.1/\ell+2.5\times10^{-4}$ and $(\lambda/\Upsilon)T_{10}\ge1$, then $g\sqrt\ell\ge1$ (times $1-\bar\varepsilon$).
+\end{corollary}
+
+\emph{Checks.}
+On the nine windows that refute conjecture C, $(\lambda/\Upsilon)T_{10}$ lies between $1.0020$ and $1.1074$ \numst.
+These are exact sums over the window.
+A search for counterexamples to Lemmas~\ref{lem:S} and~\ref{lem:Sp} is described in App.~\ref{app:windows}.
+It covered low and high frequencies, few and many harmonics, coherent and random phases, and used a hill climb.
+It found no violation.
+The same search does find violations of deliberately wrong versions in which $\eta_{\rm lo}f_{\rm lo}$, $\eta_{\rm hi}f_{\rm hi}$ or $B$ is dropped.
+It finds none when the term $2\eta_{\rm hi}\sqrt{f_{\rm lo}f_{\rm hi}}$, the term $\kappa f_{\rm hi}$ or the gap-free cross term is dropped.
+Whether those three terms are needed is therefore not settled.
+
+\emph{Picture.} A low-frequency block is like a slow swell under the fine ripple.
+It can be tall, but the lens reads the ripple's detail through its energy, and a slow swell carries almost none of the detail.
