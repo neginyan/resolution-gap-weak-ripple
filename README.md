@@ -17,9 +17,19 @@ This is the follow-up to [paper F](https://doi.org/10.5281/zenodo.23856796) (cod
 - **Theorem H1.** For every state whose focus spans at least about 0.7 ripple periods (τ = x/b ≥ 20), and for ℓ = ln(1/σ) ∈ [55.26, 960.8] (σ from 10⁻²⁴ down to about 10⁻⁴¹⁷), g√ℓ ≥ (1 − ε̄)(λ/Υ)(1 + 12.1/ℓ + 2.5×10⁻⁴). The coefficient one follows, up to 1 − ε̄, for every window with η ≤ 1/ℓ, for a family of intermediate windows, and for seventeen thin-block windows certified one by one. States with b < 10⁴σ² obey a far stronger bound (Lemma BE).
 - **Three tools.** A remainder of the curvature step made relative to the ripple (Lemma A4*); a split sandwich in which a low-frequency block enters through its energy, not its sup (Lemma S); a mean-square bound of the curvature cross term that closes the edge of very wide focus (Lemma BE).
 - **A conjecture of our own is false.** The working hypothesis ηe^{μ/2} ≤ C fails on explicit windows (up to 10³² at σ = 10⁻³⁰⁰); the coefficient one survives on all of them.
-- **The road to an unconditional theorem.** The paper lists what is still open, from the nearest to the farthest: states with a narrow focus (τ < 20; everything reduces to one local inequality, which holds within a factor 2.13 on the windows tried while the bound tolerates 10), ℓ > 960.8 and the limit σ → 0, windows outside the covered families, the class constant ε̄, and the upper side.
+- **The road to an unconditional theorem.** The paper lists what is still open, from the nearest to the farthest: states with a narrow focus (τ < 20), ℓ > 960.8 and the limit σ → 0, windows outside the covered families, the class constant ε̄, and the upper side. Two statements about the narrow focus in Sec. IX A of v1.0 are wrong; see the known issue below.
 
 Every statement in the paper carries its status: proof, computer-assisted proof, derivation, numerical, or conjecture (Table I of the paper).
+
+## Known issue (2026-11-04, after v1.0)
+
+Two statements about the states with a narrow focus (τ < 20) in Sec. IX A of v1.0, repeated in one sentence of the abstract, are wrong. They will be corrected in v1.1.
+**Theorem H1, the three certificates, Lemma BE and Apps. D and E are not affected.** They concern the states with τ ≥ 20, where the remainder Θ − θ_τ is bounded by Lemma A4*, and they use Lemma Z3′ in its proved period-average form.
+
+1. **The conjectured local Z3′, P_θ ≤ C Π*(μ_θ) with one universal constant C, is false.** A coherent packet of high harmonics placed at a node of the fundamental (it satisfies (P2), (P3) and positivity) gives P_θ/Π*(μ_θ) = 27 at x = 0.003 and 71 at x = 10⁻⁶, and the ratio grows with μ_θ. The value 2.13 quoted in v1.0 came from a search whose packets had small raw coefficients, and the statement that the bound tolerates C = 10 loses its meaning. The correct form is P_θ ≤ c μ_θ e^{−μ_θ}; a bound of this form follows from the positivity of the profile alone (lab stage CM, to appear in v1.1).
+2. **The sentence that the local form of Lemma R "keeps the algebraic form of Lemma R" does not hold for the term (1 − e)W.** For a narrow focus this term is weighted by how the slope energy of the ripple is spread inside the focus, and it is smaller when the ripple is concentrated at the centre of the focus. So the narrow-focus states do not reduce to one local inequality, as the abstract of v1.0 says.
+
+The states with τ < 20 remain open, as stated in Theorem H1.
 
 ## How the computer-assisted proofs are accepted
 
