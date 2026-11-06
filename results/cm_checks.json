@@ -1,0 +1,113 @@
+{
+ "a1 max z e^{-z/2} = 2/e": {
+  "ok": true,
+  "max_on_grid": "0.735758882342884643",
+  "two_over_e": "0.735758882342884643"
+ },
+ "a2 sqrt2/e < 0.5203": {
+  "ok": true,
+  "value": "0.5202600950"
+ },
+ "a3 dual feasibility h >= 0 (z >= 0.8, s in [0,6])": {
+  "ok": true,
+  "min_h": "0.0"
+ },
+ "a4 moment bound algebra E0=1/100": {
+  "ok": true,
+  "lhs": 0.19963238661296703,
+  "rhs": 0.19963238661296706
+ },
+ "a4 moment bound algebra E0=1/1000000": {
+  "ok": true,
+  "lhs": 2.433994653054757e-06,
+  "rhs": 2.433994653054757e-06
+ },
+ "a5 e^{-y/2}: 1-e^{-y/2} <= y/2": {
+  "ok": true
+ },
+ "b1 |G_x(w+iy)| <= e^{y^2/2x} G_x(w) and |u(t+iy)| <= e^{y^2/2x} u(t)": {
+  "ok": true,
+  "max_ratio": 1.0000000000000036
+ },
+ "b2 line unfolding: E0, E1 agree with the circle formulas": {
+  "ok": true,
+  "E0_line": 0.09709673380880039,
+  "E0_circle": 0.09709673380869946,
+  "E1_line": 4.3755333045795135,
+  "E1_circle": 4.375533304574958
+ },
+ "b3 Plancherel: int dm = E0": {
+  "ok": true,
+  "sum_m": 0.09709673380856298,
+  "E0": 0.09709673380880039
+ },
+ "b4 identity E1 = int k^2 dm + ||sF||^2/4tau^2 - E0/2tau": {
+  "ok": true,
+  "E1": 4.3755333045795135,
+  "rhs": 4.375533304552812
+ },
+ "b5 Paley-Wiener J(y) = int e^{-2ky} dm and J(y) <= B(y)": {
+  "ok": true,
+  "rows": [
+   {
+    "y": 0.0,
+    "J_line": 0.09709673380880039,
+    "J_spectral": 0.09709673380856298,
+    "B": 5.3435106862904
+   },
+   {
+    "y": 0.02,
+    "J_line": 0.10233709190911158,
+    "J_spectral": 0.10233709190884929,
+    "B": 6.060579532486877
+   },
+   {
+    "y": 0.05,
+    "J_line": 0.161472005569106,
+    "J_spectral": 0.16147200556845437,
+    "B": 12.673068152024213
+   },
+   {
+    "y": 0.1,
+    "J_line": 6.1381188921034475,
+    "J_spectral": 6.1381188920231855,
+    "B": 370.1497451417466
+   }
+  ]
+ },
+ "b6 lemma: x E1 <= (1+b/2) E0 ln(2B0/E0) + 0.5203 b E0(2tau)": {
+  "ok": true,
+  "lhs": 0.008751066609159027,
+  "rhs": 0.4022165305102128
+ },
+ "b7 sum_n |a_n| e^{-n^2 x/2} of the random window (not needed by the lemma)": {
+  "ok": true,
+  "value": 1.776922301374839
+ },
+ "c1 F-term: chirp part/((1-e) E[F]) = kappa; kappa ~ 1 for a wide packet, << 1 for a narrow packet at the focus centre": {
+  "ok": true,
+  "rows": [
+   {
+    "window": "wide packet (W=4 < 1/sqrt tau)",
+    "kappa": 0.9516207202213675,
+    "chirp_over_main_y1e-6": 0.9516207319562313,
+    "chirp_over_main_y0.1": 0.9527752321336611,
+    "one_over_sqrt_tau": 7.0710678118654755
+   },
+   {
+    "window": "narrow packet (W=300 > 1/sqrt tau)",
+    "kappa": 0.018711354844112165,
+    "chirp_over_main_y1e-6": 0.01871135796456835,
+    "chirp_over_main_y0.1": 0.019025199850571436,
+    "one_over_sqrt_tau": 7.0710678118654755
+   },
+   {
+    "window": "fundamental at a node of R' (dark centre)",
+    "kappa": 2.9602666595558262,
+    "chirp_over_main_y1e-6": 2.960266182868392,
+    "chirp_over_main_y0.1": 2.9129431504164827,
+    "one_over_sqrt_tau": 7.0710678118654755
+   }
+  ]
+ }
+}

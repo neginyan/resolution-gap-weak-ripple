@@ -1,0 +1,197 @@
+{
+ "CN-1 (1) e^{-s^2/2tau} <= e^{(delta^2 - s^2)/2tau'} on |s| <= delta (60 digits, three cases)": {
+  "ok": true,
+  "max_ratio": "0.9987507809"
+ },
+ "CN-1 (2) w_tau'^2 <= sqrt(tau/tau') w_tau^2 for tau' <= tau": {
+  "ok": true
+ },
+ "CN-1 lemma numerically on 40 random states x 2 (K,L): max E1/bound = 0.597 <= 1": {
+  "ok": true,
+  "max_ratio": 0.5971831155756143
+ },
+ "CN-1 (2) numerically: max E0(tau')/(sqrt(tau/tau') E0) = 0.967 <= 1": {
+  "ok": true,
+  "max_ratio": 0.9670099087350988
+ },
+ "Psi_2 (proved joint bound) holds on these states: max P/Psi_2 = 0.0489": {
+  "ok": true
+ },
+ "C2_table": [
+  {
+   "mu": 5.8,
+   "kappa": 0.3,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 1.8257418583505538
+  },
+  {
+   "mu": 5.8,
+   "kappa": 0.1,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 3.1622776601683795
+  },
+  {
+   "mu": 5.8,
+   "kappa": 0.01,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 10.0
+  },
+  {
+   "mu": 5.8,
+   "kappa": 0.001,
+   "Psi2_over_Psi": 0.7770815516591908,
+   "C2_Psi2_over_Psi_sqrtkappa": 24.573476309408395
+  },
+  {
+   "mu": 5.8,
+   "kappa": 0.0001,
+   "Psi2_over_Psi": 0.24573476309408393,
+   "C2_Psi2_over_Psi_sqrtkappa": 24.57347630940839
+  },
+  {
+   "mu": 5.8,
+   "kappa": 1e-05,
+   "Psi2_over_Psi": 0.07770815516591906,
+   "C2_Psi2_over_Psi_sqrtkappa": 24.57347630940839
+  },
+  {
+   "mu": 8.0,
+   "kappa": 0.3,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 1.8257418583505538
+  },
+  {
+   "mu": 8.0,
+   "kappa": 0.1,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 3.162277660168379
+  },
+  {
+   "mu": 8.0,
+   "kappa": 0.01,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 10.0
+  },
+  {
+   "mu": 8.0,
+   "kappa": 0.001,
+   "Psi2_over_Psi": 0.9840693032033173,
+   "C2_Psi2_over_Psi_sqrtkappa": 31.119003735773138
+  },
+  {
+   "mu": 8.0,
+   "kappa": 0.0001,
+   "Psi2_over_Psi": 0.31119003735773093,
+   "C2_Psi2_over_Psi_sqrtkappa": 31.11900373577309
+  },
+  {
+   "mu": 8.0,
+   "kappa": 1e-05,
+   "Psi2_over_Psi": 0.09840693032033161,
+   "C2_Psi2_over_Psi_sqrtkappa": 31.1190037357731
+  },
+  {
+   "mu": 10.0,
+   "kappa": 0.3,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 1.8257418583505538
+  },
+  {
+   "mu": 10.0,
+   "kappa": 0.1,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 3.1622776601683795
+  },
+  {
+   "mu": 10.0,
+   "kappa": 0.01,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 10.0
+  },
+  {
+   "mu": 10.0,
+   "kappa": 0.001,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 31.622776601683796
+  },
+  {
+   "mu": 10.0,
+   "kappa": 0.0001,
+   "Psi2_over_Psi": 0.3832795952916219,
+   "C2_Psi2_over_Psi_sqrtkappa": 38.32795952916219
+  },
+  {
+   "mu": 10.0,
+   "kappa": 1e-05,
+   "Psi2_over_Psi": 0.1212036501789075,
+   "C2_Psi2_over_Psi_sqrtkappa": 38.327959529162236
+  },
+  {
+   "mu": 12.0,
+   "kappa": 0.3,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 1.825741858350554
+  },
+  {
+   "mu": 12.0,
+   "kappa": 0.1,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 3.1622776601683795
+  },
+  {
+   "mu": 12.0,
+   "kappa": 0.01,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 10.0
+  },
+  {
+   "mu": 12.0,
+   "kappa": 0.001,
+   "Psi2_over_Psi": 1.0,
+   "C2_Psi2_over_Psi_sqrtkappa": 31.622776601683796
+  },
+  {
+   "mu": 12.0,
+   "kappa": 0.0001,
+   "Psi2_over_Psi": 0.47330750726012094,
+   "C2_Psi2_over_Psi_sqrtkappa": 47.33075072601209
+  },
+  {
+   "mu": 12.0,
+   "kappa": 1e-05,
+   "Psi2_over_Psi": 0.14967297565986676,
+   "C2_Psi2_over_Psi_sqrtkappa": 47.330750726012226
+  }
+ ],
+ "proved joint bound: no gain over CM-1 for kappa >= 0.01 (Psi_2 = Psi); for kappa <= 1e-4 a sqrt(kappa) law with C_2 in [20, 60] (the envelope needs C <= 1.9 at ell = 55.26): the gap is documented, not closed": {
+  "ok": true
+ },
+ "CN-2 (i) A[g] = E_rho[e^{i beta s/tau} g] (V=0.01)": {
+  "ok": true,
+  "lhs": 0.8350296809162874,
+  "rhs": 0.8350296809162874
+ },
+ "CN-2 (i) A[g] = E_rho[e^{i beta s/tau} g] (V=0.0001)": {
+  "ok": true,
+  "lhs": 0.6669767950215254,
+  "rhs": 0.6669767950204972
+ },
+ "CN-2 (ii) tilted Gaussian average of cos(w/sqrt2 + c) (L^2=1, s^2=0.1)": {
+  "ok": true,
+  "lhs": 0.49784999278053105,
+  "rhs": 0.49784999278053116
+ },
+ "CN-2 (ii) tilted Gaussian average of cos(w/sqrt2 + c) (L^2=3, s^2=0.5)": {
+  "ok": true,
+  "lhs": 0.5155760879503308,
+  "rhs": 0.5155760879503307
+ },
+ "CN-2 (iii) 1 - cos z >= z^2/2 - z^4/24 and |cos(a+chi) - cos a| <= |chi|": {
+  "ok": true
+ },
+ "CN-2 (iv) max 4 z^2 e^{-z/2} = 64/e^2 (60 digits)": {
+  "ok": true,
+  "max_on_grid": "8.6614581271",
+  "bound": "8.6614581271"
+ }
+}

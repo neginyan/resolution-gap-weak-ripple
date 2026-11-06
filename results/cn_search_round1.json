@@ -1,0 +1,136 @@
+{
+ "plan": "CN_\u63a2\u7d22\u8a08\u753b.md",
+ "seconds": 176.69025564193726,
+ "log": [
+  "packets: 30144 evaluations",
+  "two packets: 30 evaluations",
+  "combs: 108 evaluations",
+  "random: 3000 evaluations",
+  "hill climb C1: max ratio 0.998 over 20 starts",
+  "hill climb C2: max ratio 1.055 over 20 starts",
+  "hill climb W1: max ratio 9.559 over 20 starts",
+  "hill climb W2: max ratio 1.278 over 20 starts",
+  "hill climb W3: max ratio 3.545 over 20 starts",
+  "hill climb W4: max ratio 2.997 over 20 starts",
+  "C1: worst ratio 1.583 -> BROKEN  (packet x=0.0001 mu0=3 W=128 at crest cos a1=0.2 focus centre b=0.01)",
+  "C2: worst ratio 1.064 -> BROKEN  (hill climb for W3 from start)",
+  "W1: worst ratio 32.61 -> BROKEN  (random kind=1 x=0.000138697 N=12 W=136 b=0.0010118)",
+  "W2: worst ratio 3.927 -> BROKEN  (packet x=0.0001 mu0=3 W=128 at crest cos a1=0.2 focus centre b=0.01)",
+  "W3: worst ratio 3.545 -> BROKEN  (hill climb for W3 from start)",
+  "W4: worst ratio 4.749 -> BROKEN  (packet x=0.0001 mu0=3 W=128 at crest cos a1=0.2 focus centre b=0.01)"
+ ],
+ "worst": {
+  "C1": {
+   "ratio": 1.583162934734043,
+   "case": {
+    "mu": 0.014950862587473355,
+    "P": 0.0011927760419835236,
+    "kappa": 0.08126135617586297,
+    "E0": 0.03988987374490674,
+    "E1": 5.963880209917618,
+    "E1ring": 0.484632993928296,
+    "x": 0.0001,
+    "b": 0.01,
+    "t0": 0.0,
+    "desc": "packet x=0.0001 mu0=3 W=128 at crest cos a1=0.2 focus centre b=0.01",
+    "ratio": 1.583162934734043
+   }
+  },
+  "C2": {
+   "ratio": 1.06361473133634,
+   "case": {
+    "mu": 5.034793078556829,
+    "P": 0.03484842212081028,
+    "kappa": 1.0463046804379943,
+    "E0": 0.003460760112389685,
+    "E1": 5.808070353468381,
+    "E1ring": 6.077011195147123,
+    "x": 0.003,
+    "b": 0.995119500725681,
+    "t0": 1.535117302351191,
+    "desc": "hill climb for W3 from start",
+    "ratio": 1.06361473133634
+   }
+  },
+  "W1": {
+   "ratio": 32.605331731475125,
+   "case": {
+    "mu": 0.535760548184473,
+    "P": 0.0018555526747154306,
+    "kappa": 0.015334915286794388,
+    "E0": 0.001731699619357309,
+    "E1": 6.689253557589795,
+    "E1ring": 0.10257913663752749,
+    "x": 0.0001386965420536402,
+    "b": 0.001011795149698826,
+    "t0": 5.479077974525643,
+    "desc": "random kind=1 x=0.000138697 N=12 W=136 b=0.0010118",
+    "ratio": 32.605331731475125
+   }
+  },
+  "W2": {
+   "ratio": 3.927069458065993,
+   "case": {
+    "mu": 0.014950862587473355,
+    "P": 0.0011927760419835236,
+    "kappa": 0.08126135617586297,
+    "E0": 0.03988987374490674,
+    "E1": 5.963880209917618,
+    "E1ring": 0.484632993928296,
+    "x": 0.0001,
+    "b": 0.01,
+    "t0": 0.0,
+    "desc": "packet x=0.0001 mu0=3 W=128 at crest cos a1=0.2 focus centre b=0.01",
+    "ratio": 3.927069458065993
+   }
+  },
+  "W3": {
+   "ratio": 3.5453824377878007,
+   "case": {
+    "mu": 5.034793078556829,
+    "P": 0.03484842212081028,
+    "kappa": 1.0463046804379943,
+    "E0": 0.003460760112389685,
+    "E1": 5.808070353468381,
+    "E1ring": 6.077011195147123,
+    "x": 0.003,
+    "b": 0.995119500725681,
+    "t0": 1.535117302351191,
+    "desc": "hill climb for W3 from start",
+    "ratio": 3.5453824377878007
+   }
+  },
+  "W4": {
+   "ratio": 4.749488804202129,
+   "case": {
+    "mu": 0.014950862587473355,
+    "P": 0.0011927760419835236,
+    "kappa": 0.08126135617586297,
+    "E0": 0.03988987374490674,
+    "E1": 5.963880209917618,
+    "E1ring": 0.484632993928296,
+    "x": 0.0001,
+    "b": 0.01,
+    "t0": 0.0,
+    "desc": "packet x=0.0001 mu0=3 W=128 at crest cos a1=0.2 focus centre b=0.01",
+    "ratio": 4.749488804202129
+   }
+  }
+ },
+ "hill_climb_max": {
+  "C1": 0.9979864684065958,
+  "C2": 1.0548456999108398,
+  "W1": 9.558633129513156,
+  "W2": 1.2778231849683268,
+  "W3": 3.5453824377878007,
+  "W4": 2.9970790863416403
+ },
+ "verdict": {
+  "C1": "BROKEN",
+  "C2": "BROKEN",
+  "W1": "BROKEN",
+  "W2": "BROKEN",
+  "W3": "BROKEN",
+  "W4": "BROKEN"
+ }
+}

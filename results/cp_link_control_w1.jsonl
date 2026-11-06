@@ -1,0 +1,2 @@
+{"ell_a": 55.26, "ell_b": 56.26, "D": 10.0, "lBmin": 9.210340371976184, "tau_min": 20.0, "closed": true, "cells_evaluated": 27258, "seconds": 0.3, "rule": "CL rounding-covering, S = 10, beta boxes"}
+{"ell_a": 56.26, "ell_b": 57.26, "D": 10.0, "lBmin": 9.210340371976184, "tau_min": 20.0, "closed": true, "cells_evaluated": 44992, "seconds": 0.4, "rule": "CL rounding-covering, S = 10, beta boxes"}

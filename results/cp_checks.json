@@ -1,0 +1,64 @@
+{
+ "F1": {
+  "n_states": 4000,
+  "pairs": 8000,
+  "max_abs_diff_normalised": 0.008954671485480126,
+  "sign_disagreements": 0,
+  "both_minus_inf": 0,
+  "frac_positive": 1.0
+ },
+ "F2": {
+  "boxes": 400,
+  "positive_boxes": 652,
+  "points_tested": 41678,
+  "violations": 0
+ },
+ "J": {
+  "boxes": 2000,
+  "points": 90382,
+  "violations": {
+   "J2": 0,
+   "J3J4": 0,
+   "J5": 0
+  }
+ },
+ "wrong": {
+  "V1": {
+   "components": {
+    "J2": 0,
+    "J3J4": 0,
+    "J5": 5029
+   },
+   "F1_max_diff": null,
+   "broken": true
+  },
+  "V2": {
+   "components": {
+    "J2": 10764,
+    "J3J4": 0,
+    "J5": 0
+   },
+   "F1_max_diff": null,
+   "broken": true
+  },
+  "V3": {
+   "components": {
+    "J2": 10,
+    "J3J4": 5705,
+    "J5": 0
+   },
+   "F1_max_diff": null,
+   "broken": true
+  },
+  "V4": {
+   "components": {
+    "J2": 0,
+    "J3J4": 0,
+    "J5": 0
+   },
+   "F1_max_diff": 2.0,
+   "broken": true
+  }
+ },
+ "seconds": 220
+}

@@ -15,4 +15,11 @@ The $\tau$-dependent factors of the bound decrease in $\tau$ and increase in $\b
 On $400$ cells of $[20,80]$, with $\beta\le10^{-6}\tau$ and an audit of $20000$ points, their product is at least $0.99977$.
 On $[40,80]$ it is at least $1-1.1\times10^{-8}$.
 In certificate (ii) of Sec.~\ref{sec:cert} the $\nu$'s are used directly at $\tau=20$.
-There $\tau^j\nu_k(\tau,10^{-6}\tau)$ decreases on $[20,400]$ (checked).
+This is valid on the whole range $\tau\ge20$ \proofst.
+Indeed $\tau^j\nu_k(\tau,10^{-6}\tau)=2\sum_n n^k\tau^je^{-c_n\tau}$ with $c_n=n^2/2-10^{-6}n\ge1/2-10^{-6}$, and
+\begin{equation}
+\frac{d}{d\tau}\,\tau^je^{-c\tau}=\tau^{j-1}e^{-c\tau}\,(j-c\tau)<0\quad\text{for }\tau>j/c .
+\end{equation}
+Since $j\le2$, $j/c_n<4.0001<20$, so every term decreases on $\tau\ge20$.
+For $\omega_2=2\sum_ne^{-n^2\tau/2}(n^2\tau-1)$ (here $n^2\tau\ge20$) each term has the derivative $(n^2/2)e^{-n^2\tau/2}(3-n^2\tau)<0$.
+A $60$-digit evaluation on $4000$ points of $[20,10^8]$ finds no increase \numst; with $\beta=0.6\tau$ in place of $10^{-6}\tau$ (so that $c_1<0$) it finds an increase at every point (\code{cq\_checks.py}).

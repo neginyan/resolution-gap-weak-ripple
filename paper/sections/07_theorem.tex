@@ -26,6 +26,7 @@ Split the states with $\tau\ge20$ at $b=10^4\sigma^2$.
 Lemma~\ref{lem:R} with Lemma~\ref{lem:A4} gives $g\ge(1-\bar\varepsilon)\,\mathrm{Num}/(\sigma\,\mathrm{den})$.
 Certificate (ii) of Sec.~\ref{sec:cert} gives $\mathrm{Num}-\gamma\sigma\,\mathrm{den}\ge0$ with the factors set to one, for $b\in[10^4\sigma^2,0.003/20]$.
 Every state with $\tau\ge20$ has $b=x/\tau\le0.003/20$.
+The set of these states is covered by the boxes of certificate (ii) (v1.0 boxes, $\mu$ tails and wedge) and by Lemma~\ref{lem:BE}, line by line as in the covering paragraph of Sec.~\ref{sec:cert}.
 The scaling argument of Sec.~\ref{sec:sandwich} restores the factors.
 
 \emph{States with $b<10^4\sigma^2$.}
@@ -44,3 +45,13 @@ Theorem~\ref{thm:H1} covers the lower side for windows with a weak or energy-poo
 The main reduced inequality alone (certificate (i)) holds up to $\ell=6907.8$.
 
 \emph{Picture.} However the ripple is built, many harmonics or few, the observer keeps at least the fraction $1/\sqrt\ell$, as long as the ripple's sup or its low-frequency energy is small and her focus spans at least about $0.7$ ripple periods.
+
+\paragraph*{Version~1.1.}
+Version~1.0 had three gaps in the covering of the computer-assisted proofs: the wedge $10^4\sigma^2\le b<10^4e^{-2\ell_a}$ inside each column of certificate~(ii), the $\mu$ ranges below $e^{-30}$ and above $\mu_{\max}e^{60}$ in certificates~(i) and~(ii), and the smallest $b$ in certificate~(i).
+Theorem~H1 was therefore not proved in v1.0 for the states of the first two gaps.
+Version~1.1 closes all three: the wedge by boxes in $(\mu,r,\beta,\ell)$ with $\beta=b/\sigma^2$ and $\ell$ itself subdivided, the $\mu$ tails by boxes reaching $0$ and $\infty$, and the small $b$ of certificate~(i) by a strip down to $b=0$ (Sec.~\ref{sec:cert}, App.~\ref{app:cells}).
+Every box of v1.0 is kept, all new boxes close, and a random check of $10^5$ states finds the covering complete.
+The statement and the range of Theorem~H1 are unchanged.
+Version~1.1 also corrects two statements of v1.0 about the states with a narrow focus (Sec.~\ref{sec:open:tau}): the conjectured local Z3$'$ with one universal constant is false, and the local form of Lemma~R does not keep the algebraic form of Lemma~R in the term $(1-e)W$.
+It adds the results on these states obtained since (Lemmas~CM-1, CN-1, CN-2 and R$_\theta$, and the envelope with the proved brightness bound), and proves the monotonicity of the $\tau$ factors on the whole range $\tau\ge20$ (App.~\ref{app:tau}).
+

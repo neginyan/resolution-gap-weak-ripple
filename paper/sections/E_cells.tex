@@ -7,6 +7,9 @@ The cells are evaluated in double precision, not in interval arithmetic; soundne
 \emph{Floating-point model.}
 IEEE~754 binary64 with round to nearest, unit roundoff $u=2^{-53}$.
 We assume that $\log$, $\exp$, $\log1p$, $\mathrm{expm1}$ and $\sqrt{\ }$ return a value within two ulp of the exact value at the floating argument (relative error $\le4u$).
+IEEE~754 guarantees this only for $\sqrt{\ }$ (correctly rounded); for the transcendental functions it is a property of the library.
+The certificates were run with NumPy~2.5.3 on x86-64 Linux; against a 60-digit decimal evaluation on $2\times10^4$ to $4\times10^4$ arguments per function spread over the ranges used, the largest errors were $0.71$ ulp ($\exp$), $0.50$ ($\log$), $0.59$ ($\log1p$), $0.52$ ($\mathrm{expm1}$) and $0.50$ ($\sqrt{\ }$) \numst\ (\code{ulp\_check.py}).
+The safety factor $S=10$ below also leaves room for a library whose errors are several times larger than assumed.
 Cell ends and $\ell$ are floating numbers and are exact; a cell is the set of real points between its ends, and a bisection reuses the same floating midpoint on both sides, so the cells of a column cover its domain exactly.
 
 \emph{Certificate (i): the main reduced inequality.}
@@ -60,16 +63,16 @@ The direction is fixed by the following table, where ``$+$'' means that the term
 \small
 \begin{tabular}{p{0.42\columnwidth}p{0.48\columnwidth}}
 factor & monotone in, and why\\ \hline
-$\sigma^p$, $p\ge0$ & decreasing in $\ell$; positive parts at $\sigma_{\rm lo}$, negative at $\sigma_{\rm hi}$, after netting at equal $\sigma$\\
+$\sigma^p$ & monotone in $\ell$; after netting at equal $\sigma$, positive parts at the end that makes $\sigma^p$ smallest, negative parts at the other ($p<0$ occurs only in the $\beta$ boxes)\\
 $\gamma=T_D/\sqrt\ell$ & decreasing in $\ell$; taken at $\ell_a$\\
 $y=(1-b)^2\sigma^2/(2b)$ & decreasing in $b$, increasing in $\sigma$\\
 $e^{-y/2}$, $1/(1+w_0)$ & decreasing in $y$; positive terms at $y_{\max}$\\
 $(1-b)^2$ & decreasing in $b$\\
 $r$, $\sqrt{r/(2+r)}$, $1/(2+r)$ & monotone in $r$ (powers and ratios of linear functions)\\
-$\mu^{\pm1}$, $G/\mu$ & monotone in $\mu$\\
+$\mu^{\pm1}$, $G/\mu$ & monotone in $\mu$; in the tails see below\\
 $G_{\rm cell}=\Pi^*(\mu)g_s(r)$ & $\Pi^*$ decreasing for $\mu\ge2$ (left end), $\mu\Qb^2$ for $\mu<2$ (right end); $g_s$ increasing in $r$\\
 $b$, $\sqrt b$, $1/b$ & monotone in $b$\\
-$\tau^j\nu_k$ & decreasing in $\tau\ge20$ (checked on $[20,400]$); taken at $\tau_{\min}$\\
+$\tau^j\nu_k$, $\omega_2$ & decreasing in $\tau\ge20$ (proved, App.~\ref{app:tau}); taken at $\tau_{\min}$\\
 $U_1$, $U_2$, $\gamma_P$, $c_\chi$ & increasing in $\ell$; taken at $\ell_b$\\
 \end{tabular}
 \end{center}
@@ -80,3 +83,62 @@ All terms are carried as logarithms and normalised by the largest part before ex
 Exponents are clipped at $700$ for positive parts (clipping lowers them) and at $709$ for negative parts, and a negative part is never rounded down to zero (a floor of $10^{-300}$ is added).
 Underflow of a positive part only drops a non-negative quantity.
 Underflow of $e^{-y/2}$ drops the positive term that carries it.
+
+\emph{The $\mu$ tails.}
+The variable $\mu$ enters the bounds only through $G$ and $G/\mu$.
+\begin{itemize}
+\item Upper tail $[\mu_{\max},\infty)$.
+  Since $\Pi^*$ decreases for $\mu\ge2$, $G\le\Pi^*(\mu_{\max})g_s(r)$.
+  The positive term with $G/\mu$ (the part $GA/(\mu(2+r))$ of the numerator) is bounded below by $0$.
+  The negative terms with $G/\mu$ are bounded by $\Pi^*(\mu_{\max})g_s/\mu_{\max}$.
+\item Lower tail $(0,e^{-30}]$.
+  For $\mu<2$, $P\le\mu\Qb^2$, so $G=\mu\rho$ with $\rho\in[0,\Qb^2g_s]$.
+  For fixed $A$ the bound is affine in $G$ and in $G/\mu$, hence affine in $\mu$ at fixed $\rho$ and affine in $\rho$ at fixed $\mu$.
+  Its minimum over $A$ is concave along both axes, so its minimum over the rectangle $(\mu,\rho)\in(0,e^{-30}]\times[0,\Qb^2g_s]$ is attained at a corner.
+  The corners are $G=0$; $(G,G/\mu)=(0,\Qb^2g_s)$, the limit $\mu\to0$; and $(e^{-30}\Qb^2g_s,\Qb^2g_s)$.
+  A box is accepted when all three pass.
+  Bounding the positive $G$ terms at $\mu\to0$ and the negative ones at $e^{-30}$ separately does not close near $b=10^4\sigma^2$: the $W$ term and its remainder carry the same $G$.
+\item The strip $b\to0$ of certificate (i).
+  The only term increasing in $b$ is $k_0=b/(8r)$; the strip $(0,b_{\rm lo}]$ uses $k_0\ge0$.
+\end{itemize}
+An infinite end never enters a finite operand: it only produces exact $-\infty$ terms, which the log-sum-exp and the netting drop exactly.
+The bounds $B$ and $\eta_t$ above therefore use the finite ends only, and the rules are otherwise unchanged.
+
+\emph{The wedge: boxes in $(\mu,r,\beta,\ell)$.}
+The terms are those of certificate~(ii), with $b=\beta\sigma^2$.
+\begin{itemize}
+\item (J1) A term $c\,b^k\sigma^p$ becomes $c\,\beta^k\sigma^{p+2k}$; the powers now range over $-1,\dots,3$.
+\item (J2) $y=(1-b)^2/(2\beta)$, so $y\le1/(2\beta_a)$ and $y\ge(1-b_{\rm hi})^2/(2\beta_b)$, independent of $\sigma$.
+\item (J3) Since $b\le b_{\max}$, a box with $\beta\ge\beta_a$ contains only $\sigma\le\sigma_{\rm eff}=\min(e^{-\ell_a},\sqrt{b_{\max}/\beta_a})$.
+  A box with $\sigma_{\rm eff}<e^{-\ell_b}$ is empty.
+\item (J4) $b\le b_{\rm hi}=\min(\beta_b\sigma_{\rm eff}^2,b_{\max})$.
+\item (J5) Terms of equal power are combined at equal $\sigma$ and then bounded at the worse end; for $p<0$ the ends swap.
+\item (J6) The $b$ part of the bracket, $\beta\sigma^2/(a'+\sigma)$, increases with $\sigma$.
+  Its positive net is bounded at $\sigma_{\rm lo}$, shift included; the larger of this and the v1.0 bound is used.
+\end{itemize}
+With $\beta$ alone, the column $[55.26,65.26]$ does not close.
+In the wedge the main balance $2\sqrt{\alpha\beta_H}$ grows like $\sigma$, and so does the largest cost, $\approx1.1\sigma$; they are measured at opposite ends of the column, a loss of $e^{\ell_b-\ell_a}$.
+A box of width $1$ in $\ell$ around the stuck point passes with margin $0.999$.
+Therefore $\ell$ is a fourth box variable.
+Each box takes $\gamma=T_{10}(\ell_a)/\sqrt{\ell_a}$, decreasing in $\ell$, at its own $\ell_a$; the window constants $U_1,U_2,\gamma_P,c_\chi$, increasing in $\ell$, at its own $\ell_b$; and $\sigma\in[e^{-\ell_b},\sigma_{\rm eff}]$.
+Boxes are bisected in $\ell$ as in the other variables (the widest of $\Delta\log\mu$, $0.7\Delta\log r$, $0.7\Delta\log\beta$ and $2\Delta\ell$).
+The $\mu$ range is complete: the lower tail with the corners above, $[e^{-30},10^{-4}]$, the $16$ boxes of v1.0 and the upper tail.
+\emph{Skip rule (K5).}
+A box with $\beta_a\ge10^4e^{2(\ell'_b-\ell_a)}$, where $\ell'_b$ is the box's own upper end of $\ell$ and $\ell_a$ the column's lower end, contains only states with $b\ge10^4\sigma_{\rm top}^2$.
+These belong to the v1.0 boxes or to the $\mu$ tails, and the box is skipped.
+\emph{Rounding.}
+The number of operands per term does not grow ($2\log\sigma-\log b$ becomes $-\log\beta$).
+$\log\sigma_{\rm eff}$ is computed with three operations and moved outwards by $10^{-9}$.
+The quantities that depend on $\ell$ are computed from the box's own floating ends with at most six further operations; their error, below $20u$ relative, lies inside the allowance $1000Su$ of every term.
+
+\emph{Checks of the new steps \numst.}
+Before use, the new inequalities were attacked with random boxes and states.
+\begin{itemize}
+\item The functions used for the tails and the wedge are generated from the v1.0 term table by a fixed list of textual replacements (\code{cq\_make.py}).
+  In the form of the v1.0 boxes they agree with the v1.0 functions bit for bit on $42000$ boxes.
+\item The components (J2)--(J5), the corner claim, the ends of $\gamma$ and of the window constants, and the skip rule hold on $10^4$ to $9\times10^4$ random points each.
+\item Accepted boxes contain no negative state, with the target drawn at random: $2.2\times10^{4}$ states in the tails of (ii), $7.2\times10^{3}$ in those of (i), $1.4\times10^{4}$ in the wedge.
+\item Ten deliberately wrong versions are all broken: the ends of (J2), (J4) or (J5) swapped; the power shift of (J1) forgotten; the corner $G=0$ forgotten; $\Pi^*$ at the wrong end; $\gamma$ or the window constants at the wrong end of $\ell$; the skip rule at the wrong end; the $\tau$ factors with $\beta=0.6\tau$.
+\end{itemize}
+(\code{cp\_checks.py}, \code{cq\_checks.py}.)
+

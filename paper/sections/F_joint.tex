@@ -1,0 +1,38 @@
+\section{The search for a joint brightness bound}
+\label{app:joint}
+
+The local envelope of Sec.~\ref{sec:open:tau} needs a bound of the brightness $P_\theta$ that depends on the spread $\kappa$.
+Before trying to prove a candidate we tried to break it, with the search plan written before the computation and with deliberately wrong versions as a check of the search's power \numst\ (\code{cn\_search.py}).
+All local quantities are computed from exact Fourier sums.
+
+\emph{Candidates.}
+The first form, $P_\theta\le\min(W,\Psi)\min(1,\sqrt{2\kappa})$ with $W=2\mu_\theta\Qb^2$, broke at $\mu_\theta=0.015$ (focus on the crest of the fundamental, a narrow packet on top), with ratio $1.58$.
+The form
+\begin{equation}
+P_\theta\le\min\bigl(2\mu_\theta\Qb^2,\ \Psi(\mu_\theta,b)\min(1,\sqrt{2\kappa})\bigr)
+\end{equation}
+survived six scans (about $3.6\times10^4$ states and hill climbing), with largest ratio $0.998$.
+
+\emph{Families.}
+\begin{itemize}
+\item Coherent packets up to the limit of positivity, at the node, crest and trough of the fundamental; foci at the centre, at $\pm\sqrt\tau$ and at a distant node; widths $1$ to $256$; cosine and sine; five values of $x$, four of $\mu_0$, four of $b$ ($30144$ evaluations).
+\item Narrow packets at small $x$ with a flat band ($576$) and with a Gaussian envelope in $n$ ($216$, $\kappa$ down to $10^{-6}$).
+\item Two packets; combs with teeth from $0.1x$ to $100x$; $3000$ random bands; hill climbing ($6$ candidates $\times$ $27$ starts $\times$ $200$ steps).
+\end{itemize}
+
+\emph{Power of the search.}
+Four deliberately wrong versions were all broken:
+\begin{itemize}
+\item ``$\kappa\ge1/2$'' by a factor $2.9\times10^{5}$;
+\item $\sqrt\kappa$ replaced by $\kappa$, by $23.4$;
+\item the constant $0.3$, by $3.6$;
+\item the constant divided by $10$, by $2.0$.
+\end{itemize}
+The second needed the Gaussian-envelope packets.
+A packet with a flat band has tails $1/s^2$, its $\kappa$ is set by the tails, and it looks like $P\propto\kappa$; with a Gaussian envelope the ratio grows like $\kappa^{-1/2}$ as $\kappa\to0$.
+For $\mu_\theta\ge2$ and small $\kappa$ the largest ratio of the surviving form is $0.099$, i.e.\ a true constant near $0.14$ in $P_\theta\le C\Psi\sqrt\kappa$.
+The proved bound $\Psi_2$ of Sec.~\ref{sec:open:tau} has the constant $25$--$50$ there.
+The loss comes from comparing $E_0$ at the two foci, $E_0^{(\tau')}\le\sqrt{\tau/\tau'}E_0$, which enters the exponent.
+
+\emph{Picture.} A packet narrower than the focus is, over the whole period, darker by its width.
+Inside the focus its brightness is the height of the focus times its whole energy, so a concentrated packet obeys $P_\theta\propto\sqrt\kappa$.

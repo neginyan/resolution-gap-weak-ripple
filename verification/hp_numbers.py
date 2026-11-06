@@ -21,7 +21,7 @@ def numbers(root):
     MAIN = jl('cl_main_cells.jsonl')          # certificate (i) with the rule of App. E (stage CL)
     CC = sorted([r for r in MAIN if r['cert'] == 'cc'], key=lambda r: r['ell_a'])
     assert all(r['closed'] for r in CC) and sum(r['audit_violations'] for r in CC) == 0
-    add('$%d$ columns $\\ell\\in[%.2f,%.1f]$ close, with $%d$ audit points' % (len(CC), dn(CC[0]['ell_a'], 2), CC[-1]['ell_b'], sum(r['audit_points'] for r in CC)), len(CC), 'cc_cells')
+    add('$%d$ columns $\\ell\\in[%.3f,%.1f]$ close, with $%d$ audit points' % (len(CC), CC[0]['ell_a'], CC[-1]['ell_b'], sum(r['audit_points'] for r in CC)), len(CC), 'cc_cells (v1.1: the exact start 55.262)')
     D = sorted([r for r in MAIN if r['cert'] == 'cd'], key=lambda r: r['ell_a'])
     assert all(r['closed'] for r in D) and sum(r['audit_violations'] for r in D) == 0
     add('all $%d$ columns $\\ell\\in[%.2f,%.1f]$ close' % (len(D), D[0]['ell_a'], D[-1]['ell_b']), len(D), 'cd_cells')
@@ -71,10 +71,7 @@ def numbers(root):
     bt = {x['tau']: x for x in TT['beats']['rows']}[0.01]
     add('$[%.3f,%.3f]$ at $\\tau=0.01$' % (bt['local_over_period_min'], bt['local_over_period_max']), bt['local_over_period_max'], 'ch_tau beats (numerical)')
     LO = json.load(open(R('ci_local.json')))
-    add('we found was $%.2f$' % up(LO['worst']['rho_max'], 2), LO['worst']['rho_max'], 'ci_local local Z3 ratio (ceil)')
-    EV = json.load(open(R('ci_envloc.json')))
-    add('$%.4f$ at $\\ell=55.26$ and $%.4f$ at $\\ell=3453.88$' % (dn(EV['55.26']['local_C10'], 4), dn(EV['3453.88']['local_C10'], 4)), EV['3453.88']['local_C10'], 'ci_envloc C = 10 (floor)')
-    assert all(v['local_C10'] >= v['T10'] for v in EV.values())
+    add('The value $%.2f$ came from' % up(LO['worst']['rho_max'], 2), LO['worst']['rho_max'], 'ci_local: the v1.0 ratio, now the source of the error (ceil)')
     NP = json.load(open(R('cj_nop2.json')))
     add('by factors $%.2f$ to $%d$' % (dn(NP['min_ratio'], 2), int(NP['max_ratio'])), NP['min_ratio'], 'cj_nop2 (numerical)')
     PR = jl('ci_link_cells.jsonl'); best = {}
@@ -95,6 +92,48 @@ def numbers(root):
     add('Its margin $%s$ above $0.99977$' % sci(dn(TB['tau_cells']['margin'] / 1e-6, 1) * 1e-6), TB['tau_cells']['margin'], 'cl_tau_be margin (floor)')
     add('more than $%d\\times10^{9}$ times this bound' % int(TB['tau_cells']['margin_over_bound'] // 1e9), TB['tau_cells']['margin_over_bound'], 'cl_tau_be ratio (floor)')
     add('agrees to within $%s$' % sci(up(TB['tau_cells']['max_rel_err_double_vs_decimal'] / 1e-16, 1) * 1e-16), TB['tau_cells']['max_rel_err_double_vs_decimal'], 'cl_tau_be decimal agreement (ceil)')
+    # ---- v1.1: the covering (stages CP, CQ)
+    T2 = jl('cq_tails_ii.jsonl'); T1 = jl('cq_tails_i_w0.jsonl'); WG = jl('cq_wedge.jsonl'); CV = json.load(open(R('cq_cover.json')))
+    assert len(T2) == len(L) and all(t['closed'] for t in T2) and len(WG) == len(L) and all(w['closed'] for w in WG) and len(T1) == len(MAIN) and all(t['closed'] for t in T1)
+    s3 = lambda v: '%.2f\\times10^{%d}' % (v / 10 ** int(math.floor(math.log10(v))), int(math.floor(math.log10(v))))
+    add('$%d$ of $10^5$ states for (ii)' % CV['POWER ii: v1.0 table alone']['missed'], CV['POWER ii: v1.0 table alone']['missed'], 'cq_cover v1.0 table')
+    assert CV['ii repaired (body + tails + wedge + BE)']['missed'] == 0 and CV['ii repaired (body + tails + wedge + BE)']['states'] == 100000
+    assert all(CV['i %s repaired (body + mu tails + b strip)' % k]['missed'] == 0 and CV['i %s repaired (body + mu tails + b strip)' % k]['states'] == 50000 for k in ('cc', 'cd'))
+    npw = sum(1 for k in CV if k.startswith('POWER')); assert all(CV[k]['missed'] > 0 for k in CV if k.startswith('POWER'))
+    add('each of %s deliberately damaged tables' % {11: 'eleven'}[npw], npw, 'cq_cover damaged tables')
+    add('close on all $%d+%d$ columns ($%s$ boxes)' % (len(CC), len(D), s3(sum(t['cells_evaluated'] for t in T1))), sum(t['cells_evaluated'] for t in T1), 'cq_tails_i')
+    add('($%s$ boxes, $%d$ CPU minutes)' % (s3(sum(t['cells_evaluated'] for t in T2)), round(sum(t['seconds'] for t in T2) / 60)), sum(t['cells_evaluated'] for t in T2), 'cq_tails_ii')
+    add('($%s$ boxes, $%.1f$ CPU hours; at most $%s$ boxes in a column)' % (s3(sum(w['cells_evaluated'] for w in WG)), sum(w['seconds'] for w in WG) / 3600, s3(max(w['cells_evaluated'] for w in WG))), sum(w['cells_evaluated'] for w in WG), 'cq_wedge')
+    add('is skipped ($%s$ boxes)' % s3(sum(w['skipped_boxes'] for w in WG)), sum(w['skipped_boxes'] for w in WG), 'cq_wedge skipped')
+    add('$\\mu\\in[e^{-30},\\mu_{\\max}e^{60}]$ ($%s$ boxes)' % s3(sum(r['cells_evaluated'] for r in L)), sum(r['cells_evaluated'] for r in L), 'cl_link_cells total')
+    QC = json.load(open(R('cq_checks.json')))
+    add('bit for bit on $%d$ boxes' % QC['F1_identity']['boxes'], QC['F1_identity']['boxes'], 'cq_checks identity')
+    assert QC['F1_identity']['phi_b_maxdiff'] == 0 and QC['F1_identity']['phi_bl_maxdiff'] == 0 and all(QC['wrong_broken'].values())
+    add('$%s$ states in the tails of (ii), $%s$ in those of (i), $%s$ in the wedge' % tuple('%.1f\\times10^{%d}' % (v / 10 ** int(math.log10(v)), int(math.log10(v))) for v in (QC['F3_ii']['points'], QC['F3_i']['points'], QC['F3_w']['points'])), QC['F3_w']['points'], 'cq_checks F3')
+    add('A $60$-digit evaluation on $%d$ points of $[20,10^8]$' % QC['K6']['grid'], QC['K6']['grid'], 'cq_checks K6')
+    # ---- v1.1: the narrow focus (Sec. IX A; stages CM, CN, CO)
+    CM = json.load(open(R('cm_counter.json')))
+    add('$P_\\theta/\\Pi^*(\\mu_\\theta)=%.1f$ at $x=0.003$ and $%.1f$ at $x=10^{-6}$' % (CM['headline'][0]['rho'], CM['best']['rho']), CM['best']['rho'], 'cm_counter (numerical)')
+    EO = json.load(open(R('co_envmin_opt.json'))); EM = json.load(open(R('co_envmin.json')))
+    lab = {'55.26': '$\\ell=55.26$', '110.52': '$110.5$', '221.05': '$221$', '455.26': '$455$', '690.78': '$690.8$', '960.8': '$960.8$'}
+    for k in EO:
+        add('$%.4f$ vs $%.4f$ (%s)' % (EO[k]['min'], EO[k]['T0'], lab[k]), EO[k]['min'], 'co_envmin_opt (numerical)')
+    add(', '.join('$%.4f$' % EM[k]['min'] for k in ('55.26', '110.52', '221.05', '455.26', '690.78')) + ' and $%.4f$' % EM['960.8']['min'], EM['55.26']['min'], 'co_envmin grid (K, L) (numerical)')
+    CO = json.load(open(R('co_remainders.json'))); Dv = CO['55.26']['argmin_envmin_opt eta=1/ell']['worst_all_x']['D']
+    add('$D\\le%s$ at $\\ell=55.26$' % sci(up(Dv / 1e-5, 1) * 1e-5), Dv, 'co_remainders (ceil)')
+    RT = json.load(open(R('co_rtheta.json'))); neg = [x for x in RT['states'] if x['lemma_R_period'] < 0]
+    add('on $%d$ states with $\\tau$ from $0.3$ to $20$' % len(RT['states']), len(RT['states']), 'co_rtheta')
+    add('it keeps $%d$--$%d\\,\\%%$ of the exact value' % (round(100 * min(x['ratio_theta'] for x in neg)), round(100 * max(x['ratio_theta'] for x in neg))), min(x['ratio_theta'] for x in neg), 'co_rtheta (rounded)')
+    E2 = json.load(open(R('co_envpsi2.json'))); WT = json.load(open(R('cm_wterm.json')))
+    add('falls to $%.2f$ ($\\kappa\\ge10^{-12}$) and to the $W$-free value $%.2f$' % (E2['55.26']['Cinf_kmin=1e-12'], WT['55.26']['x0']), E2['55.26']['Cinf_kmin=1e-12'], 'co_envpsi2, cm_wterm (numerical)')
+    add('($%.4f$ instead of $%.4f$)' % (E2['55.26']['Psi2'], EM['55.26']['min']), E2['55.26']['Psi2'], 'co_envpsi2 grid vs co_envmin')
+    CN = json.load(open(R('cn_search.json'))); C1 = json.load(open(R('cn_search_round1.json')))
+    add('with ratio $%.2f$' % C1['worst']['C1']['ratio'], C1['worst']['C1']['ratio'], 'cn_search round 1')
+    add('with largest ratio $%.3f$' % CN['worst']['C1']['ratio'], CN['worst']['C1']['ratio'], 'cn_search C1')
+    add('by a factor $%s$' % sci(CN['worst']['W1']['ratio']), CN['worst']['W1']['ratio'], 'cn_search W1')
+    add('replaced by $\\kappa$, by $%.1f$' % CN['worst']['W2']['ratio'], CN['worst']['W2']['ratio'], 'cn_search W2')
+    add('the constant $0.3$, by $%.1f$' % CN['worst']['W3']['ratio'], CN['worst']['W3']['ratio'], 'cn_search W3')
+    add('divided by $10$, by $%.1f$' % CN['worst']['W4']['ratio'], CN['worst']['W4']['ratio'], 'cn_search W4')
     return out
 
 def check(root, texdir):

@@ -1,0 +1,138 @@
+{
+ "plan": "CN_\u63a2\u7d22\u8a08\u753b.md",
+ "seconds": 1001.4827556610107,
+ "log": [
+  "packets: 30144 evaluations",
+  "narrow packets (small x): 576 evaluations",
+  "gaussian-envelope narrow packets: 216 evaluations",
+  "two packets: 30 evaluations",
+  "combs: 108 evaluations",
+  "random: 3000 evaluations",
+  "hill climb C1: max ratio 0.998 over 27 starts",
+  "hill climb C2: max ratio 0.9085 over 27 starts",
+  "hill climb W1: max ratio 2221 over 27 starts",
+  "hill climb W2: max ratio 3.472 over 27 starts",
+  "hill climb W3: max ratio 3.643 over 27 starts",
+  "hill climb W4: max ratio 1.506 over 27 starts",
+  "C1: worst ratio 0.998 -> survived  (hill climb for C1 from start)",
+  "C2: worst ratio 0.9108 -> survived  (hill climb for W3 from start)",
+  "W1: worst ratio 2.927e+05 -> BROKEN  (gauss packet x=1e-07 mu0=5 W=4000 sig_n=597.015 at node cos focus centre b=1e-07)",
+  "W2: worst ratio 23.37 -> BROKEN  (gauss packet x=1e-08 mu0=5 W=4000 sig_n=597.015 at node cos focus centre b=3e-08)",
+  "W3: worst ratio 3.643 -> BROKEN  (hill climb for W3 from start)",
+  "W4: worst ratio 1.983 -> BROKEN  (narrow packet x=1e-08 mu0=8 W=250 at node cos focus centre b=0.001)"
+ ],
+ "worst": {
+  "C1": {
+   "ratio": 0.9979864684065959,
+   "case": {
+    "mu": 1.2007847353852648e-10,
+    "P": 1.4979586467296116e-11,
+    "kappa": 1.271797578599353,
+    "E0": 0.06237415427541225,
+    "E1": 2.0220690676869274e-06,
+    "E1ring": 2.5716625440448855e-06,
+    "x": 3.704024433851676e-06,
+    "b": 0.7950958999471948,
+    "t0": 2.208104681360334,
+    "desc": "hill climb for C1 from start",
+    "ratio": 0.9979864684065959
+   }
+  },
+  "C2": {
+   "ratio": 0.9107670036006194,
+   "case": {
+    "mu": 5.037042665471133,
+    "P": 0.03574409690852672,
+    "kappa": 1.0441168694789997,
+    "E0": 0.0035481233019477956,
+    "E1": 5.957349484754453,
+    "E1ring": 6.2201690944141514,
+    "x": 0.003,
+    "b": 1.0,
+    "t0": 1.5213132504496427,
+    "desc": "hill climb for W3 from start",
+    "ratio": 0.9107670036006194
+   }
+  },
+  "W1": {
+   "ratio": 292696.67355314683,
+   "case": {
+    "mu": 3.7631174916511636,
+    "P": 4.664169045295682e-05,
+    "kappa": 1.7082531001474186e-06,
+    "E0": 6.197214218853899e-06,
+    "E1": 233.2084522647841,
+    "E1ring": 0.00039837906156189873,
+    "x": 1e-07,
+    "b": 1e-07,
+    "t0": 1.5707963267948966,
+    "desc": "gauss packet x=1e-07 mu0=5 W=4000 sig_n=597.015 at node cos focus centre b=1e-07",
+    "ratio": 292696.67355314683
+   }
+  },
+  "W2": {
+   "ratio": 23.372915169421322,
+   "case": {
+    "mu": 4.524932468461915,
+    "P": 6.948349007226056e-05,
+    "kappa": 4.248455127196874e-06,
+    "E0": 7.677848294593325e-06,
+    "E1": 3474.1745036130283,
+    "E1ring": 0.014759874482651425,
+    "x": 1e-08,
+    "b": 3e-08,
+    "t0": 1.5707963267948966,
+    "desc": "gauss packet x=1e-08 mu0=5 W=4000 sig_n=597.015 at node cos focus centre b=3e-08",
+    "ratio": 23.372915169421322
+   }
+  },
+  "W3": {
+   "ratio": 3.6430680144024774,
+   "case": {
+    "mu": 5.037042665471133,
+    "P": 0.03574409690852672,
+    "kappa": 1.0441168694789997,
+    "E0": 0.0035481233019477956,
+    "E1": 5.957349484754453,
+    "E1ring": 6.2201690944141514,
+    "x": 0.003,
+    "b": 1.0,
+    "t0": 1.5213132504496427,
+    "desc": "hill climb for W3 from start",
+    "ratio": 3.6430680144024774
+   }
+  },
+  "W4": {
+   "ratio": 1.9831381283654654,
+   "case": {
+    "mu": 7.978233613976692,
+    "P": 0.0024931545806674946,
+    "kappa": 0.903104509749492,
+    "E0": 0.00015624727861439494,
+    "E1": 124657.72903337472,
+    "E1ring": 112578.95726517089,
+    "x": 1e-08,
+    "b": 0.001,
+    "t0": 1.5707963267948966,
+    "desc": "narrow packet x=1e-08 mu0=8 W=250 at node cos focus centre b=0.001",
+    "ratio": 1.9831381283654654
+   }
+  }
+ },
+ "hill_climb_max": {
+  "C1": 0.9979864684065959,
+  "C2": 0.9085160270798518,
+  "W1": 2220.6400502722186,
+  "W2": 3.4721357903026333,
+  "W3": 3.6430680144024774,
+  "W4": 1.5055052918899967
+ },
+ "verdict": {
+  "C1": "survived",
+  "C2": "survived",
+  "W1": "BROKEN",
+  "W2": "BROKEN",
+  "W3": "BROKEN",
+  "W4": "BROKEN"
+ }
+}

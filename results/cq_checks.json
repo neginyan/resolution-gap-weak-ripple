@@ -1,0 +1,131 @@
+{
+ "F1_identity": {
+  "phi_b_maxdiff": 0.0,
+  "phi_bl_maxdiff": 0.0,
+  "sign_dis": 0,
+  "ok_i_dis": 0,
+  "boxes": 42000
+ },
+ "K1": {
+  "states": 20000,
+  "violations_G": 0,
+  "violations_G_over_mu": 0
+ },
+ "K5": {
+  "skipped_boxes": 1403,
+  "violations": 0
+ },
+ "K2": {
+  "rectangles": 3000,
+  "points": 90000,
+  "violations": 0
+ },
+ "K4": {
+  "boxes": 20000,
+  "violations_gamma": 0,
+  "violations_window_consts": 0
+ },
+ "F3_ii": {
+  "boxes": 300,
+  "accepted": 300,
+  "points": 21600,
+  "violations": 0
+ },
+ "F3_i": {
+  "boxes": 300,
+  "accepted": 300,
+  "points": 7200,
+  "violations": 0
+ },
+ "F3_w": {
+  "boxes": 300,
+  "accepted": 300,
+  "points": 14400,
+  "violations": 0
+ },
+ "adv_w": {
+  "tried": 45,
+  "false_acceptances": 0
+ },
+ "K6": {
+  "grid": 4000,
+  "tau_from": 20.0,
+  "beta_over_tau": "0.000001",
+  "increases": {
+   "nu0": 0,
+   "tau nu2": 0,
+   "tau^2 nu4": 0,
+   "sqrt(tau) nu1": 0,
+   "tau^1.5 nu3": 0,
+   "omega2": 0
+  }
+ },
+ "wrong": {
+  "W1": {
+   "rectangles": 3000,
+   "points": 90000,
+   "violations": 52878
+  },
+  "W2": {
+   "K1": {
+    "states": 5000,
+    "violations_G": 4352,
+    "violations_G_over_mu": 4352
+   },
+   "F3_ii": {
+    "boxes": 150,
+    "accepted": 150,
+    "points": 10800,
+    "violations": 0
+   }
+  },
+  "W3": {
+   "K4": {
+    "boxes": 5000,
+    "violations_gamma": 5000,
+    "violations_window_consts": 0
+   },
+   "adv": {
+    "tried": 28,
+    "false_acceptances": 23
+   }
+  },
+  "W4": {
+   "K4": {
+    "boxes": 5000,
+    "violations_gamma": 0,
+    "violations_window_consts": 20000
+   },
+   "adv": {
+    "tried": 20,
+    "false_acceptances": 0
+   }
+  },
+  "W5": {
+   "skipped_boxes": 1978,
+   "violations": 5710
+  },
+  "W6": {
+   "grid": 400,
+   "tau_from": 20.0,
+   "beta_over_tau": "0.6",
+   "increases": {
+    "nu0": 400,
+    "tau nu2": 400,
+    "tau^2 nu4": 400,
+    "sqrt(tau) nu1": 400,
+    "tau^1.5 nu3": 400,
+    "omega2": 0
+   }
+  }
+ },
+ "wrong_broken": {
+  "W1": true,
+  "W2": true,
+  "W3": true,
+  "W4": true,
+  "W5": true,
+  "W6": true
+ },
+ "seconds": 186
+}

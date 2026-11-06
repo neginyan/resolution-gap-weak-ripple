@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this code, please cite the paper and this repository."
 title: "resolution-gap-weak-ripple: code, certificates and verification for 'Beyond few harmonics: the lower side of the logarithmic law of the resolution gap for windows with a weak ripple'"
 type: software
-version: 1.0.0
-date-released: 2026-11-04
+version: 1.1.0
+date-released: 2026-11-06
 license: MIT
 doi: "10.5281/zenodo.23932577"
 repository-code: "https://github.com/neginyan/resolution-gap-weak-ripple"

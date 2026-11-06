@@ -1,6 +1,8 @@
-"""Paper H (v1.0 draft) — verification suite (acceptance rules of App. E, stage CL).  Python 3.11.
+"""Paper H v1.1 — verification suite (acceptance rules of App. E; the covering of the states, Sec. 6).  Python 3.11.
 Default (< 30 min): grammar; every number of the manuscript re-derived from results/ (hp_numbers.py); recomputation of a SAMPLE of every certificate
 (first and last column of each cell proof, first thin-block window, the tau cells, Lemma A4* and Lemma S random checks), compared with the stored results.
+v1.1 adds: the random covering check (1e5 states for (ii), 5e4 for each claim of (i)), the generated tail/wedge functions, sample columns of the mu tails
+(i) and (ii) and of the wedge, the checks of the new steps (reduced scale), and the stored narrow-focus results of Sec. IX A.
 --recompute: recompute EVERY column and window (hours; the cell counts must equal the stored ones).
 Usage: python verification/run_all.py [--recompute] [--tex DIR]   (DIR = the folder with sections/, default paper/)."""
 import sys, os, json, math, glob, ast, time
@@ -75,9 +77,7 @@ check('Lemma BE: formula of sigma^2 G, mean-square bound, constants (kappa = %.3
 ok, dt = runpy('ci_rtheta.py'); t = json.load(open('results/ci_rtheta.json'))
 check('local corrections (L1)-(L3) on %d random windows' % t['trials'], ok and t['ok'], '%.0fs' % dt)
 ok, dt = runpy('ci_local.py'); lo = json.load(open('results/ci_local.json'))
-check('local Z3\' on (P2) windows: max ratio %.3f (paper: <= 2.13)' % lo['worst']['rho_max'], ok and lo['worst']['rho_max'] <= 2.13, '%.0fs' % dt)
-ok, dt = runpy('ci_envloc.py'); ev = json.load(open('results/ci_envloc.json'))
-check('local envelope with brightness excess C = 10 stays above T_10 at %d values of ell' % len(ev), ok and all(v['local_C10'] >= v['T10'] for v in ev.values()), '%.0fs' % dt)
+check('the v1.0 search for the local Z3\' (packets with small raw coefficients) gives the ratio %.3f quoted in Sec. IX A as the source of the v1.0 error' % lo['worst']['rho_max'], ok and lo['worst']['rho_max'] <= 2.13, '%.0fs' % dt)
 ok, dt = runpy('ci_nop2.py'); npj = json.load(open('results/cj_nop2.json'))
 check('windows without (P2) exceed Pi*(mu): ratios %.2f to %.0f' % (npj['min_ratio'], npj['max_ratio']), ok and npj['min_ratio'] > 3.4, '%.0fs' % dt)
 ok, dt = runpy('cl_tau_be.py'); TB = json.load(open('results/cl_tau_be.json'))
@@ -91,4 +91,60 @@ for p in sample:
     ci_link.set_tau_min(p['tau_min']); d = ci_link.certify(p['ell_a'], p['ell_b'], p['D'], p['lbmin_rel'], max_cells=p.get('cells_evaluated', p.get('cells', 0)) + 10)
     same &= d['closed'] == p['closed'] and (not p['closed'] or d['cells_evaluated'] == p['cells_evaluated'])
 check('single columns with Lemma A* recomputed (%s): same outcome and cell counts' % ('all %d' % len(sample) if FULL else 'ell [55.26, 65.26], tau >= 12'), same, '%.0fs' % (time.time() - t0))
+
+# ======================================================================== v1.1: the covering (Sec. 6, App. E)
+import subprocess, cq_core as Q, cq_cover as CV, cq_checks as CQC, cl_link as KL
+KL.set_tau_min(20.0)
+KL.FAC.update({'low_S0': 1.0, 'low_S2': 1.0, 'up_S2': 1.0})     # the window check above (cf_windows) leaves its Lemma S factors in cl_link.FAC; certificate (ii) uses 1
+cur = open('src/cq_phi.py').read()
+r = subprocess.run([sys.executable, 'src/cq_make.py'], capture_output=True, text=True)
+check('src/cq_phi.py is exactly what src/cq_make.py generates from the v1.0 term table (asserted replacements)', r.returncode == 0 and open('src/cq_phi.py').read() == cur)
+cols = [(r_['ell_a'], r_['ell_b']) for r_ in L]
+T2 = jl('cq_tails_ii.jsonl'); T1 = jl('cq_tails_i_w0.jsonl'); WG = jl('cq_wedge.jsonl')
+check('(ii) mu tails: %d of %d columns closed (%d boxes)' % (sum(t['closed'] for t in T2), len(cols), sum(t['cells_evaluated'] for t in T2)),
+      sorted((t['ell_a'], t['ell_b']) for t in T2 if t['closed']) == cols)
+for kind, rows in (('cc', CC), ('cd', D)):
+    t = [x for x in T1 if x['cert'] == kind]
+    check('(i) %s mu tails and b -> 0 strip: %d of %d columns closed (%d boxes)' % ('D = 0' if kind == 'cc' else 'D = 10', sum(x['closed'] for x in t), len(rows), sum(x['cells_evaluated'] for x in t)),
+          sorted((x['ell_a'], x['ell_b']) for x in t if x['closed']) == [(r_['ell_a'], r_['ell_b']) for r_ in rows])
+check('(ii) wedge, boxes in (mu, r, beta, ell): %d of %d columns closed (%d boxes, %d skipped as inside the v1.0 boxes)' % (sum(w['closed'] for w in WG), len(cols), sum(w['cells_evaluated'] for w in WG), sum(w['skipped_boxes'] for w in WG)),
+      sorted((w['ell_a'], w['ell_b']) for w in WG if w['closed']) == cols)
+t0 = time.time(); same = True
+samples = [('tails ii', Q.certify_tails_ii, (T2[0]['ell_a'], T2[0]['ell_b']), T2[0]), ('tails ii', Q.certify_tails_ii, (T2[-1]['ell_a'], T2[-1]['ell_b']), T2[-1]),
+           ('wedge', Q.certify_wedge, (WG[0]['ell_a'], WG[0]['ell_b']), WG[0])]
+mid = [w for w in WG if abs(w['ell_a'] - 455.26) < 1e-6][0]; samples.append(('wedge', Q.certify_wedge, (mid['ell_a'], mid['ell_b']), mid))
+for kind in ('cc', 'cd'):
+    t = sorted([x for x in T1 if x['cert'] == kind], key=lambda x: x['ell_a'])
+    for x in (t[0], t[-1]): samples.append(('tails i ' + kind, lambda a, b, x=x, kind=kind: Q.certify_tails_i(a, b, x['delta'], kind), (x['ell_a'], x['ell_b']), x))
+if FULL:
+    samples = [('tails ii', Q.certify_tails_ii, (t['ell_a'], t['ell_b']), t) for t in T2] + [('wedge', Q.certify_wedge, (w['ell_a'], w['ell_b']), w) for w in WG] + \
+              [('tails i', lambda a, b, x=x: Q.certify_tails_i(a, b, x['delta'], x['cert']), (x['ell_a'], x['ell_b']), x) for x in T1]
+for name, f, args, ref in samples:
+    d_ = f(*args); same &= d_['closed'] and d_['cells_evaluated'] == ref['cells_evaluated']
+check('mu tails and wedge recomputed (%s): same cell counts' % ('all columns' if FULL else '%d sample columns' % len(samples)), same, '%.0fs' % (time.time() - t0))
+cv = CV.run(100000, seed=1)
+check('covering (ii): v1.0 boxes + mu tails + wedge + Lemma BE, %d random states, %d missed' % (cv['ii repaired (body + tails + wedge + BE)']['states'], cv['ii repaired (body + tails + wedge + BE)']['missed']), cv['ii repaired (body + tails + wedge + BE)']['missed'] == 0)
+for kind in ('cc', 'cd'):
+    k = 'i %s repaired (body + mu tails + b strip)' % kind
+    check('covering (i) %s: %d random states, %d missed' % ('D = 0' if kind == 'cc' else 'D = 10', cv[k]['states'], cv[k]['missed']), cv[k]['missed'] == 0)
+pw = {k: v['missed'] for k, v in cv.items() if k.startswith('POWER')}
+check('the covering check finds every deliberately damaged table (%d tables; v1.0 table for (ii): %d missed)' % (len(pw), pw['POWER ii: v1.0 table alone']), all(v > 0 for v in pw.values()) and len(pw) == 11)
+cq = CQC.run_all(0.1)
+check('checks of the new steps at reduced scale: identity with the v1.0 functions, components, box soundness, tau factors; wrong versions broken %s' % cq['wrong_broken'],
+      cq['F1_identity']['phi_b_maxdiff'] == 0 and cq['F1_identity']['ok_i_dis'] == 0 and cq['K2']['violations'] == 0 and cq['F3_ii']['violations'] == 0 and cq['F3_i']['violations'] == 0
+      and cq['F3_w']['violations'] == 0 and sum(cq['K6']['increases'].values()) == 0 and all(cq['wrong_broken'].values()))
+CPc = json.load(open('results/cp_checks.json'))
+check('beta-box components (J2)-(J5) and the four wrong versions of stage CP (stored): violations %s, broken %s' % (CPc['J']['violations'], {k: v['broken'] for k, v in CPc['wrong'].items()}),
+      sum(CPc['J']['violations'].values()) == 0 and all(v['broken'] for v in CPc['wrong'].values()))
+cp0 = jl('cp_link_cells.jsonl')[0]
+check('control: with beta boxes but ell fixed per column, [55.26, 65.26] does not close (%s); width-1 columns do' % cp0['reason'], not cp0['closed'] and all(c['closed'] for c in jl('cp_link_control_w1.jsonl')))
+# ======================================================================== v1.1: the narrow focus (Sec. IX A), stored results
+CM = json.load(open('results/cm_counter.json'))
+check("local Z3' with one constant is false: P_theta/Pi*(mu_theta) = %.1f at x = 0.003 and %.1f at x = 1e-6" % (CM['headline'][0]['rho'], CM['best']['rho']), CM['headline'][0]['rho'] > 20 and CM['best']['rho'] > 70)
+EO = json.load(open('results/co_envmin_opt.json'))
+check('local envelope with the proved Psi_2* above T_0 at all six ell (numerical): ' + ', '.join('%s: %.4f > %.4f' % (k, v['min'], v['T0']) for k, v in EO.items()), all(v['min'] > v['T0'] for v in EO.values()) and len(EO) == 6)
+RT = json.load(open('results/co_rtheta.json'))
+check('Lemma R_theta below direct quadrature on %d states' % len(RT['states']), RT['all_ok'] and len(RT['states']) == 46)
+CN = json.load(open('results/cn_search.json'))
+check('joint-bound search: candidates C1, C2 survive, the four wrong versions are broken (%s)' % CN['verdict'], CN['verdict'] == {'C1': 'survived', 'C2': 'survived', 'W1': 'BROKEN', 'W2': 'BROKEN', 'W3': 'BROKEN', 'W4': 'BROKEN'})
 print('\n%d/%d checks passed' % (sum(res), len(res))); sys.exit(0 if all(res) else 1)

@@ -8,42 +8,131 @@ The small-$b$ edge is no longer among them: Lemma~\ref{lem:BE} closes it.
 \subsection{States with a narrow focus ($\tau<20$)}
 \label{sec:open:tau}
 
+\emph{Status.} The states with $\tau<20$ are \emph{not} covered by Theorem~\ref{thm:H1}, and they are not closed in this version.
+This subsection records what is proved about them, what is only numerical, and two corrections to v1.0.
+
 \emph{What changes.}
 When $\tau$ is small the observer sees the ripple only near the focus position $t_0$, through the wrapped normal $\theta_\tau$ (Lemma~19 of~\cite{F}).
 Lemma~R replaces these local averages by period averages and pays with factors $\nu_k\sim e^{-\tau/2}$.
 This route has a ceiling: the $\tau$ factor of the ripple part, $\sqrt{(1-\epsilon_1)(1-\nu_0)/(1+z)}\,(1-z)/(1+\nu_0)$, falls below $T_{10}/\mathrm{env}$ at $\tau\approx5.4$ ($\ell=55.26$), $10.1$ ($\ell=690.8$) and $14.1$ ($\ell=6907.8$) \derivst.
 Below the ceiling, neighbouring high harmonics beat: their difference frequency is not averaged out by a narrow focus.
 For two neighbours $m=50,51$ the focused slope energy $\langle\theta_\tau R'^2\rangle/\langle R'^2\rangle$ ranges over $[0.005,1.995]$ at $\tau=0.01$, although $m^2\tau=25$ \numst.
-
-\emph{Local averages \derivst.}
-Write $S_{0,\theta}=2\langle\theta_\tau R^2\rangle$, $S_{2,\theta}=2\langle\theta_\tau R'^2\rangle$, $\mu_\theta=xS_{2,\theta}/S_{0,\theta}$ and $P_\theta=xS_{2,\theta}$.
-Lemma~R can be rewritten with these local quantities and with $W_\theta=x\int\Gamma\langle\theta_\tau h_t^2/h\rangle$, $J_\theta=\int\Gamma\langle\theta_\tau h_w^2/h\rangle$, without ever replacing $\theta_\tau$ by one.
-Its ripple part keeps the algebraic form of Lemma~R, and the factors $\nu_k$ of the ripple part disappear.
-Three local corrections appear, each proved \proofst:
-\begin{itemize}
-\item (L1) the focus term of the $w$-information of the background is at most $2\Qb\sqrt{r/(1+r)}/L^2$, $r=s^2/L^2$;
-\item (L2) the curvature term of $W$ is at most $(2/e)\Qb\,b=0.184\,b$ for every $\tau$, because $xn^2e^{-n^2\tau/2}=b\,u\,e^{-u/2}\le2b/e$ with $u=n^2\tau$;
-\item (L3) the normalisation obeys $|Z-1|\le\Qb\sqrt{r/(1+r)}$.
-\end{itemize}
-The remaining remainder is $\Theta-\theta_\tau$.
-By Lemma~A* below it is at most $\beta\nu_1\langle|g|\rangle$, with $\beta\nu_1\le2\times10^{-6}$.
-Its right side is a period average; comparing it with the local quantities at a node of the focused ripple and at very small $\tau$ is still to be done.
-A direction we have not followed: bound $\Theta-\theta_\tau$ in real space, through the Gaussian integral in $v$ itself, with $|e^{-\alpha^2V/2}-e^{i\alpha v}|\le\alpha^2V/2+\alpha|v|$; the right side is then a local average, although with a Gaussian weight of a different width.
-Harmonics with $n^2\tau<20$ carry the energy $xn^2q0_n^2<20b\,q0_n^2$, at most $1.25\,b$ in total \proofst; they are of the size of the background.
-A second direction: combine the local quantities with Lemma~S, measuring the low part of the focused ripple by its energy rather than its sup, as Lemma~S does for period averages \conjst.
-
-\emph{The core: a local Z3$'$ \conjst.}
-With the local form of Lemma~R, everything else would follow from
+So below the ceiling the local averages must be kept.
+We write $E_0=\langle\theta_\tau R^2\rangle_t$, $E_1=\langle\theta_\tau R'^2\rangle_t$, $\mu_\theta=xE_1/E_0$, $P_\theta=2xE_1$ and
 \begin{equation}
-P_\theta\le C\,\Pi^*(\mu_\theta)
+\kappa=\langle(s^2/\tau)\,\theta_\tau R'^2\rangle_t/E_1,
 \end{equation}
-for a universal constant $C$.
-In words: even inside a narrow focus, a finer ripple must be darker.
-The reason to expect it is non-negativity: the raw profile is $f\ge0$, so a coherent wave packet in it has height at most one, and the blur damps frequency $n$ by $e^{-n^2x/2}$.
-On windows satisfying (P2) (beats, wave packets, packets placed at a zero of the fundamental, combs, random bands; focus positions on a grid of $512$, $\tau$ from $20$ down to $2/n^2$), the largest ratio $P_\theta/\Pi^*(\mu_\theta)$ we found was $2.13$ \numst.
-It occurs at the crest of the fundamental, where $\sin^2$ is twice its mean.
-The coefficient tolerates much more.
-With the main terms of the local form, (L1)--(L3) at their worst and the brightness raised to $C=10$, the envelope stays above $T_{10}$ at every $\ell$ we computed, for example $1.4664$ at $\ell=55.26$ and $1.0103$ at $\ell=3453.88$ \numst.
+with $s=t-t_0$ unfolded to the line.
+These are the local energy, slope energy, energy frequency, brightness and spread of the ripple at the focus.
+
+\emph{Two corrections to v1.0.}
+Version~1.0 conjectured a local Z3$'$ with one universal constant, $P_\theta\le C\,\Pi^*(\mu_\theta)$, and stated that the largest ratio found numerically was $2.13$.
+Both statements were wrong.
+A coherent packet of high harmonics placed at a node of the fundamental (it satisfies (P2), (P3) and positivity) gives $P_\theta/\Pi^*(\mu_\theta)=26.9$ at $x=0.003$ and $71.4$ at $x=10^{-6}$, and the ratio grows with $\mu_\theta$ \numst\ (\code{cm\_counter.py}).
+The value $2.13$ came from a search whose packets had small raw coefficients.
+Version~1.0 also stated that the ripple part of the local form of Lemma~R keeps the algebraic form of Lemma~R.
+This fails for the term $(1-e)W$: in the local form it carries the factor $\kappa$ (Lemma~\ref{lem:CN2}).
+So the narrow-focus states do not reduce to one local inequality.
+Theorem~\ref{thm:H1} is not affected: it concerns $\tau\ge20$, where Lemma~A4* bounds the remainder $\Theta-\theta_\tau$ and $\kappa\to1$.
+
+\emph{Local brightness \proofst.}
+\begin{lemma}[Lemma CM-1, local brightness] \proofst
+\label{lem:CM1}
+For every window of the class and every focus, with $E_0'=\langle\theta_{2\tau}R^2\rangle_t\le\Qb^2$,
+\begin{multline}
+xE_1\le\Bigl(1+\frac b2\Bigr)E_0\ln\frac{2B_0}{E_0}+\frac{\sqrt2}{e}\,b\,E_0',\\
+B_0=\bigl(1+\sqrt{E_0}+(E_0/2)^{1/(2+b)}\bigr)^2 .
+\end{multline}
+\end{lemma}
+The proof uses only $f\ge0$: analytic continuation of the blurred profile, Paley--Wiener for the Gaussian focus, and a one-parameter dual of the Chernoff bound for the second moment (\code{cm\_local\_bound.py}, \code{cm\_checks.py}).
+Let $\Psi(\mu_\theta,b)$ be the largest $P_\theta$ compatible with the lemma; $\Psi\approx4B_0\mu_\theta e^{-\mu_\theta}$ as $b\to0$.
+So the correct form of the local Z3$'$ is $P_\theta\le c\,\mu_\theta e^{-\mu_\theta}$, and it is proved: positivity alone makes local brightness pay for fineness.
+
+\emph{Two foci \proofst.}
+\begin{lemma}[Lemma CN-1, two foci] \proofst
+\label{lem:CN1}
+For $\tau'\le\tau$ and $\delta^2>\kappa\tau$,
+\begin{gather}
+E_1\le\sqrt{\tau'/\tau}\;e^{\delta^2/2\tau'}\,\frac{E_1^{(\tau')}}{1-\kappa\tau/\delta^2},\\
+E_0^{(\tau')}\le\sqrt{\tau/\tau'}\,E_0 ,
+\end{gather}
+where the superscript $(\tau')$ denotes the same quantity with the focus $\theta_{\tau'}$.
+\end{lemma}
+\emph{Proof.} By Chebyshev, the part of $E_1$ with $|s|>\delta$ is at most $(\tau/\delta^2)\kappa E_1$.
+For $|s|\le\delta$, $\theta_\tau(s)\le\sqrt{\tau'/\tau}\,e^{\delta^2/2\tau'}\theta_{\tau'}(s)$.
+The second inequality is $\theta_{\tau'}\le\sqrt{\tau/\tau'}\,\theta_\tau$ pointwise. \qed
+
+With $\delta^2=K\kappa\tau$ and $\tau'=L\delta^2$ ($K>1$, $L>0$, $LK\kappa\le1$), Lemma~\ref{lem:CM1} at the narrower focus gives the \emph{joint bound} $P_\theta\le\Psi_2(\mu_\theta,b,\kappa)\le\Psi(\mu_\theta,b)$ \proofst.
+It decays like $\sqrt\kappa$ for $\kappa\le10^{-3}$, with a constant $25$--$50$ relative to $\Psi\sqrt\kappa$, and equals $\Psi$ for $\kappa>1/2$.
+Optimising $(K,L)$ continuously instead of on a grid gives a smaller bound $\Psi_2^*$, still proved.
+A numerical search for the sharp joint bound found $P_\theta\le\min(2\mu_\theta\Qb^2,\Psi\min(1,\sqrt{2\kappa}))$ on every window tried, with a true constant near $0.14$ in the $\sqrt\kappa$ law \numst\ (App.~\ref{app:joint}); this sharper form is not proved.
+
+\emph{The local $F$ term \proofst.}
+\begin{lemma}[Lemma CN-2, local $F$ term] \proofst
+\label{lem:CN2}
+Let $\mathrm{se2}=s^2/(2+r)$, $g_s=\int\Gamma e^{-w^2/s^2}$, $W_\theta=xg_sE_1$, $y=(1-b)^2\sigma^2/(2b)$, and let $\xi_e$, $\bar\chi_e$ be the even and the remaining parts of the phase correction of App.~D of~\cite{F}.
+Then the $F$ term of the local identity satisfies
+\begin{multline}
+\sigma^2\bigl(G[F]-\mathrm{Re}\,A[Fe^{i\psi}]\bigr)\ge\frac{W_\theta}{1+\eta}\Bigl[\bigl(1-e^{-\mathrm{se2}/4}\bigr)-\bar\chi_e\\
++e^{-\mathrm{se2}/4}\Bigl(\frac y2\,\kappa-\xi_e\sqrt{y\kappa}-0.51\,y^2\frac{E_1^{(2\tau)}}{E_1}\Bigr)\Bigr].
+\end{multline}
+\end{lemma}
+\emph{Proof sketch.} In the exact identity of App.~D of~\cite{F}, $A[g]=\mathbb E_\rho[e^{i\beta s/\tau}g]$ is a tilted Gaussian average on the line.
+The Gaussian average in $w$ gives the factor $e^{-\mathrm{se2}/4}$.
+The even part of the phase correction is bounded with $|\sin(\beta s/\tau)|\le\beta|s|/\tau$ and Cauchy--Schwarz, which gives $\xi_e\sqrt{y\kappa}$.
+The chirp uses $1-\cos z\ge z^2/2-z^4/24$ and $(s^4/\tau^2)\theta_\tau\le12.25\,\theta_{2\tau}$. \qed
+
+The second bracket is the local form of $(1-e)W$: the factor $(1-e)\approx y/2$ carries $\kappa$.
+For $\tau\ge20$ the focus covers the period, $\kappa\to1$, and the bound of Lemma~A4* is recovered.
+
+\emph{The local route as a lemma with explicit remainders \proofst.}
+Lemma~BL3 of~\cite{F} rests on an exact identity, (BLid), for $\sigma^2\int Ps_v^2\phi\,dv$.
+Reading it with the local averages kept gives the local form of Lemma~R.
+\begin{lemma}[Lemma R$_\theta$, the local route] \proofst
+\label{lem:Rtheta}
+For every periodic window state, $(a)+(a')\ge\mathrm{Num}_\theta/(\sigma\,\mathrm{den}_\theta)$.
+The main parts are those of Lemma~R with $(S_0,S_2)$ replaced by $(2E_0,2E_1)$ and no factor $\nu_k$.
+The $F$ term is that of Lemma~\ref{lem:CN2}, so the term $(1-e)W$ carries $\kappa$.
+The remainders are seventeen explicit terms $N_1$--$N_{17}$ in the numerator and $D_1$--$D_3$ in the denominator (\code{co\_remainders.py}):
+\begin{itemize}
+\item the local normalisation $Z=1+k_ER_\theta$, $|R_\theta|\le\eta$, on the $b$ terms;
+\item the focus term of the $w$ information (L1), at most $2\Qb\sqrt{r/(1+r)}/L^2$;
+\item the curvature term of $W$ (L2), at most $(2/e)\Qb\,b=0.184\,b$;
+\item the corrections of $A_w$, with the ring-weighted average $\langle(s^2/\tau)\theta_\tau\,\cdot\,\rangle$;
+\item the first- and second-order chirp remainders of Lemma~\ref{lem:CN2};
+\item the local failure of the parity identity $\langle hG\rangle=-\langle F\rangle$, a term $\sigma^3\sqrt{xE_1}$;
+\item the local forms of $a_3,a_6,a_8,a_{10}$, in which $\nu_1$ becomes $\sqrt{(1+y)/\tau}$ and $N_1$ becomes $\sqrt{E_1}$ (Cauchy--Schwarz on the line), with the envelope factors of $\gamma_P$ kept.
+\end{itemize}
+The remainders $a_1,a_2,a_5,a_9$ and the factors $\epsilon_1$, $1\pm\nu_0$, $z$, $\omega_2$ of Lemma~R have no local counterpart.
+\end{lemma}
+Each new inequality was first attacked numerically, with deliberately wrong versions that the search broke \numst.
+The search covered packets at the node, crest and trough of the fundamental, flat and Gaussian envelopes, two packets, combs, $150$ random bands, foci on and off the packet, and $\tau$ from $10^{-4}$ to $20$; seven deliberately wrong versions were all broken.
+The whole lemma was then compared with direct two-dimensional quadrature on $46$ states with $\tau$ from $0.3$ to $20$.
+It holds on all of them, and where Lemma~R is negative it keeps $27$--$94\,\%$ of the exact value \numst\ (\code{co\_rtheta.py}).
+
+\emph{The remainders cost almost nothing \numst.}
+Let $D$ be the room left after the remainders of Lemma~\ref{lem:Rtheta} are paid, in the target $T_D=1+(2.1+D)/\ell+2.5\times10^{-4}$.
+At the minima of the local envelope and over every admissible $x$, the sum of the remainders relative to the numerator is $D\le1.2\times10^{-5}$ at $\ell=55.26$ and far smaller at larger $\ell$ (\code{co\_remainders.py}).
+So the target that is left after the remainders is $T_0$ itself.
+
+\emph{The envelope with the proved brightness bound \numst.}
+With $P_\theta\le\min(2\mu_\theta\Qb^2,\Psi_2^*(\mu_\theta,b,\kappa))$, the $\kappa$-weighted $W$ term and the corrections (L1)--(L3) at their worst, we minimised the local envelope over $\mu_\theta$, $b$, $r$, $\kappa\ge10^{-30}$ and the width $A$ by a multi-start Nelder--Mead search (\code{co\_envmin.py}).
+It exceeds $T_0$ at every $\ell$ of the table:
+$1.1349$ vs $1.0383$ ($\ell=55.26$), $1.0729$ vs $1.0193$ ($110.5$), $1.0394$ vs $1.0098$ ($221$), $1.0208$ vs $1.0049$ ($455$), $1.0144$ vs $1.0033$ ($690.8$), and $1.0107$ vs $1.0024$ ($960.8$).
+With the grid of $(K,L)$ the values are $1.1343$, $1.0723$, $1.0365$, $1.0150$, $1.0071$ and $1.0026$.
+The nine windows that refute Conjecture~C need $\Lambda_ST\ge1$, i.e.\ $T\ge1.022$, $1.014$, $1.008$ at $\sigma=10^{-48},10^{-96},10^{-300}$; the same envelope passes there too.
+A uniform room $10/\ell$ for Corollary~S, as in Theorem~\ref{thm:H1}, is not available below $\ell\approx960$ on this route.
+These are numerical minima, not certificates: the states with $\tau<20$ remain open until the envelope is certified by cells.
+
+\emph{Two corrections to our own first computations.}
+A first computation of this envelope took $\kappa\ge10^{-4}$ and concluded that a remainder budget $D\le2$ would make a joint bound unnecessary.
+That was wrong: as $\kappa\to0$ the $W$ term vanishes and the envelope without a joint bound falls to $0.95$ ($\kappa\ge10^{-12}$) and to the $W$-free value $0.81$, below $T_0$; a $\kappa$-dependent brightness bound is needed whatever the budget, and $\Psi_2$ is one.
+A first grid minimisation of the envelope with $\Psi_2$ also missed the minimum at $\ell=55.26$ ($1.1845$ instead of $1.1343$); the values above come from the multi-start search, whose best four starts agree to $10^{-3}$.
+
+\emph{What remains for $\tau<20$.}
+The cells of the local route, in the five variables $(\mu_\theta,r,\beta,\kappa,\ell)$, with $\ell$ subdivided as in the wedge of certificate~(ii).
+A first trial with $\ell$ fixed per column did not close, and only through the width in $\ell$ \numst.
+Also needed: the monotonicity of $\Psi_2$ inside a box, used at the corners and so far checked only numerically, and an independent audit of the cell code.
 
 \emph{Lemma A* \proofst.}
 In Lemma~23 of~\cite{F}, every remainder of the form $\nu\sup_t|g|$ may use $\nu\langle|g|\rangle$ instead.
@@ -51,7 +140,7 @@ The kernels $\Theta-1$, $\theta_\tau-\Theta$ and $\partial_t\Theta$ have absolut
 With $\langle h|\sigma^2G|\rangle\le\langle h(\sigma^2G)^2\rangle^{1/2}$ and (BE-2), the remainders $a_5$ and $a_6$ become proportional to the ripple.
 In the cells of certificate (ii) this lowers the reachable $\tau$.
 Single columns close for $\tau\ge8$ at $\ell\in[55.26,65.26]$, for $\tau\ge10$ at $\ell\in[215.26,225.26]$, and for $\tau\ge12$ at $\ell\in[455.26,465.26]$, $[695.26,705.26]$ and $[855.26,865.26]$ \caproofst{\code{ci\_link.py}, single columns}.
-A full sweep for $\tau\ge12$ is in progress and is not used in Theorem~\ref{thm:H1}.
+A full sweep for $\tau\ge12$ was not completed and is not used in Theorem~\ref{thm:H1}.
 
 \subsection{The range of \texorpdfstring{$\sigma$}{sigma}}
 \label{sec:open:sigma}
@@ -90,4 +179,6 @@ This paper proves only the lower side.
 The upper side ($g\sqrt\ell\le1+\dots$) for general windows has not been attempted; for the windows of~\cite{F} it is proved there (Theorem~12 and Corollary~13 of~\cite{F}).
 
 \emph{Picture.} The nearest restriction is the narrow focus.
-There the observer sees the ripple's brightness locally, and the one missing inequality says that local brightness, too, must pay for fineness.
+There the observer sees the ripple's brightness locally.
+Positivity alone makes local brightness pay for fineness (Lemma~\ref{lem:CM1}), a ripple hidden at the centre of the focus is dim (Lemma~\ref{lem:CN1}), and keeping the local averages costs almost nothing (Lemma~\ref{lem:Rtheta}).
+What is missing is the cell proof that turns the numerical envelope into a theorem.

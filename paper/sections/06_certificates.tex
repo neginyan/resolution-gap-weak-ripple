@@ -2,7 +2,7 @@
 \label{sec:cert}
 
 All cell proofs share one design.
-The parameters are cut into boxes in $(\log\mu,\log r,\log b)$.
+The parameters are cut into boxes in $(\log\mu,\log r,\log b)$; in the wedge of certificate~(ii) the boxes are in $(\log\mu,\log r,\log\beta,\ell)$ with $\beta=b/\sigma^2$.
 On each box every term is bounded by its worst corner; each term is monotone in each variable.
 Terms with the same power of $\sigma$ are combined at equal $\sigma$ before the worst end of the $\ell$ cell is taken.
 Everything is computed in logarithms, and underflow may only drop non-negative parts.
@@ -10,15 +10,53 @@ A box is accepted only when its margin exceeds a derived bound of the rounding e
 The floating-point model, the bounds and the rule are stated in App.~\ref{app:cells}.
 Tails in $\mu$ and $b$ are separate boxes.
 
+\emph{What the boxes cover.}
+Each certificate claims an inequality on a set of states.
+The boxes, the tail boxes and the lemmas that take over parts of the set must cover it.
+The states of Theorem~\ref{thm:H1} are:
+$\ell\in[55.26,960.8]$;
+$x\in[5\times10^{11}\sigma^2,0.003]$;
+$\tau=x/b\ge20$, so $0<b\le b_{\max}=1.5\times10^{-4}$;
+$\mu=xS_2/S_0\in[x,\infty)$;
+$r=s^2/L^2\in[\sigma^3,1/4]$;
+$A\in[4\sigma^3,1]$, minimised in closed form inside each box;
+and $G\in[0,G_{\max}]$, of which the two ends suffice by concavity.
+Every end that depends on $\sigma$ refers to the state's own $\sigma$.
+A box of a column $[\ell_a,\ell_b]$ must therefore contain every state of the column, whatever its $\sigma\in[e^{-\ell_b},e^{-\ell_a}]$.
+Write $\sigma_{\rm bot}=e^{-\ell_b}$ and $\sigma_{\rm top}=e^{-\ell_a}$.
+
+Version~1.0 failed this in three places.
+\begin{itemize}
+\item In certificate~(ii) the lower edge of $b$ was $10^4\sigma_{\rm top}^2$, while Theorem~\ref{thm:H1} and Lemma~\ref{lem:BE} split the states at $10^4\sigma^2$.
+  The wedge $10^4\sigma^2\le b<10^4\sigma_{\rm top}^2$ inside each column was covered by neither.
+\item The $\mu$ boxes of certificates~(i) and~(ii) stopped at $e^{-30}$ and at $\mu_{\max}e^{60}$, $\mu_{\max}=\max(4\ell_b,50)$.
+\item Certificate~(i), whose claim is $b\in(0,1]$, had no box below $b=e^{-2100-3\ell_b}$, and none below $\sigma_{\rm bot}^3$ for its two finite $\mu$ tails.
+\end{itemize}
+In none of them is there a sign that the inequality fails.
+Version~1.1 keeps every box of v1.0 and adds the boxes described below.
+The covering then reads, line by line:
+\begin{itemize}
+\item a state with $b<10^4\sigma^2$ is covered by Lemma~\ref{lem:BE};
+\item a state with $10^4\sigma^2\le b$ and $\beta<10^4e^{2(\ell_b-\ell_a)}$ lies in a wedge box (all $\mu>0$);
+\item otherwise $b\ge10^4e^{2(\ell_b-\ell_a)}\sigma^2\ge10^4e^{2(\ell_b-\ell_a)}\sigma_{\rm bot}^2=10^4\sigma_{\rm top}^2$, and the state lies in a box of v1.0 ($e^{-30}\le\mu\le\mu_{\max}e^{60}$) or in a $\mu$ tail box;
+\item $r\ge\sigma^3\ge\sigma_{\rm bot}^3$ in every case.
+\end{itemize}
+\emph{A random check of the covering \numst.}
+We drew $10^5$ admissible states for (ii) and $5\times10^4$ for each of the two claims of (i), with extra weight near every edge (column ends, $b=10^4\sigma^2$, $\tau=20$, the ends of $r$, small and large $\mu$, $b\to0$).
+Each was looked up in the box tables of the code.
+None is missed.
+The same check finds the gaps in the v1.0 tables ($30278$ of $10^5$ states for (ii)) and in each of eleven deliberately damaged tables: a column removed, the top of the wedge lowered by a factor $e$, a $\mu$ tail removed, the $b\to0$ strip removed, and the like (\code{cq\_cover.py}).
+
 \emph{(i) The main reduced inequality.}
 With $\gamma=T_D(\ell)/\sqrt\ell$ and $T_D=1+(2.1+D)/\ell+2.5\times10^{-4}$:
 \begin{itemize}
-\item for $D=0$, the $301$ columns $\ell\in[55.26,3062.6]$ close, with $465900$ audit points and no violation;
+\item for $D=0$, the $301$ columns $\ell\in[55.262,3062.6]$ close, with $465900$ audit points and no violation; the $D=10$ columns cover $[55.26,55.262)$, since $T_{10}\ge T_0$;
 \item for $D=10$, all $686$ columns $\ell\in[55.26,6907.8]$ close ($\sigma=10^{-24}$ to $10^{-3000}$), with $1111902$ audit points and no violation.
 \end{itemize}
 A column needs up to $7.8\times10^{7}$ boxes.
 Every accepted box has $\hat\ell_{\rm pos}-\hat\ell_{\rm neg}\ge S\delta$ (App.~\ref{app:cells}); the smallest ratio $(\hat\ell_{\rm pos}-\hat\ell_{\rm neg})/(S\delta)$ over all accepted boxes is $1.00$, as it must be, since a box is bisected until the rule holds.
-\caproofst{\code{cd\_cells.py} with the rule of \code{cl\_cells.py}}
+The tails $\mu\in(0,e^{-30}]$ and $[\mu_{\max},\infty)$, with every $b\in(0,1]$, and the strip of $b$ below the v1.0 boxes for the other $\mu$, close on all $301+686$ columns ($3.85\times10^{7}$ boxes).
+\caproofst{\code{cd\_cells.py} with the rule of \code{cl\_cells.py}; tails \code{cq\_core.py}}
 The certificate is not vacuous: at $\ell=55.26$ the target $1.70$ (below the envelope $1.711$) closes, and $1.73$ does not.
 
 \emph{(ii) The full Lemma R* bound.}
@@ -32,10 +70,18 @@ Here all remainders of Lemma~R* are kept:
 \item the $\nu$ factors at $\tau=20$.
 \end{itemize}
 The window enters only through generic bounds: $\sqrt xN_1\le\Qb\sqrt{2\ell+3.1}+10^{-6}$, $xN_2\le\Qb(2\ell+3.1)+10^{-4}$, and $\bar\eta=1/2$ in the remainders.
-For $\tau\ge20$ and $b\ge10^4\sigma^2$, the $92$ columns $\ell\in[55.26,960.8]$ close with target $T_{10}$ ($\sigma$ down to about $10^{-417}$).
+For $\tau\ge20$ and $b\ge10^4\sigma^2$, the $92$ columns $\ell\in[55.26,960.8]$ close with target $T_{10}$ ($\sigma$ down to about $10^{-417}$), in three parts:
+\begin{itemize}
+\item the boxes of v1.0 in $(\log\mu,\log r,\log b)$, for $b\ge10^4\sigma_{\rm top}^2$ and $\mu\in[e^{-30},\mu_{\max}e^{60}]$ ($2.09\times10^{9}$ boxes);
+\item the $\mu$ tails $(0,e^{-30}]$ and $[\mu_{\max},\infty)$ for the same $b$ ($5.39\times10^{7}$ boxes, $15$ CPU minutes);
+\item the wedge $10^4\le\beta\le10^4e^{2(\ell_b-\ell_a)}$, every $\mu>0$, in boxes of $(\log\mu,\log r,\log\beta,\ell)$ ($4.44\times10^{8}$ boxes, $2.8$ CPU hours; at most $1.67\times10^{7}$ boxes in a column).
+\end{itemize}
+A wedge box all of whose states have $b\ge10^4\sigma_{\rm top}^2$ belongs to the v1.0 boxes and is skipped ($1.66\times10^{7}$ boxes).
+With $\beta$ as a box variable but $\ell$ fixed per column, the first column does not close: in the wedge the main balance and the largest cost both grow like $\sigma$ and are measured at opposite ends of the column.
+Subdividing $\ell$ removes this loss (App.~\ref{app:cells}).
 Every term is moved by $S\eta_t+1000Su$ in the safe direction before the terms are netted (App.~\ref{app:cells}), so that the cancellation between equal powers of $\sigma$ is covered.
-The states with $b<10^4\sigma^2$ are covered by Lemma~\ref{lem:BE} (Sec.~\ref{sec:bedge}).
-\caproofst{\code{cl\_link.py}}
+The states with $b<10^4\sigma^2$ are covered by Lemma~\ref{lem:BE} (Sec.~\ref{sec:bedge}); the boundary $\beta=10^4$ is a face of the wedge boxes.
+\caproofst{\code{cl\_link.py}; tails and wedge \code{cq\_core.py}}
 Pointwise, the bound agrees with the main reduced function to about $2\times10^{-4}$ near the envelope.
 Its soundness against a decimal evaluation of Lemma~R* was checked at random states \numst.
 
@@ -43,8 +89,11 @@ Its soundness against a decimal evaluation of Lemma~R* was checked at random sta
 For the intermediate windows not covered by Corollary~\ref{cor:S}, the Lemma~S factors are put inside the boxes.
 For each window, $\mu$, $x$ and $P$ are fixed at the window's values, and $G\le Pg_s(r)$ is used exactly.
 All $17$ windows close for the target $g\sqrt\ell\ge1$, with the rule of (ii).
+Each window has a single $\sigma$, and its boxes cover $r\in[\sigma^3,1/4]$ and $b\in[10^4\sigma^2,x/20]$ exactly.
 \caproofst{\code{cf\_windows.py} with \code{cl\_link.py}}
 For one of them we checked that raising the target to $1.2$ times the window's upper value makes the proof fail, as it must.
 
 \emph{Picture.} The computer does not search for the best state.
 It checks that no state, in any box, can do worse than the target, and every box keeps a cushion ten times larger than the largest possible rounding error.
+A second check asks the converse question: is every state the theorem talks about in some box?
+Version~1.1 answers it by construction and by $10^5$ random states.
