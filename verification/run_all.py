@@ -1,8 +1,9 @@
-"""Paper H v1.1 — verification suite (acceptance rules of App. E; the covering of the states, Sec. 6).  Python 3.11.
+"""Paper H v1.2 — verification suite (acceptance rules of App. E; the covering of the states, Sec. 6).  Python 3.11.
 Default (< 30 min): grammar; every number of the manuscript re-derived from results/ (hp_numbers.py); recomputation of a SAMPLE of every certificate
 (first and last column of each cell proof, first thin-block window, the tau cells, Lemma A4* and Lemma S random checks), compared with the stored results.
 v1.1 adds: the random covering check (1e5 states for (ii), 5e4 for each claim of (i)), the generated tail/wedge functions, sample columns of the mu tails
 (i) and (ii) and of the wedge, the checks of the new steps (reduced scale), and the stored narrow-focus results of Sec. IX A.
+v1.2 adds verification/run_v12.py: the stored G -> 0+ re-runs, the second certificate of the scaling step (records, three columns re-run, power).
 --recompute: recompute EVERY column and window (hours; the cell counts must equal the stored ones).
 Usage: python verification/run_all.py [--recompute] [--tex DIR]   (DIR = the folder with sections/, default paper/)."""
 import sys, os, json, math, glob, ast, time
@@ -147,4 +148,8 @@ RT = json.load(open('results/co_rtheta.json'))
 check('Lemma R_theta below direct quadrature on %d states' % len(RT['states']), RT['all_ok'] and len(RT['states']) == 46)
 CN = json.load(open('results/cn_search.json'))
 check('joint-bound search: candidates C1, C2 survive, the four wrong versions are broken (%s)' % CN['verdict'], CN['verdict'] == {'C1': 'survived', 'C2': 'survived', 'W1': 'BROKEN', 'W2': 'BROKEN', 'W3': 'BROKEN', 'W4': 'BROKEN'})
+# ---- v1.2: the end point G -> 0+ and the second certificate of the scaling step (verification/run_v12.py)
+t0 = time.time(); r = subprocess.run([sys.executable, '-W', 'ignore', 'verification/run_v12.py'] + (['--recompute'] if FULL else []), capture_output=True, text=True, timeout=36000 if not FULL else 10 ** 6)
+print(r.stdout, end='', flush=True)
+check('v1.2: the G -> 0+ re-runs and the second certificate of the scaling step (verification/run_v12.py)', r.returncode == 0, '%.0fs' % (time.time() - t0))
 print('\n%d/%d checks passed' % (sum(res), len(res))); sys.exit(0 if all(res) else 1)

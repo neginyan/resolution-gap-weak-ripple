@@ -1,0 +1,101 @@
+{
+ "model": "Claude Opus 5.5 (claude-opus-5-5)",
+ "G_lower_end": "the limit G -> 0+ (every G term = -inf on the G > 0 code path)",
+ "ii_CL_boxes": {
+  "columns": 92,
+  "expected_columns": 92,
+  "all_closed": true,
+  "all_counts_equal_published": true,
+  "cells": 2088413882,
+  "g0p_rows": 2088413882,
+  "g0p_rows_differing_from_G0": 45747390,
+  "g0p_min_on_accepted": 6.875212025941627e-06,
+  "mid_tested": 104473946,
+  "mid_negative": 0,
+  "mid_min": 2.994358770830129e-06,
+  "indices_unique": true,
+  "ell_a_unique": true
+ },
+ "ii_wedge": {
+  "columns": 92,
+  "expected_columns": 92,
+  "all_closed": true,
+  "all_counts_equal_published": true,
+  "cells": 444432850,
+  "g0p_rows": 701115789,
+  "g0p_rows_differing_from_G0": 701115789,
+  "g0p_min_on_accepted": 1.701157367511727e-05,
+  "mid_tested": 66715652,
+  "mid_negative": 0,
+  "mid_min": 1.701157822254708e-05,
+  "skipped_equal_published": true,
+  "ell_a_unique": true
+ },
+ "ii_tails": {
+  "columns": 92,
+  "expected_columns": 92,
+  "all_closed": true,
+  "all_counts_equal_published": true,
+  "cells": 53908606,
+  "g0p_rows": 107817212,
+  "g0p_rows_differing_from_G0": 2762606,
+  "g0p_min_on_accepted": 8.501161366877335e-06,
+  "mid_tested": 10796552,
+  "mid_negative": 0,
+  "mid_min": 0.00021875412209414993,
+  "skipped_equal_published": true,
+  "ell_a_unique": true
+ },
+ "iii_windows": {
+  "columns": 17,
+  "expected_columns": 17,
+  "all_closed": true,
+  "all_counts_equal_published": true,
+  "cells": 1069604,
+  "g0p_rows": 1069604,
+  "g0p_rows_differing_from_G0": 47787,
+  "g0p_min_on_accepted": 0.015973902518631827,
+  "mid_tested": 108860,
+  "mid_negative": 0,
+  "mid_min": 0.018483253728677027,
+  "indices_unique": true
+ },
+ "cp_control": {
+  "columns": 2,
+  "expected_columns": 2,
+  "all_closed": true,
+  "all_counts_equal_published": true,
+  "cells": 72226,
+  "g0p_rows": 72226,
+  "g0p_rows_differing_from_G0": 26241,
+  "g0p_min_on_accepted": 0.001706627672490297,
+  "mid_tested": 9104,
+  "mid_negative": 0,
+  "mid_min": 0.001706627673159444,
+  "ell_a_unique": true,
+  "stored_cells": [
+   27258,
+   44992
+  ],
+  "unwrapped_cells_now": [
+   27234,
+   44992
+  ]
+ },
+ "i_tails": {
+  "columns": 987,
+  "columns_changed": [],
+  "g0p_rows": 38507232,
+  "mid_tested": 40212768,
+  "mid_negative": 0
+ },
+ "i_body": {
+  "columns": 6,
+  "all_equal_published": true,
+  "mid_evaluations": 3132384,
+  "mid_negative": 0,
+  "g0p_fail": 0
+ },
+ "all_v11_clean": true,
+ "mid_tested_total": 225449266
+}

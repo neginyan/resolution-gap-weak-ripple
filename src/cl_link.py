@@ -31,10 +31,13 @@ u_n = n sqrt(x) > U of u e^{-u^2/2} and u^2 e^{-u^2/2}, decreasing there, are bo
 gamma_P and c_chi of BL3 follow from U1, U2.  Every remainder carries nu_k(tau, beta) tau^j with j <= 2; these decrease on tau >= 20 (checked,
 ce_link_checks.py), so they are taken at tau = tau_min; x = b tau inside a_6, a_7, a_9, a_10.
 
-MAIN-FACTOR SCALING.  The sandwich factors of the main terms are set to 1 in the cells; for a window with lower factors >= lambda and upper factors
-<= Upsilon (eta sandwich, or Lemma S / S'), Num >= lambda (positive part) - (negative remainders, already at etabar) >= lambda (cell expression) and
-den_(S2 + background) <= Upsilon den_mid with Upsilon = up_S2 (the S0 part of den carries its factor <= 1/(1 - etabar) = 2 inside the cells),
-so g >= (lambda/Upsilon) gamma, lambda = min(low_S0, low_S2).
+MAIN-FACTOR SCALING (text corrected in v1.2; the code is unchanged).  FAC holds the sandwich factors of the main terms (low_S0 on the S0 gain,
+low_S2 on the F-main and W gains, up_S2 on the S2 part of den; the S0 part of den carries its factor 1/(1 - etabar) = 2 inside the cells).  With P_bg
+the gains without a factor, P0, P2 >= 0 the gains of the two channels, N >= 0 the remainders (already at etabar) and d_bg, d2 >= 0 the den parts:
+Num - (lambda/Upsilon) gamma sigma den >= T(lambda) := P_bg + lambda (P0 + P2) - N - lambda gamma sigma (d_bg + d2)  (lambda = min(low_S0, low_S2),
+Upsilon = up_S2 >= 1).  T is affine in lambda, so the two certificates T(1) >= 0 (FAC = 1, target gamma) and T(2/3) >= 0 (FAC = (2/3, 2/3, 1),
+target (2/3) gamma; src/da_scaling.py) give g >= (lambda/Upsilon) gamma for every window with lambda >= 2/3 (every window of Theorem H1: eta <= Qbar = 1/4).
+v1.0 and v1.1 wrote "Num >= lambda (cell expression)" here; that alone is not enough (it would need -N >= -lambda N); T(lambda) = lambda T(1) + (1 - lambda)(P_bg - N).
 
 THE REDUCED FORM (proof of each line in the comments of phi_cells).  With A = sigma^2/s^2 in [4 sigma^3, 1], r = s^2/L^2, c = sigma^2/(4r) (L^2/4 = c/A),
 a' = 4 r A/sigma (so A = sigma a'/(4r) and c/(A + c) = sigma/(a' + sigma)), Phi/sigma is bounded below by

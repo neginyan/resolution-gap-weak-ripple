@@ -62,9 +62,27 @@ The upper bound $B$ used Minkowski only, so it is unchanged.
 
 \emph{Scaling.}
 Let $\lambda=\min(\mathrm{low}_{S_0},\mathrm{low}_{S_2})$ and $\Upsilon=\mathrm{up}_{S_2}$ be the lower and upper factors of the two channels.
-The part of $\mathrm{den}$ that carries $S_0$ enters the target only through $\gamma\sigma$.
-In the cells of Sec.~\ref{sec:cert} it is given its factor $1/(1-\bar\eta)=2$ directly.
-Then a certificate made with the factors set to one gives $g\ge(\lambda/\Upsilon)\gamma$.
+The part of $\mathrm{den}$ that carries $S_0$ is given its factor $1/(1-\bar\eta)=2$ directly in the cells of Sec.~\ref{sec:cert}.
+Write the lower bound of Lemma~R* as $P_{\rm bg}+\mathrm{low}_{S_0}P_0+\mathrm{low}_{S_2}P_2-N$ and its den as at most $d_{\rm bg}+\Upsilon d_2$.
+Here $P_{\rm bg}$ collects the gains without a sandwich factor, $P_0,P_2\ge0$ the gains of the two channels, $N\ge0$ the remainders, and $d_{\rm bg},d_2\ge0$.
+All of them depend on the state only.
+Since $P_0,P_2,d_{\rm bg}\ge0$ and $\Upsilon\ge1$,
+\begin{equation}
+\begin{split}
+\mathrm{Num}-\frac{\lambda}{\Upsilon}\gamma\sigma\,\mathrm{den}&\ \ge\ T(\lambda),\\
+T(\lambda)&:=P_{\rm bg}+\lambda(P_0+P_2)-N\\
+&\qquad-\lambda\gamma\sigma(d_{\rm bg}+d_2).
+\end{split}
+\end{equation}
+$T$ is affine in $\lambda$, so $T\ge0$ on $[\lambda_*,1]$ follows from $T(1)\ge0$ and $T(\lambda_*)\ge0$.
+Every window of Theorem~\ref{thm:H1} has $\eta\le\sum q0_n\le\Qb=1/4$ by (P3), so its lower factors are at least $1/(1+\eta)\ge4/5$ (the $\eta$ sandwich, and the first entry of the maximum in Lemma~\ref{lem:S}), and its upper factor is at least one.
+We take $\lambda_*=1/(1+\bar\eta)=2/3$.
+$T(1)\ge0$ is the certificate with the factors set to one.
+$T(\lambda_*)\ge0$ is a second certificate, with the factors $(\lambda_*,\lambda_*,1)$ and the target $\lambda_*\gamma$ (Sec.~\ref{sec:cert}).
+Together they give $g\ge(1-\bar\varepsilon)(\lambda/\Upsilon)\gamma$ for every admissible window.
+The step cannot be shortened to ``a certificate with the factors set to one gives $g\ge(\lambda/\Upsilon)\gamma$'': that would need $-N\ge-\lambda N$, which fails for $\lambda<1$.
+In general $T(\lambda)=\lambda T(1)+(1-\lambda)(P_{\rm bg}-N)$, and the second certificate is what controls $P_{\rm bg}-N$.
+Versions~1.0 and~1.1 stated the shortened step; see the version paragraph in Sec.~\ref{sec:theorem}.
 
 \begin{corollary}[Corollary S] \proofst
 \label{cor:S}

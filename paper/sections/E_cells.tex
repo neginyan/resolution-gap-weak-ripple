@@ -76,7 +76,21 @@ $\tau^j\nu_k$, $\omega_2$ & decreasing in $\tau\ge20$ (proved, App.~\ref{app:tau
 $U_1$, $U_2$, $\gamma_P$, $c_\chi$ & increasing in $\ell$; taken at $\ell_b$\\
 \end{tabular}
 \end{center}
-The main reduced function is concave in $G$, and the Lemma R* bound is affine in $G$ for each $A$, so $G\in\{0,G_{\rm cell}\}$ suffices (Sec.~\ref{sec:envelope}).
+\emph{The end points in $G$.}
+The main reduced function is concave in $G$ (Sec.~\ref{sec:envelope}), and for each $A$ the Lemma~R* bound is affine in $G$ on $(0,G_{\rm cell}]$, so its minimum over $A$ is concave there.
+One remainder bound, the term $\tau\nu_2\Qb/(16(1+z))$ of the constants, enters only on the branch $G>0$ and does not contain $G$.
+The value at $G=0$ is therefore not the limit of the branch, and the lower end is the limit $G\to0^+$, in which every other term containing $G$ vanishes.
+A box is accepted when it passes at $G=0$, at $G\to0^+$ and at $G=G_{\rm cell}$.
+The two ways of treating the $F$ term (kept with its remainders, or dropped since it is $\ge0$) are different lower bounds of the same quantity.
+They coincide at $G\to0^+$, because every term in which they differ carries $G$.
+So for each state one of them is positive at both ends, and it is positive in between by concavity.
+The other options of a box (the branches in $a'$, the split points, the shifts of the $H$ term) are relaxations of one and the same bound, and need no such argument.
+For the main reduced function the limit $G\to0^+$ equals the value at $G=0$: every term with $G$ enters through a log-add-exp, which returns its other argument exactly when $\log G=-\infty$.
+v1.0 and v1.1 evaluated $G=0$ and $G=G_{\rm cell}$ only.
+Every certificate of Theorem~H1 has been re-run with the limit $G\to0^+$ in addition, by wrapping the published acceptance functions without changing them (\code{ct\_v11\_G0plus.py}): the $92$ columns of the Lemma~R* boxes, the $92$ wedge columns and the $92$ columns of the $\mu$ tails of certificate~(ii), the $17$ windows of certificate~(iii), and the $987$ tail columns of certificate~(i).
+Every box passes, and every cell count equals the published one.
+A random check at intermediate $G$ (log-uniform in $[G_{\rm cell}e^{-700},G_{\rm cell}e^{-0.1}]$, $2.25\times10^{8}$ evaluations) finds no negative value.
+The second certificate of the scaling step (Sec.~\ref{sec:sandwich}) evaluates all three points in every box.
 
 \emph{Underflow and clipping.}
 All terms are carried as logarithms and normalised by the largest part before exponentiation.
@@ -95,8 +109,8 @@ The variable $\mu$ enters the bounds only through $G$ and $G/\mu$.
   For $\mu<2$, $P\le\mu\Qb^2$, so $G=\mu\rho$ with $\rho\in[0,\Qb^2g_s]$.
   For fixed $A$ the bound is affine in $G$ and in $G/\mu$, hence affine in $\mu$ at fixed $\rho$ and affine in $\rho$ at fixed $\mu$.
   Its minimum over $A$ is concave along both axes, so its minimum over the rectangle $(\mu,\rho)\in(0,e^{-30}]\times[0,\Qb^2g_s]$ is attained at a corner.
-  The corners are $G=0$; $(G,G/\mu)=(0,\Qb^2g_s)$, the limit $\mu\to0$; and $(e^{-30}\Qb^2g_s,\Qb^2g_s)$.
-  A box is accepted when all three pass.
+  The corners are $G=0$; $(G,G/\mu)=(0,\Qb^2g_s)$, the limit $\mu\to0$; $(e^{-30}\Qb^2g_s,\Qb^2g_s)$; and, on the edge $\rho\to0^+$, the limit of the branch $G>0$ at both ends of $\mu$ (see the end points in $G$ above).
+  A box is accepted when all of them pass.
   Bounding the positive $G$ terms at $\mu\to0$ and the negative ones at $e^{-30}$ separately does not close near $b=10^4\sigma^2$: the $W$ term and its remainder carry the same $G$.
 \item The strip $b\to0$ of certificate (i).
   The only term increasing in $b$ is $k_0=b/(8r)$; the strip $(0,b_{\rm lo}]$ uses $k_0\ge0$.

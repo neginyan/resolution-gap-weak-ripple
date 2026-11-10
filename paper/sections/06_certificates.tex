@@ -20,7 +20,7 @@ $\tau=x/b\ge20$, so $0<b\le b_{\max}=1.5\times10^{-4}$;
 $\mu=xS_2/S_0\in[x,\infty)$;
 $r=s^2/L^2\in[\sigma^3,1/4]$;
 $A\in[4\sigma^3,1]$, minimised in closed form inside each box;
-and $G\in[0,G_{\max}]$, of which the two ends suffice by concavity.
+and $G\in[0,G_{\max}]$, of which the two ends suffice by concavity; for the Lemma~R* bound (certificates~(ii) and~(iii)) the lower end is the limit $G\to0^+$ together with $G=0$ itself (App.~\ref{app:cells}).
 Every end that depends on $\sigma$ refers to the state's own $\sigma$.
 A box of a column $[\ell_a,\ell_b]$ must therefore contain every state of the column, whatever its $\sigma\in[e^{-\ell_b},e^{-\ell_a}]$.
 Write $\sigma_{\rm bot}=e^{-\ell_b}$ and $\sigma_{\rm top}=e^{-\ell_a}$.
@@ -76,6 +76,13 @@ For $\tau\ge20$ and $b\ge10^4\sigma^2$, the $92$ columns $\ell\in[55.26,960.8]$ 
 \item the $\mu$ tails $(0,e^{-30}]$ and $[\mu_{\max},\infty)$ for the same $b$ ($5.39\times10^{7}$ boxes, $15$ CPU minutes);
 \item the wedge $10^4\le\beta\le10^4e^{2(\ell_b-\ell_a)}$, every $\mu>0$, in boxes of $(\log\mu,\log r,\log\beta,\ell)$ ($4.44\times10^{8}$ boxes, $2.8$ CPU hours; at most $1.67\times10^{7}$ boxes in a column).
 \end{itemize}
+Certificate (ii) is run twice: with the sandwich factors set to one and the target $\gamma=T_{10}/\sqrt\ell$, and with the factors $(2/3,2/3,1)$ and the target $\frac23T_{10}/\sqrt\ell$ (the second certificate of the scaling step, Sec.~\ref{sec:sandwich}).
+In the second run the target is written as $T_{D'}(\ell)/\sqrt\ell$ with $D'=(\frac23T_{10}(\ell_a)-1-2.5\times10^{-4})\ell_a-2.1$ per column; then $T_{D'}(\ell)\ge\frac23T_{10}(\ell)$ for every $\ell\ge\ell_a$.
+All $92$ columns of the Lemma~R* boxes, the $92$ wedge columns and the $92$ columns of the $\mu$ tails close in the second run as well, with the limit $G\to0^+$ in every box ($2.57\times10^{9}$ cells; smallest normalised margin $2.4\times10^{-10}$; a random check at intermediate $G$ on $2.85\times10^{8}$ values finds no negative one).
+The cell counts differ slightly from those of the first run, because the acceptance differs.
+With the factors $2/3$ but the target not lowered, the first column does not close, so the second run is not vacuous.
+\caproofst{\code{cl\_link.py} and \code{cq\_core.py} with \code{FAC} set; wrapper \code{da\_scaling.py}}
+
 A wedge box all of whose states have $b\ge10^4\sigma_{\rm top}^2$ belongs to the v1.0 boxes and is skipped ($1.66\times10^{7}$ boxes).
 With $\beta$ as a box variable but $\ell$ fixed per column, the first column does not close: in the wedge the main balance and the largest cost both grow like $\sigma$ and are measured at opposite ends of the column.
 Subdividing $\ell$ removes this loss (App.~\ref{app:cells}).

@@ -24,10 +24,10 @@ Split the states with $\tau\ge20$ at $b=10^4\sigma^2$.
 
 \emph{States with $b\ge10^4\sigma^2$.}
 Lemma~\ref{lem:R} with Lemma~\ref{lem:A4} gives $g\ge(1-\bar\varepsilon)\,\mathrm{Num}/(\sigma\,\mathrm{den})$.
-Certificate (ii) of Sec.~\ref{sec:cert} gives $\mathrm{Num}-\gamma\sigma\,\mathrm{den}\ge0$ with the factors set to one, for $b\in[10^4\sigma^2,0.003/20]$.
+Certificate (ii) of Sec.~\ref{sec:cert} gives $T(1)\ge0$ and $T(2/3)\ge0$ in the notation of the scaling step, for $b\in[10^4\sigma^2,0.003/20]$.
 Every state with $\tau\ge20$ has $b=x/\tau\le0.003/20$.
 The set of these states is covered by the boxes of certificate (ii) (v1.0 boxes, $\mu$ tails and wedge) and by Lemma~\ref{lem:BE}, line by line as in the covering paragraph of Sec.~\ref{sec:cert}.
-The scaling argument of Sec.~\ref{sec:sandwich} restores the factors.
+The scaling argument of Sec.~\ref{sec:sandwich} then gives $\mathrm{Num}-(\lambda/\Upsilon)\gamma\sigma\,\mathrm{den}\ge0$ for every admissible pair of factors.
 
 \emph{States with $b<10^4\sigma^2$.}
 Lemma~\ref{lem:BE} gives $(a)+(a')\ge1.1\times10^{-5}/\sigma$, which is above $\gamma$ by many orders of magnitude.
@@ -45,6 +45,17 @@ Theorem~\ref{thm:H1} covers the lower side for windows with a weak or energy-poo
 The main reduced inequality alone (certificate (i)) holds up to $\ell=6907.8$.
 
 \emph{Picture.} However the ripple is built, many harmonics or few, the observer keeps at least the fraction $1/\sqrt\ell$, as long as the ripple's sup or its low-frequency energy is small and her focus spans at least about $0.7$ ripple periods.
+
+\paragraph*{Version~1.2.}
+Two steps of the proof of Theorem~H1 are corrected; the statement and the range of the theorem are unchanged.
+First, the rule that the two end points in $G$ suffice was applied in v1.0 and v1.1 with $G=0$ as the lower end.
+For the Lemma~R* bound the lower end is the limit $G\to0^+$, because one remainder bound adds a term without $G$ on the branch $G>0$ (App.~\ref{app:cells}).
+Every certificate of Theorem~H1 has been re-run with this limit; every box passes and every cell count is unchanged.
+Second, the scaling step that restores the sandwich factors (Sec.~\ref{sec:sandwich}) used $-N\ge-\lambda N$ for the remainders, which fails for $\lambda<1$.
+The corrected step needs one more certificate, the same certificate (ii) with the lower factors $2/3$ and the target $\frac23\gamma$.
+It closes on all $92+92+92$ columns (Sec.~\ref{sec:cert}).
+In v1.1 the missing condition had been checked only at random states ($8\times10^5$ states, no failure).
+Both points were found by the author's own audit while working on the states with a narrow focus.
 
 \paragraph*{Version~1.1.}
 Version~1.0 had three gaps in the covering of the computer-assisted proofs: the wedge $10^4\sigma^2\le b<10^4e^{-2\ell_a}$ inside each column of certificate~(ii), the $\mu$ ranges below $e^{-30}$ and above $\mu_{\max}e^{60}$ in certificates~(i) and~(ii), and the smallest $b$ in certificate~(i).

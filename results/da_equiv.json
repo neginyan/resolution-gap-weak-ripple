@@ -1,0 +1,38 @@
+{
+ "cl column 0": {
+  "cells": 200000,
+  "accepted": 179963,
+  "identical": true
+ },
+ "cl column 45": {
+  "cells": 200000,
+  "accepted": 150065,
+  "identical": true
+ },
+ "cl column 91": {
+  "cells": 200000,
+  "accepted": 149869,
+  "identical": true
+ },
+ "wedge column 0": {
+  "cells": 12841,
+  "accepted": 12201,
+  "identical": true
+ },
+ "wedge column 91": {
+  "cells": 12886,
+  "accepted": 345,
+  "identical": true
+ },
+ "tails column 0": {
+  "cells": 1152,
+  "accepted": 1144,
+  "identical": true
+ },
+ "tails column 91": {
+  "cells": 1152,
+  "accepted": 0,
+  "identical": true
+ },
+ "all_identical": true
+}
