@@ -59,15 +59,15 @@ Two known issues of v1.1 were listed here on 2026-11-07 (the end point G → 0�
 
 A review of v1.2 asked whether the decimal end points of Theorem H1 are inside the boxes once they are converted to binary64. The lower end is: 55.26 is stored as 55.25999999999999801…, slightly below it. The upper end was not: 960.8 is stored as 960.79999999999995452…, so the last column of certificate (ii) stopped 4.5 × 10⁻¹⁴ below the stated end. This was a missing check at the edge, not a failed one. The last column of each part of certificate (ii) (Lemma R\* boxes, wedge, μ tails) has been re-run with its top end moved outward to the next binary64 number, 960.8000000000001, both as published (factors one, with G → 0⁺) and as the second certificate of the scaling step (factors 2/3): all six runs close, each with exactly the number of cells of the same column with the old end point (published, and second certificate) (`src/top_end.py` → `results/top_end_lam1.jsonl`, `results/top_end_lam2_3.jsonl`). So the stated range ℓ ∈ [55.26, 960.8] is covered. The paper will say this in its next version.
 
-Known issue of v1.2 (2026-11-15): a rounded constant in src/cn_lemmas.py
+## Known issue of v1.2 (2026-11-15): a rounded constant in `src/cn_lemmas.py`
 
-In src/cn_lemmas.py (the numerical bound Ψ₂ from Lemma CN-1, used by the §8 scripts co_envmin.py, co_envpsi2.py, co_remainders.py and co_rtheta.py), the coefficient of the b-term is written as 0.0325. The value that follows from Lemma CM-1 is (√2/e)/16 = 0.0325163…, so the code rounds it down by 0.05 %.
+In `src/cn_lemmas.py` (the numerical bound Ψ₂ from Lemma CN-1, used by the §8 scripts `co_envmin.py`, `co_envpsi2.py`, `co_remainders.py` and `co_rtheta.py`), the coefficient of the b-term is written as `0.0325`. The value that follows from Lemma CM-1 is (√2/e)/16 = 0.0325163…, so the code rounds it down by 0.05 %.
 
-Theorem H1 is not affected. Its proof and its checks (verification/run_v12.py) do not use this file. The text of the paper states Lemma CM-1 with the exact coefficient √2/e.
-The numbers in §8 (open problems, marked as numerical) do not change. The author re-ran the five §8 scripts on a copy of this repository with the coefficient replaced by √2/(16e): every number that verification/hp_numbers.py checks against the text is unchanged in the printed digits, and the raw values are bit-for-bit identical. (At the states that matter in §8, b is very small, so the b-term does not reach the double-precision sum.)
-The constant will be corrected in the next version of the paper and repository.
+- **Theorem H1 is not affected.** Its proof and its checks (`verification/run_v12.py`) do not use this file. The text of the paper states Lemma CM-1 with the exact coefficient √2/e.
+- **The numbers in §8 (open problems, marked as numerical) do not change.** The author re-ran the five §8 scripts on a copy of this repository with the coefficient replaced by √2/(16e): every number that `verification/hp_numbers.py` checks against the text is unchanged in the printed digits, and the raw values are bit-for-bit identical. (At the states that matter in §8, b is very small, so the b-term does not reach the double-precision sum.)
+- The constant will be corrected in the next version of the paper and repository.
 
-Note on reproducing §8: the saved result of co_rtheta.py ("46 states" in the text) was made with python src/co_rtheta.py 40 (40 states + 6 wave packets). Running it with the default argument gives 36 states; the range of ratios (27–94 %) is the same.
+Note on reproducing §8: the saved result of `co_rtheta.py` ("46 states" in the text) was made with `python src/co_rtheta.py 40` (40 states + 6 wave packets). Running it with the default argument gives 36 states; the range of ratios (27–94 %) is the same.
 
 ## How the computer-assisted proofs are accepted
 
