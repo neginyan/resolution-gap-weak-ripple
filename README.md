@@ -69,6 +69,14 @@ In `src/cn_lemmas.py` (the numerical bound Ψ₂ from Lemma CN-1, used by the §
 
 Note on reproducing §8: the saved result of `co_rtheta.py` ("46 states" in the text) was made with `python src/co_rtheta.py 40` (40 states + 6 wave packets). Running it with the default argument gives 36 states; the range of ratios (27–94 %) is the same.
 
+## Known issue of v1.2 (2026-11-18): a constant of Lemma R_θ taken from a grid
+
+In `src/co_remainders.py`, the remainder N16 of Lemma R_θ (§8, the local route) uses the constant M₂ = max over u ≥ 0 of u e^{−u/2}(1 + u cosh √(yu)). The function `M2_const` takes this maximum on a grid of u in [0, 400] and multiplies it by (1 + 10⁻⁶). This is a numerical value, not a proved bound, although the lemma is marked as proved.
+
+- **Theorem H1 is not affected.** Lemma R_θ belongs to the local route of §8 (open problems), which Theorem H1 does not use.
+- The grid value is very close to the true maximum: for y = 0 the maximum is attained at u = (3 + √17)/2 and equals 2.73760…, and in the follow-up work an interval-arithmetic bound M₂ ≤ 2.74484 has been proved for every y ≤ 10⁻⁴.
+- In the next version of the paper and repository, the grid value will be replaced by a proved bound, and the range of y used in §8 will be stated.
+
 ## How the computer-assisted proofs are accepted
 
 The cells are evaluated in double precision (IEEE 754 binary64, round to nearest). A cell is accepted only when its margin is at least **ten times a rounding bound derived in App. E** of the paper from the operations of the cell. For the full bound, every term is moved in the safe direction before equal powers of σ are netted, so cancellation is covered. The derived bounds are checked against long-double re-evaluation (`src/ck_rounding.py`). The bound assumes that `exp`, `log`, `log1p`, `expm1` and `sqrt` are within two ulp; `src/ulp_check.py` measures the library actually used against a 60-digit evaluation (largest error 0.71 ulp with NumPy 2.5.3 on x86-64 Linux). The older records (`results/cc_cells.jsonl`, `cd_cells.jsonl`, `ce_link_cells.jsonl`, `cf_windows.jsonl`) are kept for the comparison of box counts.
