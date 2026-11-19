@@ -1,0 +1,48 @@
+ 1 sig 0.025 tau   1.00 x 0.060 b 0.060 eta 0.240 kappa 0.19 Rth +0.073: direct 25.39195  R_theta 22.27259 (ratio 0.8772)  R(period) -32.77626 (ratio -1.291) ok
+ 2 sig 0.038 tau   3.00 x 0.196 b 0.065 eta 0.234 kappa 0.20 Rth -0.027: direct 16.05126  R_theta 8.89503 (ratio 0.5542)  R(period) -17.85978 (ratio -1.113) ok
+ 3 sig 0.068 tau   0.60 x 0.035 b 0.058 eta 0.200 kappa 0.37 Rth +0.000: direct 20.86380  R_theta 19.31370 (ratio 0.9257)  R(period) -21.29902 (ratio -1.021) ok
+ 4 sig 0.027 tau   2.00 x 0.103 b 0.052 eta 0.240 kappa 0.14 Rth +0.015: direct 5.54226  R_theta 1.47388 (ratio 0.2659)  R(period) -37.55683 (ratio -6.776) ok
+ 5 sig 0.056 tau   6.00 x 0.050 b 0.008 eta 0.233 kappa 0.56 Rth -0.002: direct 29.69736  R_theta 26.24889 (ratio 0.8839)  R(period) 0.76640 (ratio 0.026) ok
+ 6 sig 0.045 tau   3.77 x 0.040 b 0.011 eta 0.380 kappa 0.59 Rth -0.005: direct 39.78196  R_theta 36.76660 (ratio 0.9242)  R(period) -4.65294 (ratio -0.117) ok
+ 7 sig 0.032 tau   1.96 x 0.085 b 0.044 eta 0.270 kappa 1.27 Rth -0.006: direct 36.25622  R_theta 34.18376 (ratio 0.9428)  R(period) -13.05232 (ratio -0.360) ok
+ 8 sig 0.063 tau   1.50 x 0.174 b 0.115 eta 0.258 kappa 0.78 Rth +0.035: direct 18.19732  R_theta 15.56111 (ratio 0.8551)  R(period) -13.81463 (ratio -0.759) ok
+ 9 sig 0.119 tau   4.83 x 0.187 b 0.039 eta 0.308 kappa 0.83 Rth -0.006: direct 12.97139  R_theta 10.51854 (ratio 0.8109)  R(period) -2.39872 (ratio -0.185) ok
+10 sig 0.045 tau   0.67 x 0.133 b 0.200 eta 0.211 kappa 2.14 Rth +0.055: direct 3.06153  R_theta 2.36705 (ratio 0.7732)  R(period) -7.93305 (ratio -2.591) ok
+11 sig 0.122 tau   2.68 x 0.274 b 0.102 eta 0.337 kappa 1.33 Rth +0.023: direct 8.44176  R_theta 6.24393 (ratio 0.7396)  R(period) -7.25376 (ratio -0.859) ok
+12 sig 0.058 tau  16.28 x 0.089 b 0.005 eta 0.442 kappa 1.00 Rth -0.000: direct 26.70815  R_theta 19.99811 (ratio 0.7488)  R(period) 20.66270 (ratio 0.774) ok
+13 sig 0.069 tau   4.40 x 0.068 b 0.015 eta 0.394 kappa 0.65 Rth +0.013: direct 25.50414  R_theta 22.27817 (ratio 0.8735)  R(period) -4.65670 (ratio -0.183) ok
+14 sig 0.027 tau   3.65 x 0.063 b 0.017 eta 0.200 kappa 1.01 Rth +0.030: direct 33.59096  R_theta 31.27823 (ratio 0.9312)  R(period) 6.96808 (ratio 0.207) ok
+15 sig 0.060 tau   9.14 x 0.484 b 0.053 eta 0.363 kappa 0.94 Rth +0.000: direct 17.27011  R_theta 12.62825 (ratio 0.7312)  R(period) 10.64279 (ratio 0.616) ok
+16 sig 0.069 tau   8.62 x 0.116 b 0.013 eta 0.332 kappa 0.91 Rth +0.000: direct 19.75482  R_theta 15.76565 (ratio 0.7981)  R(period) 8.84685 (ratio 0.448) ok
+17 sig 0.072 tau   0.77 x 0.327 b 0.425 eta 0.190 kappa 1.43 Rth -0.017: direct 2.17824  R_theta 1.39845 (ratio 0.6420)  R(period) -9.36544 (ratio -4.300) ok
+18 sig 0.046 tau   1.48 x 0.296 b 0.200 eta 0.285 kappa 1.16 Rth +0.119: direct 19.39082  R_theta 15.38743 (ratio 0.7935)  R(period) -11.34012 (ratio -0.585) ok
+19 sig 0.085 tau   3.49 x 0.110 b 0.031 eta 0.107 kappa 0.59 Rth +0.007: direct 19.65014  R_theta 18.24226 (ratio 0.9284)  R(period) 0.56325 (ratio 0.029) ok
+20 sig 0.108 tau   0.97 x 0.113 b 0.117 eta 0.289 kappa 0.50 Rth +0.036: direct 9.06410  R_theta 6.91296 (ratio 0.7627)  R(period) -14.38861 (ratio -1.587) ok
+21 sig 0.074 tau   1.47 x 0.041 b 0.028 eta 0.131 kappa 0.71 Rth -0.006: direct 22.77129  R_theta 21.35183 (ratio 0.9377)  R(period) -10.96153 (ratio -0.481) ok
+22 sig 0.060 tau   7.03 x 1.300 b 0.185 eta 0.394 kappa 1.00 Rth -0.002: direct 14.91234  R_theta 11.98751 (ratio 0.8039)  R(period) 9.52682 (ratio 0.639) ok
+23 sig 0.125 tau  15.51 x 1.041 b 0.067 eta 0.278 kappa 0.99 Rth -0.000: direct 8.88567  R_theta 4.51454 (ratio 0.5081)  R(period) 6.04384 (ratio 0.680) ok
+24 sig 0.027 tau  10.47 x 0.299 b 0.029 eta 0.241 kappa 1.00 Rth +0.001: direct 45.63905  R_theta 43.29161 (ratio 0.9486)  R(period) 42.15460 (ratio 0.924) ok
+25 sig 0.111 tau   1.58 x 0.056 b 0.036 eta 0.343 kappa 0.54 Rth +0.023: direct 14.38058  R_theta 11.81452 (ratio 0.8216)  R(period) -12.68496 (ratio -0.882) ok
+26 sig 0.123 tau   0.51 x 0.066 b 0.128 eta 0.317 kappa 0.77 Rth -0.014: direct 9.17538  R_theta 7.37929 (ratio 0.8042)  R(period) -14.31340 (ratio -1.560) ok
+27 sig 0.042 tau   6.25 x 0.208 b 0.033 eta 0.327 kappa 0.94 Rth +0.001: direct 38.69757  R_theta 36.24938 (ratio 0.9367)  R(period) 21.63190 (ratio 0.559) ok
+28 sig 0.040 tau   2.69 x 0.428 b 0.159 eta 0.341 kappa 0.41 Rth +0.028: direct 12.52254  R_theta 10.30407 (ratio 0.8228)  R(period) -6.52933 (ratio -0.521) ok
+29 sig 0.028 tau   0.84 x 0.217 b 0.258 eta 0.481 kappa 0.61 Rth -0.018: direct 2.24006  R_theta 0.98917 (ratio 0.4416)  R(period) -13.59755 (ratio -6.070) ok
+30 sig 0.075 tau   6.67 x 0.110 b 0.017 eta 0.317 kappa 0.97 Rth +0.003: direct 22.80362  R_theta 20.14177 (ratio 0.8833)  R(period) 5.93821 (ratio 0.260) ok
+31 sig 0.063 tau   8.84 x 0.102 b 0.012 eta 0.393 kappa 1.00 Rth +0.005: direct 24.36685  R_theta 19.98561 (ratio 0.8202)  R(period) 14.01915 (ratio 0.575) ok
+32 sig 0.051 tau   1.77 x 0.557 b 0.315 eta 0.253 kappa 1.09 Rth +0.009: direct 3.16224  R_theta 2.37203 (ratio 0.7501)  R(period) -4.64872 (ratio -1.470) ok
+33 sig 0.061 tau   8.97 x 0.218 b 0.024 eta 0.413 kappa 1.00 Rth -0.003: direct 24.95305  R_theta 21.30841 (ratio 0.8539)  R(period) 17.64929 (ratio 0.707) ok
+34 sig 0.048 tau   3.20 x 0.163 b 0.051 eta 0.374 kappa 1.75 Rth -0.024: direct 16.89909  R_theta 14.41512 (ratio 0.8530)  R(period) -4.51174 (ratio -0.267) ok
+35 sig 0.046 tau  10.48 x 0.819 b 0.078 eta 0.156 kappa 1.00 Rth +0.000: direct 23.95602  R_theta 22.38400 (ratio 0.9344)  R(period) 22.36150 (ratio 0.933) ok
+36 sig 0.062 tau   4.97 x 0.525 b 0.106 eta 0.190 kappa 1.00 Rth -0.004: direct 16.30341  R_theta 14.94329 (ratio 0.9166)  R(period) 8.34981 (ratio 0.512) ok
+37 sig 0.050 tau  19.87 x 0.136 b 0.007 eta 0.357 kappa 1.00 Rth +0.000: direct 36.32788  R_theta 32.64346 (ratio 0.8986)  R(period) 33.31601 (ratio 0.917) ok
+38 sig 0.105 tau   1.51 x 0.096 b 0.063 eta 0.271 kappa 1.06 Rth -0.001: direct 10.99534  R_theta 9.09233 (ratio 0.8269)  R(period) -11.48393 (ratio -1.044) ok
+39 sig 0.054 tau   7.62 x 0.211 b 0.028 eta 0.230 kappa 1.05 Rth +0.000: direct 30.50144  R_theta 28.75309 (ratio 0.9427)  R(period) 22.07886 (ratio 0.724) ok
+40 sig 0.094 tau   2.00 x 0.041 b 0.020 eta 0.323 kappa 0.91 Rth -0.006: direct 18.48186  R_theta 16.19114 (ratio 0.8761)  R(period) -12.62455 (ratio -0.683) ok
+41 sig 0.059 tau   4.32 x 0.073 b 0.017 eta 0.123 kappa 0.82 Rth -0.008: direct 18.51642  R_theta 15.91480 (ratio 0.8595)  R(period) 1.01890 (ratio 0.055) ok
+42 sig 0.034 tau   0.56 x 0.120 b 0.215 eta 0.356 kappa 0.63 Rth -0.056: direct 4.31255  R_theta 2.84762 (ratio 0.6603)  R(period) -23.97631 (ratio -5.560) ok
+43 sig 0.032 tau   1.97 x 0.448 b 0.228 eta 0.203 kappa 1.44 Rth +0.007: direct 25.96914  R_theta 23.49568 (ratio 0.9048)  R(period) -8.92640 (ratio -0.344) ok
+44 sig 0.053 tau   0.62 x 0.097 b 0.156 eta 0.270 kappa 1.52 Rth +0.061: direct 6.77734  R_theta 5.71943 (ratio 0.8439)  R(period) -14.60753 (ratio -2.155) ok
+45 sig 0.111 tau  12.83 x 0.505 b 0.039 eta 0.295 kappa 0.99 Rth +0.000: direct 13.57022  R_theta 11.08139 (ratio 0.8166)  R(period) 11.16157 (ratio 0.823) ok
+46 sig 0.067 tau   1.27 x 0.265 b 0.208 eta 0.398 kappa 1.21 Rth -0.001: direct 12.97186  R_theta 10.62165 (ratio 0.8188)  R(period) -14.62753 (ratio -1.128) ok
+all ok: True  ratio_theta in [0.2659, 0.9486]
+exit 0 403 s

@@ -4,7 +4,7 @@ Lemmas CN-1 and CN-2 (exact arithmetic, 60-digit decimals, quadrature on random 
 Lemma CN-1 (two foci).  With E1 = <theta_tau R'^2>, kappa = <(s^2/tau) theta_tau R'^2>/E1 (unfolded to the line), and delta^2 > kappa tau:
     E1 <= sqrt(tau'/tau) e^{delta^2/(2 tau')} E1^{(tau')} / (1 - kappa tau/delta^2)      for every tau' > 0.
 Corollary (Psi_2).  With delta^2 = K kappa tau, tau' = L delta^2, b' = b/(L K kappa), A = sqrt(L K kappa) e^{1/(2L)}/(1 - 1/K), and CM-1 at tau',
-E0^{(tau')} <= min(E0/sqrt(L K kappa), 1/16):  x E1 <= A [ (1 + b'/2) E0^ ln(2 B0(E0^)/E0^) + 0.0325 b' ],  E0^ := min(E0/sqrt(LK kappa), 1/16).
+E0^{(tau')} <= min(E0/sqrt(L K kappa), 1/16):  x E1 <= A [ (1 + b'/2) E0^ ln(2 B0(E0^)/E0^) + (sqrt2/(16e)) b' ]  (v1.3: sqrt2/(16e) = 0.03252...; v1.2 wrote the rounded-down 0.0325),  E0^ := min(E0/sqrt(LK kappa), 1/16).
 Psi_2(mu, b, kappa) := the largest P = 2 mu E0 satisfying this, minimised over K in {2..64}, L in {1..16} with L K kappa <= 1 (tau' <= tau).
 -> results/cn_lemmas.json ; exit 1 if a check fails.
 """
@@ -31,7 +31,7 @@ def B0(E0, b): return (1 + math.sqrt(E0) + (E0 / 2) ** (1.0 / (2 + b))) ** 2
 def rhs2(P, mu, b, kap, K, L):
     E0 = P / (2 * mu); bp = b / (L * K * kap); A = math.sqrt(L * K * kap) * math.exp(1 / (2 * L)) / (1 - 1 / K)
     Eh = min(E0 / math.sqrt(L * K * kap), 1.0 / 16)
-    return A * ((1 + bp / 2) * Eh * math.log(2 * B0(Eh, bp) / Eh) + 0.0325 * bp) / E0 * 1.0    # = (x E1 bound)/E0 ; compare with mu
+    return A * ((1 + bp / 2) * Eh * math.log(2 * B0(Eh, bp) / Eh) + math.sqrt(2) / (16 * math.e) * bp) / E0 * 1.0    # = (x E1 bound)/E0 ; compare with mu
 
 
 def Psi2(mu, b, kap, Ks=(2, 4, 8, 16, 32, 64), Ls=(1, 2, 4, 8, 16)):

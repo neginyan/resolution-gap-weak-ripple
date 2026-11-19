@@ -2,7 +2,7 @@
 envelope with it.  Python 3.11.
 
 Lemma (local brightness; proof in the report).  For every window of the class (f >= 0 of mean 1, K >= x, c_b <= 1, (P3)) and every focus
-(t0, tau = x/b, b <= 1), with E0 = <theta_tau R^2> = S0_theta/2, E1 = <theta_tau R'^2> = S2_theta/2, E0' = <theta_{2 tau} R^2>:
+(t0, tau = x/b; any b > 0 -- v1.3: the header of v1.2 said b <= 1, but no step of the proof uses a bound on b), with E0 = <theta_tau R^2> = S0_theta/2, E1 = <theta_tau R'^2> = S2_theta/2, E0' = <theta_{2 tau} R^2>:
     x E1 <= (1 + b/2) E0 ln(2 B0/E0) + (sqrt2/e) b E0',     B0 = (1 + sqrt(E0) + (E0/2)^{1/(2+b)})^2,   E0' <= Qbar^2 = 1/16.
 In (mu_theta, P_theta) = (x E1/E0, 2 x E1):
     mu <= (1 + b/2) ln(4 B0 mu/P) + 2 (sqrt2/e) b mu E0'/P.                                                 (*)

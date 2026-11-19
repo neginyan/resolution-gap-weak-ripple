@@ -8,4 +8,9 @@ The covering of Sec.~\ref{sec:cert} is checked by \code{cq\_cover.py} ($10^5$ ra
 The results on the narrow focus (Sec.~\ref{sec:open:tau}, App.~\ref{app:joint}) are produced by \code{cm\_counter.py}, \code{cm\_local\_bound.py}, \code{cm\_checks.py}, \code{cn\_lemmas.py}, \code{cn\_search.py}, \code{co\_remainders.py}, \code{co\_rtheta.py} and \code{co\_envmin.py}.
 The acceptance rules of App.~\ref{app:cells} are implemented in \code{cl\_cells.py} and \code{cl\_link.py}; the bounds are checked against long double by \code{ck\_rounding.py}, and the $\tau$ cells and Lemma~BE by \code{cl\_tau\_be.py}.
 Each step of App.~\ref{app:details} is checked independently, in exact fractions and $60$-digit decimal, by \code{ck\_details.py}.
+Three scripts were added in v1.3.
+\code{top\_end.py} re-runs the last column of each part of certificate~(ii) with its top end moved to the binary64 number just above $\ell=960.8$ (Sec.~\ref{sec:cert}).
+\code{dv\_m2.py} bounds the constant $M_2$ of Lemma~R$_\theta$, by hand for $y\le10^{-20}$ and by interval arithmetic for the quadrature states (App.~\ref{app:details:M2}).
+\code{dw\_bedge\_low.py} re-checks the constants of Lemma~BE at the upper end $\sigma=e^{-55.26}$ (Sec.~\ref{sec:bedge}).
+\code{verification/run\_v13.py} runs the checks of v1.2 on the code of v1.2, then the checks of v1.3.
 The stage scripts are listed with their outputs in the repository README.

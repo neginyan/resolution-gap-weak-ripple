@@ -1,0 +1,45 @@
+{
+ "note": "v1.3 changes of the v1.1/v1.2 code: [file, text in v1.3, text in v1.2]; undoing them must give the v1.1 sha256 (results/v11_src_sha256.json)",
+ "changes": [
+  [
+   "src/cm_local_bound.py",
+   "Lemma (local brightness; proof in the report).  For every window of the class (f >= 0 of mean 1, K >= x, c_b <= 1, (P3)) and every focus\n(t0, tau = x/b; any b > 0 -- v1.3: the header of v1.2 said b <= 1, but no step of the proof uses a bound on b), with E0 = <theta_tau R^2> = S0_theta/2, E1 = <theta_tau R'^2> = S2_theta/2, E0' = <theta_{2 tau} R^2>:\n",
+   "Lemma (local brightness; proof in the report).  For every window of the class (f >= 0 of mean 1, K >= x, c_b <= 1, (P3)) and every focus\n(t0, tau = x/b, b <= 1), with E0 = <theta_tau R^2> = S0_theta/2, E1 = <theta_tau R'^2> = S2_theta/2, E0' = <theta_{2 tau} R^2>:\n"
+  ],
+  [
+   "src/cn_lemmas.py",
+   "Corollary (Psi_2).  With delta^2 = K kappa tau, tau' = L delta^2, b' = b/(L K kappa), A = sqrt(L K kappa) e^{1/(2L)}/(1 - 1/K), and CM-1 at tau',\nE0^{(tau')} <= min(E0/sqrt(L K kappa), 1/16):  x E1 <= A [ (1 + b'/2) E0^ ln(2 B0(E0^)/E0^) + (sqrt2/(16e)) b' ]  (v1.3: sqrt2/(16e) = 0.03252...; v1.2 wrote the rounded-down 0.0325),  E0^ := min(E0/sqrt(LK kappa), 1/16).\n",
+   "Corollary (Psi_2).  With delta^2 = K kappa tau, tau' = L delta^2, b' = b/(L K kappa), A = sqrt(L K kappa) e^{1/(2L)}/(1 - 1/K), and CM-1 at tau',\nE0^{(tau')} <= min(E0/sqrt(L K kappa), 1/16):  x E1 <= A [ (1 + b'/2) E0^ ln(2 B0(E0^)/E0^) + 0.0325 b' ],  E0^ := min(E0/sqrt(LK kappa), 1/16).\n"
+  ],
+  [
+   "src/cn_lemmas.py",
+   "    Eh = min(E0 / math.sqrt(L * K * kap), 1.0 / 16)\n    return A * ((1 + bp / 2) * Eh * math.log(2 * B0(Eh, bp) / Eh) + math.sqrt(2) / (16 * math.e) * bp) / E0 * 1.0    # = (x E1 bound)/E0 ; compare with mu\n",
+   "    Eh = min(E0 / math.sqrt(L * K * kap), 1.0 / 16)\n    return A * ((1 + bp / 2) * Eh * math.log(2 * B0(Eh, bp) / Eh) + 0.0325 * bp) / E0 * 1.0    # = (x E1 bound)/E0 ; compare with mu\n"
+  ],
+  [
+   "src/co_remainders.py",
+   "def M2_const(beta, tau):\n    \"\"\"a PROVED upper bound of M2 = sup over u >= 0 of u e^{-u/2} (1 + u cosh(beta sqrt(u/tau))), y = beta^2/tau (v1.3: dv_m2.M2_bound; v1.2 took the\n    maximum on a grid of u in [0, 400] times (1 + 1e-6)).  y is rounded up before the call (M2 is non-decreasing in y).\"\"\"\n    import dv_m2\n    y = math.nextafter(float(beta * beta / tau) * (1 + 1e-12), math.inf)\n    return dv_m2.M2_bound(y)\n",
+   "def M2_const(beta, tau):\n    \"\"\"max over u >= 0 of u e^{-u/2} (1 + u cosh(beta sqrt(u/tau))) (float; beta/sqrt(tau) = sqrt(y) tiny in the class).\"\"\"\n    u = np.linspace(0, 400, 400001); c = float(beta / sqrt(tau))\n    return float(np.max(u * np.exp(-u / 2) * (1 + u * np.cosh(c * np.sqrt(u))))) * (1 + 1e-6)\n"
+  ],
+  [
+   "src/co_rtheta.py",
+   "inequalities, not the window-generic constants (those are checked in co_remainders.py / cl_link).\nv1.3: M2 of N16 is the proved bound of dv_m2.py (v1.2: a grid maximum); the default argument is 40, which gives the 46 states of the paper\n(40 random + 6 packet states; v1.2's default 30 gave 36 states with the same range of ratios).\n",
+   "inequalities, not the window-generic constants (those are checked in co_remainders.py / cl_link).\n"
+  ],
+  [
+   "src/co_rtheta.py",
+   "def M2_const(beta, tau):\n    \"\"\"a PROVED upper bound of M2 = sup over u >= 0 of u e^{-u/2} (1 + u cosh(beta sqrt(u/tau))), y = beta^2/tau (v1.3: dv_m2.M2_bound; v1.2 took the\n    maximum on a grid of u in [0, 400] times (1 + 1e-6)).  y is rounded up before the call (M2 is non-decreasing in y).\"\"\"\n    import dv_m2\n    y = math.nextafter(float(beta * beta / tau) * (1 + 1e-12), math.inf)\n    return dv_m2.M2_bound(y)\n",
+   "def M2_const(beta, tau):\n    u = np.linspace(0, 400, 400001); c = float(beta / sqrt(tau))\n    return float(np.max(u * np.exp(-u / 2) * (1 + u * np.cosh(c * np.sqrt(u))))) * (1 + 1e-6)\n"
+  ],
+  [
+   "src/co_rtheta.py",
+   "\ndef run(nstates=40, seed=7, npack=6):\n",
+   "\ndef run(nstates=30, seed=7, npack=6):\n"
+  ],
+  [
+   "src/co_rtheta.py",
+   "if __name__ == '__main__':\n    run(int(sys.argv[1]) if len(sys.argv) > 1 else 40)\n",
+   "if __name__ == '__main__':\n    run(int(sys.argv[1]) if len(sys.argv) > 1 else 30)\n"
+  ]
+ ]
+}

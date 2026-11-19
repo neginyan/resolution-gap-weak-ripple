@@ -41,10 +41,20 @@ For (iii) see certificate (iii).
 \emph{Relation to~\cite{F}.}
 Theorem~\ref{thm:H1} does not need a bound on the number of harmonics.
 Paper~F covers windows with at most twenty harmonics or with damping exponent $K\ge0.003$ (Theorem~12 and Corollary~13 of~\cite{F}, with Theorems~45 and~48 for the two classes), for $10^{-100000}\le\sigma\le10^{-24}$ and in the limit, with both sides of the law.
-Theorem~\ref{thm:H1} covers the lower side for windows with a weak or energy-poor ripple, for $\sigma$ from $10^{-24}$ down to about $10^{-417}$ and for every state with $\tau\ge20$.
+Theorem~\ref{thm:H1} covers the lower side for windows with a weak or energy-poor ripple, for $\sigma$ from about $10^{-24}$ down to about $10^{-417}$ and for every state with $\tau\ge20$.
 The main reduced inequality alone (certificate (i)) holds up to $\ell=6907.8$.
 
 \emph{Picture.} However the ripple is built, many harmonics or few, the observer keeps at least the fraction $1/\sqrt\ell$, as long as the ripple's sup or its low-frequency energy is small and her focus spans at least about $0.7$ ripple periods.
+
+\paragraph*{Version~1.3.}
+This version states the hypothesis of Lemma~\ref{lem:BE} for the full range $\ell\ge55.26$, $\sigma\le e^{-55.26}$; up to v1.2 it was stated for $\sigma\le10^{-24}$, which leaves out $\ell\in[55.26,24\ln10)$.
+The proof is the same, and the three places where it uses an upper bound on $\sigma$ are re-checked at $e^{-55.26}$ (Sec.~\ref{sec:bedge}); the statement and the range of Theorem~H1 are unchanged, and no certificate of Theorem~H1 is re-run.
+It also corrects four details of the open problems (Sec.~\ref{sec:open}) and adds one sentence to the computer-assisted proofs.
+In Lemma~R$_\theta$ the constant $M_2$ of the remainder $N_{16}$ is now a proved bound (App.~\ref{app:details:M2}); v1.2 took the maximum on a grid of $u$.
+The code of the bound $\Psi_2$ now uses the coefficient $\sqrt2/(16e)$ of Lemma~\ref{lem:CM1}, which v1.2 had rounded down to $0.0325$.
+The setting of Lemma~\ref{lem:CM1} is stated as in the proof, every focus with no bound on $b$.
+The comparison with quadrature is reproduced by the default argument of its script, and Sec.~\ref{sec:cert} says how the top end $\ell=960.8$ is covered once it is stored in binary64.
+Every number printed in Sec.~\ref{sec:open} is unchanged.
 
 \paragraph*{Version~1.2.}
 Two steps of the proof of Theorem~H1 are corrected; the statement and the range of the theorem are unchanged.

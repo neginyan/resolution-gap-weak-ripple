@@ -38,13 +38,15 @@ Theorem~\ref{thm:H1} is not affected: it concerns $\tau\ge20$, where Lemma~A4* b
 \emph{Local brightness \proofst.}
 \begin{lemma}[Lemma CM-1, local brightness] \proofst
 \label{lem:CM1}
-For every window of the class and every focus, with $E_0'=\langle\theta_{2\tau}R^2\rangle_t\le\Qb^2$,
+For every window of the class and every focus $(t_0,\tau)$, whatever $b=x/\tau>0$, with $E_0'=\langle\theta_{2\tau}R^2\rangle_t\le\Qb^2$,
 \begin{multline}
 xE_1\le\Bigl(1+\frac b2\Bigr)E_0\ln\frac{2B_0}{E_0}+\frac{\sqrt2}{e}\,b\,E_0',\\
 B_0=\bigl(1+\sqrt{E_0}+(E_0/2)^{1/(2+b)}\bigr)^2 .
 \end{multline}
 \end{lemma}
 The proof uses only $f\ge0$: analytic continuation of the blurred profile, Paley--Wiener for the Gaussian focus, and a one-parameter dual of the Chernoff bound for the second moment (\code{cm\_local\_bound.py}, \code{cm\_checks.py}).
+No step of the proof uses a bound on $b$; the header of \code{cm\_local\_bound.py} said $b\le1$ up to v1.2, and is corrected in v1.3.
+The bound $\Psi_2$ below applies the lemma at a narrower focus, where $b'=b/(LK\kappa)$ may exceed one; restricting it to $b'\le1$ leaves the envelope values with the grid of $(K,L)$ below unchanged \numst.
 Let $\Psi(\mu_\theta,b)$ be the largest $P_\theta$ compatible with the lemma; $\Psi\approx4B_0\mu_\theta e^{-\mu_\theta}$ as $b\to0$.
 So the correct form of the local Z3$'$ is $P_\theta\le c\,\mu_\theta e^{-\mu_\theta}$, and it is proved: positivity alone makes local brightness pay for fineness.
 
@@ -105,9 +107,11 @@ The remainders are seventeen explicit terms $N_1$--$N_{17}$ in the numerator and
 \end{itemize}
 The remainders $a_1,a_2,a_5,a_9$ and the factors $\epsilon_1$, $1\pm\nu_0$, $z$, $\omega_2$ of Lemma~R have no local counterpart.
 \end{lemma}
+The last remainder, $N_{16}=\frac12\frac y2\,b\Qb k_EM_2(y)$ with $y=(1-b)^2\sigma^2/(2b)$, contains the constant $M_2(y)=\sup_{u\ge0}ue^{-u/2}(1+u\cosh\sqrt{yu})$.
+In the code it is now a proved upper bound (v1.3; v1.2 took the maximum on a grid of $u$): $M_2(y)\le2.737605$ for $y\le10^{-20}$ by hand (App.~\ref{app:details:M2}), which covers every state of the remainder budget below ($y\le10^{-21}$), and for the quadrature states below ($y$ from $8\times10^{-4}$ to $0.31$) an interval-arithmetic bound \caproofst{\code{dv\_m2.py}}.
 Each new inequality was first attacked numerically, with deliberately wrong versions that the search broke \numst.
 The search covered packets at the node, crest and trough of the fundamental, flat and Gaussian envelopes, two packets, combs, $150$ random bands, foci on and off the packet, and $\tau$ from $10^{-4}$ to $20$; seven deliberately wrong versions were all broken.
-The whole lemma was then compared with direct two-dimensional quadrature on $46$ states with $\tau$ from $0.3$ to $20$.
+The whole lemma was then compared with direct two-dimensional quadrature on $46$ states with $\tau$ from $0.3$ to $20$ ($40$ random states and $6$ wave packets; \code{co\_rtheta.py} with its default argument, $40$ from v1.3 on).
 It holds on all of them, and where Lemma~R is negative it keeps $27$--$94\,\%$ of the exact value \numst\ (\code{co\_rtheta.py}).
 
 \emph{The remainders cost almost nothing \numst.}

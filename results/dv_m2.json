@@ -1,0 +1,57 @@
+{
+ "(a) (4u*+2)e^{-u*/2}, 60 digits": "2.73760464642521727575",
+ "(a) (1 + 1e-18) times it <= 2.737605": true,
+ "(a) grid at y = 0 and y = 1e-20 (must be <= 2.737605)": [
+  2.7376046116933224,
+  2.7376046116933224
+ ],
+ "(b) interval bound vs grid": {
+  "1e-20": {
+   "bound": 2.7389737562567866,
+   "grid (v1.2 without the factor 1 + 1e-6)": 2.7376046116933224,
+   "bound/grid - 1": 0.000500125020836073
+  },
+  "1e-06": {
+   "bound": 2.7389775650777044,
+   "grid (v1.2 without the factor 1 + 1e-6)": 2.737608418610306,
+   "bound/grid - 1": 0.000500125020836073
+  },
+  "0.0001": {
+   "bound": 2.7393546495414993,
+   "grid (v1.2 without the factor 1 + 1e-6)": 2.737985314578996,
+   "bound/grid - 1": 0.0005001250208362951
+  },
+  "0.00083": {
+   "bound": 2.7421370719322993,
+   "grid (v1.2 without the factor 1 + 1e-6)": 2.740766346106346,
+   "bound/grid - 1": 0.000500125020836073
+  },
+  "0.01": {
+   "bound": 2.7774148224153343,
+   "grid (v1.2 without the factor 1 + 1e-6)": 2.7760264621231237,
+   "bound/grid - 1": 0.000500125020836073
+  },
+  "0.1": {
+   "bound": 3.1565781927539764,
+   "grid (v1.2 without the factor 1 + 1e-6)": 3.155000298164119,
+   "bound/grid - 1": 0.000500125020836073
+  },
+  "0.31": {
+   "bound": 4.28745930332185,
+   "grid (v1.2 without the factor 1 + 1e-6)": 4.285316109513291,
+   "bound/grid - 1": 0.000500125020836073
+  },
+  "1": {
+   "bound": 10.810785391235296,
+   "grid (v1.2 without the factor 1 + 1e-6)": 10.805381349662651,
+   "bound/grid - 1": 0.0005001250208362951
+  }
+ },
+ "power": {
+  "claim 2.7376 at y = 0 (must fail: grid exceeds it)": true,
+  "bound at y = 1e-4 <= 2.74484 (the bound of the follow-up work)": true,
+  "wrong pieces (ends exchanged) fall below the grid somewhere": true
+ },
+ "ok": true,
+ "seconds": 35.22240948677063
+}

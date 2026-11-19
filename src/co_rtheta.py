@@ -3,6 +3,8 @@ of (a) + (a') = (2 A_w + N_phi)/(sigma den), checked against the direct two-dime
 NARROW focus (tau from 0.3 to 20) -- the numerical check of the derivation (signs, factors, the local identity).  Python 3.11.
 Here the window quantities are the actual ones of the window (eta = sup|R|, N1, N2, E0, E1, kappa, R_theta, E1^{(2tau)} exact), so this checks the
 inequalities, not the window-generic constants (those are checked in co_remainders.py / cl_link).
+v1.3: M2 of N16 is the proved bound of dv_m2.py (v1.2: a grid maximum); the default argument is 40, which gives the 46 states of the paper
+(40 random + 6 packet states; v1.2's default 30 gave 36 states with the same range of ratios).
 -> results/co_rtheta.json
 """
 import json, math, sys
@@ -24,8 +26,11 @@ def local_numbers(q0, ph, x, tau):
 
 
 def M2_const(beta, tau):
-    u = np.linspace(0, 400, 400001); c = float(beta / sqrt(tau))
-    return float(np.max(u * np.exp(-u / 2) * (1 + u * np.cosh(c * np.sqrt(u))))) * (1 + 1e-6)
+    """a PROVED upper bound of M2 = sup over u >= 0 of u e^{-u/2} (1 + u cosh(beta sqrt(u/tau))), y = beta^2/tau (v1.3: dv_m2.M2_bound; v1.2 took the
+    maximum on a grid of u in [0, 400] times (1 + 1e-6)).  y is rounded up before the call (M2 is non-decreasing in y)."""
+    import dv_m2
+    y = math.nextafter(float(beta * beta / tau) * (1 + 1e-12), math.inf)
+    return dv_m2.M2_bound(y)
 
 
 def lemma_R_theta(sig, x, b, L2, s2, eta, Qb, N1, N2, E0, E1, kap, Rth, E1_2, detail=False):
@@ -82,7 +87,7 @@ def packet_window(rng, n0, W, where, amp=0.12, tot=0.24):
     return q0, ph
 
 
-def run(nstates=30, seed=7, npack=6):
+def run(nstates=40, seed=7, npack=6):
     rng = np.random.default_rng(seed); out = []
     for i in range(nstates * 3 + npack):
         if len(out) >= nstates + npack: break
@@ -117,4 +122,4 @@ def run(nstates=30, seed=7, npack=6):
 
 
 if __name__ == '__main__':
-    run(int(sys.argv[1]) if len(sys.argv) > 1 else 30)
+    run(int(sys.argv[1]) if len(sys.argv) > 1 else 40)

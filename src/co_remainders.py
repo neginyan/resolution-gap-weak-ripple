@@ -55,9 +55,11 @@ def window_consts(ell):
 
 
 def M2_const(beta, tau):
-    """max over u >= 0 of u e^{-u/2} (1 + u cosh(beta sqrt(u/tau))) (float; beta/sqrt(tau) = sqrt(y) tiny in the class)."""
-    u = np.linspace(0, 400, 400001); c = float(beta / sqrt(tau))
-    return float(np.max(u * np.exp(-u / 2) * (1 + u * np.cosh(c * np.sqrt(u))))) * (1 + 1e-6)
+    """a PROVED upper bound of M2 = sup over u >= 0 of u e^{-u/2} (1 + u cosh(beta sqrt(u/tau))), y = beta^2/tau (v1.3: dv_m2.M2_bound; v1.2 took the
+    maximum on a grid of u in [0, 400] times (1 + 1e-6)).  y is rounded up before the call (M2 is non-decreasing in y)."""
+    import dv_m2
+    y = math.nextafter(float(beta * beta / tau) * (1 + 1e-12), math.inf)
+    return dv_m2.M2_bound(y)
 
 
 def catalogue(ell, mu, b, r, kap, P, x, A, eta):

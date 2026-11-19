@@ -8,7 +8,7 @@ The coefficient need not be one here; the bound is of order $1/\sigma$.
 
 \begin{lemma}[Lemma BE] \proofst
 \label{lem:BE}
-Let $\sigma\in[10^{-3000},10^{-24}]$, $x\in[5\times10^{11}\sigma^2,0.003]$, (P0), (P3), (P4), and $q0_n\le2e^{-n^2x/2}$.
+Let $\sigma\in[10^{-3000},e^{-55.26}]$ (that is, $\ell\in[55.26,6907.8]$), $x\in[5\times10^{11}\sigma^2,0.003]$, (P0), (P3), (P4), and $q0_n\le2e^{-n^2x/2}$.
 Then every state with $0<b\le10^4\sigma^2$ satisfies
 \begin{equation}
 (a)+(a')\ \ge\ \frac{\kappa}{\sigma},\qquad \kappa=1.1\times10^{-5}.
@@ -79,6 +79,7 @@ Each step is written out in App.~\ref{app:details:BE}.
 \qed
 
 The constants, the formula of (BE-a) against finite differences, the bound of (BE-2) on random windows and every remainder are checked in \code{ch\_bedge.py} \numst.
+Up to v1.2 the lemma was stated for $\sigma\le10^{-24}$, which leaves out $\ell\in[55.26,24\ln10)$, $24\ln10=55.262\ldots$; the proof uses an upper bound on $\sigma$ only in $\rho_W$, in the tail piece and in the last line of the lemma, and these are re-checked at $\sigma=e^{-55.26}$ (and at the binary64 value of $55.26$) in \code{dw\_bedge\_low.py}: $\rho_W\le0.0801$, $\kappa\ge1.1\times10^{-5}$, and $\kappa\sqrt\ell/\sigma\ge8.16\times10^{19}$.
 
 \emph{Picture.} When $b$ is tiny the observer's $v$-focus is wide.
 Then the slope information $W$ of the ripple enters almost undiminished.
