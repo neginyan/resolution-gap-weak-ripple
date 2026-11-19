@@ -4,7 +4,7 @@
 
 Code, stored results, computer-assisted certificates and a verification script for the paper by Taishi Namba (2026).
 
-**Paper:** T. Namba, *Beyond few harmonics: the lower side of the logarithmic law of the resolution gap for windows with a weak ripple*, preprint, Zenodo (2026), [doi:10.5281/zenodo.23932698](https://doi.org/10.5281/zenodo.23932698) (all versions; v1.0 is [10.5281/zenodo.23932699](https://doi.org/10.5281/zenodo.23932699); v1.1 is [10.5281/zenodo.23993985](https://doi.org/10.5281/zenodo.23993985); v1.2 is [10.5281/zenodo.24114426](https://doi.org/10.5281/zenodo.24114426); the DOI of v1.3 is added on publication).
+**Paper:** T. Namba, *Beyond few harmonics: the lower side of the logarithmic law of the resolution gap for windows with a weak ripple*, preprint, Zenodo (2026), [doi:10.5281/zenodo.23932698](https://doi.org/10.5281/zenodo.23932698) (all versions; v1.0 is [10.5281/zenodo.23932699](https://doi.org/10.5281/zenodo.23932699); v1.1 is [10.5281/zenodo.23993985](https://doi.org/10.5281/zenodo.23993985); v1.2 is [10.5281/zenodo.24114426](https://doi.org/10.5281/zenodo.24114426); v1.3 is [10.5281/zenodo.24369012](https://doi.org/10.5281/zenodo.24369012)).
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23932577.svg)](https://doi.org/10.5281/zenodo.23932577)
 [![verify](https://github.com/neginyan/resolution-gap-weak-ripple/actions/workflows/verify.yml/badge.svg)](https://github.com/neginyan/resolution-gap-weak-ripple/actions/workflows/verify.yml)
@@ -153,7 +153,7 @@ python verification/run_all.py --recompute  # every column and window (many CPU 
 | `src/` | lemmas, certificates and checks (Python 3, NumPy, SciPy) |
 | `results/` | stored results and certificates |
 | `verification/` | `run_all.py`, `hp_numbers.py` (the numbers of the paper), `run_v12.py` (the checks of v1.2) and `run_v13.py` (the checks of v1.3; it runs `run_v12.py` on a copy with the v1.3 code changes undone) |
-| `paper/` | LaTeX source of the paper v1.3 (REVTeX 4.2) and the PDFs of v1.0, v1.1 and v1.2 (the PDF of v1.3 is added on publication) |
+| `paper/` | LaTeX source of the paper v1.3 (REVTeX 4.2) and the PDFs of v1.0, v1.1, v1.2 and v1.3 |
 
 ## Related work by the author
 
@@ -166,7 +166,7 @@ The study was carried out with AI assistants: Anthropic Claude (planning, proofs
 ## Citation
 
 Please cite the paper ([doi:10.5281/zenodo.23932698](https://doi.org/10.5281/zenodo.23932698)) and this repository; see `CITATION.cff`.
-The code is archived at Zenodo: [doi:10.5281/zenodo.23932577](https://doi.org/10.5281/zenodo.23932577) (all versions; v1.0.0 is [10.5281/zenodo.23932578](https://doi.org/10.5281/zenodo.23932578); v1.1.0 is [10.5281/zenodo.23993961](https://doi.org/10.5281/zenodo.23993961); v1.2.0 is [10.5281/zenodo.24115114](https://doi.org/10.5281/zenodo.24115114); the DOI of v1.3.0 is added on publication).
+The code is archived at Zenodo: [doi:10.5281/zenodo.23932577](https://doi.org/10.5281/zenodo.23932577) (all versions; v1.0.0 is [10.5281/zenodo.23932578](https://doi.org/10.5281/zenodo.23932578); v1.1.0 is [10.5281/zenodo.23993961](https://doi.org/10.5281/zenodo.23993961); v1.2.0 is [10.5281/zenodo.24115114](https://doi.org/10.5281/zenodo.24115114); v1.3.0 is [10.5281/zenodo.24367877](https://doi.org/10.5281/zenodo.24367877)).
 
 ## License
 
